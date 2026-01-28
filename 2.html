@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cytronix - Empowering Agriculture Through Innovation</title>
+    <link rel="shortcut icon" href="assets/images/cytronix-logo.svg" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #2d5016;
+            --light-green: #4a7c2a;
+            --accent-green: #6b9d3a;
+            --bright-green: #7cb342;
+            --dark: #1a1a1a;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --cream: #f9f9f7;
+            --gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a4d2e 0%, #2d5016 50%, #4a7c2a 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Animated Background Particles */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(124, 179, 66, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(107, 157, 58, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(45, 80, 22, 0.1) 0%, transparent 50%);
+            animation: particleFloat 20s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -30px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 1000px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #7cb342 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-green);
+            box-shadow: 0 10px 40px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 50px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 8rem 2rem;
+            background: var(--cream);
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--light-green), var(--accent-green));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            padding: 0 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--accent-green));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(45, 80, 22, 0.2);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--light-green), var(--accent-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--light-green) 100%);
+            position: relative;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            color: var(--white);
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Products Showcase */
+        .products-showcase {
+            padding: 8rem 2rem;
+            background: var(--white);
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-item {
+            background: var(--cream);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .product-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(45, 80, 22, 0.15);
+        }
+
+        .product-icon-wrapper {
+            background: linear-gradient(135deg, var(--light-green), var(--accent-green));
+            padding: 3rem;
+            text-align: center;
+            font-size: 3rem;
+        }
+
+        .product-content {
+            padding: 2rem;
+        }
+
+        .product-item h3 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .product-item p {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #1a4d2e 0%, var(--primary-green) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(124, 179, 66, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 3.5rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-green);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Animations on Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="assets/images/cytronix-logo.svg" alt="Cytronix Logo" class="hero-logo">
+            <h1>
+                Empowering <span class="hero-gradient-text">Agriculture</span><br>
+                Through Innovation
+            </h1>
+            <p>
+                Research-based crop protection solutions that transform farming productivity<br>
+                and protect India's agricultural future
+            </p>
+            <div class="cta-buttons">
+                <a href="index.html" class="btn btn-primary">Explore Our Products</a>
+                <a href="#mission" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24">
+                <path
+                    d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M13,12V16H11V12H8L12,8L16,12H13Z" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission" id="mission">
+        <div class="section-header fade-in">
+            <span class="section-label">Our Mission</span>
+            <h2 class="section-title">Dedicated to Agricultural Excellence</h2>
+            <p class="section-subtitle">
+                At Cytronix, we are committed to supporting the Indian agricultural sector through
+                innovative pest management solutions, sustainable practices, and cutting-edge research
+                that helps farmers maximize their yields while protecting the environment.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🔬</div>
+                <h3>Research-Based</h3>
+                <p>Decade of scientific research and development creating innovative solutions for modern agricultural
+                    challenges.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">✓</div>
+                <h3>Quality Certified</h3>
+                <p>ISO certified manufacturing with government-approved formulations tested by leading agricultural
+                    universities.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🌱</div>
+                <h3>Sustainable Practices</h3>
+                <p>Eco-friendly solutions that protect crops while minimizing environmental impact for future
+                    generations.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎯</div>
+                <h3>Targeted Solutions</h3>
+                <p>Specialized formulations for diverse crops including rice, wheat, cotton, vegetables, and more.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🤝</div>
+                <h3>Farmer Support</h3>
+                <p>Expert guidance and technical support helping farmers choose the right solutions for maximum
+                    effectiveness.</p>
+            </div>
+
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🚀</div>
+                <h3>Innovation Driven</h3>
+                <p>Continuously developing new technologies to combat evolving agricultural challenges and pest
+                    resistance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Formulations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Products</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Distributors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10K+</div>
+                <div class="stat-label">Retailers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5M+</div>
+                <div class="stat-label">Farmers Served</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Showcase -->
+    <section class="products-showcase">
+        <div class="section-header fade-in">
+            <span class="section-label">Our Products</span>
+            <h2 class="section-title">Comprehensive Crop Protection</h2>
+            <p class="section-subtitle">
+                From pest control to plant nutrition, our diverse product range covers
+                every aspect of modern agricultural needs.
+            </p>
+        </div>
+
+        <div class="products-grid">
+            <div class="product-item fade-in">
+                <div class="product-icon-wrapper">🦗</div>
+                <div class="product-content">
+                    <h3>Insecticides</h3>
+                    <p>Fast-acting formulations providing long-lasting protection against harmful insects while
+                        preserving beneficial species.</p>
+                </div>
+            </div>
+
+            <div class="product-item fade-in">
+                <div class="product-icon-wrapper">🌿</div>
+                <div class="product-content">
+                    <h3>Herbicides</h3>
+                    <p>Selective and non-selective weed control solutions for clean, healthy crops with minimal soil
+                        residue.</p>
+                </div>
+            </div>
+
+            <div class="product-item fade-in">
+                <div class="product-icon-wrapper">🍄</div>
+                <div class="product-content">
+                    <h3>Fungicides</h3>
+                    <p>Preventive and curative disease control with broad-spectrum coverage and resistance management.
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-item fade-in">
+                <div class="product-icon-wrapper">💧</div>
+                <div class="product-content">
+                    <h3>Micro Fertilizers</h3>
+                    <p>Chelated micronutrient formulations that correct deficiencies and improve overall yield quality.
+                    </p>
+                </div>
+            </div>
+
+            <div class="product-item fade-in">
+                <div class="product-icon-wrapper">🔬</div>
+                <div class="product-content">
+                    <h3>Antibiotics</h3>
+                    <p>Targeted bacterial disease control compatible with integrated pest management programs.</p>
+                </div>
+            </div>
+
+            <div class="product-item fade-in">
+                <div class="product-icon-wrapper">🌾</div>
+                <div class="product-content">
+                    <h3>Plant Growth Regulators</h3>
+                    <p>Advanced formulations promoting flowering, fruiting, and enhanced stress tolerance for superior
+                        crops.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Advice Section -->
+    <section class="mission" style="padding: 6rem 2rem; background: linear-gradient(135deg, #f9f9f7 0%, #e8f5e9 100%);">
+        <div class="section-header fade-in">
+            <span class="section-label">Expert Support</span>
+            <h2 class="section-title">Need Personalized Advice?</h2>
+            <p class="section-subtitle">
+                Our AI-powered expert assistant is here to help! Get instant answers about
+                crop protection, product recommendations, and agricultural best practices.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem;">
+            <div
+                style="max-width: 600px; margin: 0 auto; background: white; padding: 3rem 2rem; border-radius: 20px; box-shadow: 0 10px 40px rgba(45, 80, 22, 0.1);">
+                <div style="font-size: 4rem; margin-bottom: 1.5rem;">🤖</div>
+                <h3 style="font-size: 1.8rem; color: var(--primary-green); margin-bottom: 1rem; font-weight: 700;">AI
+                    Agricultural Assistant</h3>
+                <p style="color: var(--text-light); margin-bottom: 2rem; line-height: 1.8;">
+                    Ask questions about pest control, crop diseases, product selection,
+                    application methods, and more. Available 24/7 to support your farming needs.
+                </p>
+                <button id="getExpertAdviceBtn" class="btn btn-primary" style="cursor: pointer; border: none;">
+                    💬 Chat with Expert AI
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Transform Your Farm?</h2>
+            <p>
+                Join thousands of farmers across India who trust Cytronix for their
+                crop protection needs. Get expert advice and quality products today.
+            </p>
+            <div class="cta-buttons">
+                <a href="index.html#contacts" class="btn btn-primary">Contact Us</a>
+                <a href="index.html#products" class="btn btn-secondary">View Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="index.html#products">Products</a>
+            <a href="index.html#contacts">Contact</a>
+        </div>
+        <p>&copy; 2026 Cytronix. All Rights Reserved.</p>
+        <p style="margin-top:0.5rem; opacity:0.7;">Made by <a href="https://aozoradesu.com" target="_blank"
+                style="color:var(--accent-green)">Aozora</a></p>
+    </footer>
+
+    <!-- AI Widget -->
+    <script src="Ai.js"></script>
+
+    <!-- Scroll Animation Script -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add counter animation for stats
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Observe stats section for counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const value = parseInt(text.replace(/\D/g, ''));
+                        stat.dataset.suffix = text.replace(/[0-9]/g, '');
+                        stat.textContent = '0';
+                        animateValue(stat, 0, value, 2000);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Expert Advice Button - Trigger AI Widget
+        const expertBtn = document.getElementById('getExpertAdviceBtn');
+        if (expertBtn) {
+            expertBtn.addEventListener('click', () => {
+                // Trigger the AI widget to open
+                const aiToggle = document.querySelector('.aiko-chat-toggle');
+                if (aiToggle) {
+                    aiToggle.click();
+                } else {
+                    // If AI widget isn't loaded yet, wait a bit and try again
+                    setTimeout(() => {
+                        const toggle = document.querySelector('.aiko-chat-toggle');
+                        if (toggle) toggle.click();
+                    }, 500);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
+```
