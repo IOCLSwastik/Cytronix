@@ -44,7 +44,7 @@
     // Configuration - You can customize these values
     const AIKO_CONFIG = {
         apiKey: 'YOUR_PERPLEXITY_API_KEY', // Check https://docs.perplexity.ai/
-        primaryColor: '#2d5016',
+        primaryColor: '#008F85', // Teal - matches logo
         accentColor: '#ffffff',
         greeting: "Hi there! I'm Asuka. How can I assist you today?",
         websiteUrl: '', // Example: 'https://example.com' or leave empty to rely on configuration injection
@@ -61,7 +61,7 @@
         imageUrl: 'assets/aiko-avatar.png', // Set your avatar URL here
         fallbackSVG: `data:image/svg+xml;base64,${btoa(`
             <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#2d5016"/>
+                <circle cx="20" cy="20" r="20" fill="#008F85"/>
                 <text x="20" y="27" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">A</text>
             </svg>
         `)}`
@@ -84,9 +84,9 @@
         }
 
         @keyframes aiko-pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(45, 80, 22, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(45, 80, 22, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(45, 80, 22, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(0, 143, 133, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 143, 133, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 143, 133, 0); }
         }
 
         @keyframes aiko-gradient-move {
@@ -107,13 +107,13 @@
         .aiko-chat-toggle {
             width: 65px;
             height: 65px;
-            background: linear-gradient(135deg, #2d5016, #6b9d3a);
+            background: ${AIKO_CONFIG.primaryColor}; /* Plain Teal */
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 143, 133, 0.4);
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
             animation: aiko-pulse-glow 2s infinite;
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -151,7 +151,7 @@
         }
 
         .aiko-chat-header {
-            background: linear-gradient(135deg, #2d5016, #6b9d3a);
+            background: ${AIKO_CONFIG.primaryColor}; /* Plain Teal */
             color: white;
             padding: 20px;
             display: flex;
@@ -312,9 +312,9 @@
         }
 
         .aiko-user-message .aiko-message-content {
-            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #4a7c2a);
+            background: ${AIKO_CONFIG.primaryColor}; /* Plain Teal */
             border-bottom-right-radius: 4px;
-            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            box-shadow: 0 4px 15px rgba(0, 143, 133, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
             color: white;
         }
 
@@ -499,8 +499,7 @@
         }
 
         .aiko-send-button {
-            background: ${AIKO_CONFIG.primaryColor};
-            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #4a7c2a);
+            background: ${AIKO_CONFIG.primaryColor}; /* Plain Teal */
             border: none;
             border-radius: 50%;
             width: 40px;

@@ -21,21 +21,16 @@
         }
 
         :root {
-            /* Exact Logo Colors */
-            --primary-color: #008F85;
-            /* Teal/Cyan - Brand Primary */
-            --secondary-color: #032B40;
-            /* Deep Navy - Brand Secondary */
-            --accent-color: #7FCD45;
-            /* Lime Green - Leaf Highlight */
-            --text-dark: #0E0E0E;
-            /* Logo Black */
-            --text-medium: #333333;
+            --primary-color: #2d5016;
+            --secondary-color: #4a7c2a;
+            --accent-color: #6b9d3a;
+            --text-dark: #333333;
+            --text-medium: #666666;
             --text-light: #999999;
             --bg-white: #ffffff;
-            --bg-gray-light: #f4f6f7;
-            --bg-gray: #e6e6e6;
-            --border-color: #d1d5db;
+            --bg-gray-light: #f8f8f8;
+            --bg-gray: #e8e8e8;
+            --border-color: #dddddd;
         }
 
         html,
@@ -52,8 +47,8 @@
 
         /* Header & Navigation */
         header {
-            background: rgba(255, 255, 255, 0.85);
-            /* Semi-transparent white for glassmorphism */
+            background: rgba(240, 250, 240, 0.85);
+            /* Very light greenish glassmorphism */
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
@@ -66,7 +61,7 @@
             /* Explicit height */
             z-index: 10000;
             /* Stay on top */
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
             /* Center vertical */
             align-items: center;
@@ -83,21 +78,13 @@
             align-items: center;
         }
 
-        /* Updated Logo Style to Search Brand Image */
         .logo {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 2.2rem;
-            /* Larger to match impact */
-            font-weight: 800;
-            /* Extra Bold */
-            color: var(--text-dark);
-            /* Black #0E0E0E */
-            font-family: 'Inter', sans-serif;
-            letter-spacing: -1px;
-            /* Tighter spacing like image */
-            text-transform: uppercase;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
         }
 
         .logo img {
@@ -293,8 +280,7 @@
 
         .btn-primary {
             display: inline-block;
-            background: var(--accent-color);
-            /* Lime green button */
+            background: var(--primary-color);
             color: white;
             padding: 1rem 2.5rem;
             border-radius: 8px;
@@ -302,16 +288,15 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(127, 205, 69, 0.3);
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
             border: none;
             cursor: pointer;
         }
 
         .btn-primary:hover {
-            background: var(--primary-color);
-            /* Teal on hover */
+            background: var(--secondary-color);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 143, 133, 0.4);
+            box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
         }
 
         .btn-outline {
@@ -388,10 +373,10 @@
             color: var(--text-dark);
         }
 
+        /* Why Choose Section - Premium Styling */
         .why-choose {
             padding: 7rem 2rem;
-            background: #faf8f3;
-            /* Soft warm beige - matches icon backgrounds */
+            background: linear-gradient(to bottom, #f9f9f9, #ffffff);
         }
 
         .why-choose-container {
@@ -430,70 +415,22 @@
             position: absolute;
             bottom: 30px;
             right: 30px;
-            width: 280px;
-            height: 180px;
-            background: url('assets/images/plant-growth.jpg') center/cover no-repeat;
+            background: var(--primary-color);
             color: white;
-            padding: 1.5rem;
+            padding: 1.5rem 2rem;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.4);
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .experience-badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(3, 43, 64, 0.85);
-            /* Navy overlay */
-            z-index: 1;
-        }
-
-        .experience-badge-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .badge-logo {
-            font-size: 1.2rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-color);
-            /* Lime green logo */
-            margin-bottom: 0.2rem;
-        }
-
-        .badge-logo-img {
-            width: 120px !important;
-            /* Force exact small size */
-            height: auto !important;
-            object-fit: contain;
-            margin-bottom: 0.5rem;
-            filter: brightness(0) invert(1);
-            /* Make logo white */
-            opacity: 0.95;
-            display: block;
+            gap: 1rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .experience-badge .years {
             font-size: 3rem;
             font-weight: 800;
             line-height: 1;
-            color: white;
         }
 
         .experience-badge .text {
@@ -501,7 +438,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.9;
+            line-height: 1.4;
         }
 
         .why-choose-content .section-title {
@@ -550,7 +487,6 @@
             height: 50px;
             flex-shrink: 0;
             background: #f4f8f1;
-            /* Light greenish beige */
             border-radius: 12px;
             padding: 8px;
             display: flex;
@@ -568,8 +504,7 @@
             font-size: 1.1rem;
             font-weight: 700;
             margin-bottom: 0.4rem;
-            color: var(--accent-color);
-            /* Lime green headings */
+            color: var(--primary-color);
         }
 
         .feature-text p {
@@ -649,8 +584,11 @@
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 0.2rem;
-            color: var(--primary-color);
-            /* Plain Teal */
+            /* Green gradient for numbers */
+            background: linear-gradient(135deg, #2d5016 0%, #6b9d3a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: inline-block;
         }
 
@@ -861,9 +799,8 @@
         }
 
         .social-links a:hover {
-            background: var(--accent-color);
-            /* Lime green */
-            border-color: var(--accent-color);
+            background: var(--primary-color);
+            border-color: var(--primary-color);
             transform: translateY(-2px);
         }
 
@@ -958,8 +895,8 @@
                 right: 0;
                 height: 100vh;
                 top: 0;
-                background: #032B40;
-                /* Plain Navy - matches logo */
+                background: linear-gradient(135deg, rgba(45, 80, 22, 0.95), rgba(74, 124, 42, 0.95));
+                /* Green gradient */
                 backdrop-filter: blur(20px);
                 -webkit-backdrop-filter: blur(20px);
                 display: flex;
@@ -1194,11 +1131,8 @@
                 <div class="image-wrapper">
                     <img src="assets/images/plant-growth.jpg" alt="Healthy Crops">
                     <div class="experience-badge">
-                        <div class="experience-badge-content">
-                            <img src="assets/images/cytronix-logo.svg" alt="Cytronix" class="badge-logo-img">
-                            <span class="years">10+</span>
-                            <span class="text">Years of<br>EXCELLENCE</span>
-                        </div>
+                        <span class="years">10+</span>
+                        <span class="text">Years of<br>EXCELLENCE</span>
                     </div>
                 </div>
             </div>
