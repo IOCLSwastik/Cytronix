@@ -42,11 +42,15 @@
 
         /* Header & Navigation */
         header {
-            background: var(--bg-white);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(240, 250, 240, 0.85);
+            /* Very light greenish glassmorphism */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         nav {
@@ -103,30 +107,92 @@
             border-color: var(--primary-color);
         }
 
-        /* Hero Section */
+        /* Hero Section - Slider */
         .hero {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e8eff5 100%);
-            padding: 5rem 2rem;
+            height: 90vh;
+            /* Increased height */
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            color: white;
+            overflow: hidden;
+            margin-top: 0;
+            padding: 0;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        /* Overlay for better text visibility */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
         }
 
         .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 2rem;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--text-dark);
+            font-size: 3.5rem;
+            font-weight: 800;
             margin-bottom: 1.5rem;
             line-height: 1.2;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        .hero h1 span {
+            color: var(--accent-color);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: var(--text-medium);
-            margin-bottom: 2rem;
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
         }
 
         .btn-primary {
@@ -140,12 +206,33 @@
             font-size: 1.1rem;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(45, 80, 22, 0.2);
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary:hover {
             background: var(--secondary-color);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(45, 80, 22, 0.3);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
         }
 
         /* Products Section */
@@ -162,38 +249,6 @@
             color: var(--text-dark);
         }
 
-        .product-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .tab-btn {
-            background: var(--bg-gray-light);
-            border: 1px solid var(--border-color);
-            padding: 0.8rem 2rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            color: var(--text-medium);
-            transition: all 0.3s;
-            width: 200px;
-            text-align: center;
-        }
-
-        .tab-btn:hover {
-            background: var(--bg-gray);
-        }
-
-        .tab-btn.active {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
         .product-grid {
             max-width: 1200px;
             margin: 0 auto;
@@ -208,7 +263,6 @@
             border-radius: 12px;
             overflow: hidden;
             transition: all 0.3s;
-            display: none;
         }
 
         .product-card.show {
@@ -236,79 +290,215 @@
             color: var(--text-dark);
         }
 
-        /* Why Choose Section */
+        /* Why Choose Section - Premium Styling */
         .why-choose {
-            padding: 4rem 2rem;
-            background: var(--bg-gray-light);
+            padding: 7rem 2rem;
+            background: linear-gradient(to bottom, #f9f9f9, #ffffff);
         }
 
-        .quality-grid {
+        .why-choose-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .why-choose-image {
+            position: relative;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-color);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(45, 80, 22, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .experience-badge .years {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.4;
+        }
+
+        .why-choose-content .section-title {
+            text-align: left;
+            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            position: relative;
+        }
+
+        .why-choose-content .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
         }
 
-        .quality-badge {
-            background: var(--bg-white);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid var(--border-color);
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .quality-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--accent-color);
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            flex-shrink: 0;
+            background: #f4f8f1;
+            border-radius: 12px;
+            padding: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 2rem;
         }
 
-        .quality-badge h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
+        .feature-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
-        .quality-badge p {
+        .feature-text h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: var(--primary-color);
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
             color: var(--text-medium);
-            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .why-choose-container {
+                flex-direction: column;
+            }
+
+            .why-choose-image {
+                margin-bottom: 2rem;
+            }
+
+            .why-choose-content .section-title {
+                text-align: center;
+            }
         }
 
         /* Statistics Section */
         .statistics {
-            padding: 3rem 2rem;
-            background: var(--bg-white);
+            padding: 4rem 2rem;
+            background: #ffffff;
+            position: relative;
         }
 
         .stats-grid {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
             gap: 2rem;
             text-align: center;
         }
 
-        .stat-item h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
         }
 
-        .stat-item p {
-            color: var(--text-medium);
-            font-size: 0.95rem;
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            /* Green gradient for numbers */
+            background: linear-gradient(135deg, #2d5016 0%, #6b9d3a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            color: #333333;
+        }
+
+        /* Animations on Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Crops We Serve */
@@ -559,18 +749,6 @@
                 text-align: center;
             }
         }
-
-        /* Desktop - Horizontal Tabs */
-        @media (min-width: 769px) {
-            .product-tabs {
-                flex-direction: row;
-                flex-wrap: nowrap;
-            }
-
-            .tab-btn {
-                width: auto;
-            }
-        }
     </style>
 </head>
 
@@ -591,24 +769,26 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('assets/images/farm12-dw-qmi1j-1800x488.jpg')"></div>
+            <div class="slide" style="background-image: url('assets/images/farm32-dfpa1qzx-1800x488.jpg')"></div>
+            <div class="slide" style="background-image: url('assets/images/farm22-dga8tdgf-1800x488.jpg')"></div>
+        </div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Effective Crop Protection Solutions for Modern Agriculture</h1>
-            <p>We manufacture and supply high quality pesticides to protect crops and improve farm productivity.</p>
-            <a href="#products" class="btn-primary">View our products</a>
+            <h1>Advanced Crop Protection <br>for <span>Max Yield</span></h1>
+            <p>Empowering farmers with scientific solutions for a sustainable future.</p>
+            <div class="hero-btns">
+                <a href="#products" class="btn btn-primary">Explore Products</a>
+                <a href="#about" class="btn btn-outline">Learn More</a>
+            </div>
         </div>
     </section>
 
     <!-- Products Section -->
     <section class="products" id="products">
-        <h2 class="section-title">Products</h2>
-
-        <div class="product-tabs">
-            <button class="tab-btn active" data-category="all">All</button>
-            <button class="tab-btn" data-category="herbicides">Herbicides</button>
-            <button class="tab-btn" data-category="insecticides">Insecticides</button>
-            <button class="tab-btn" data-category="fungicides">Fungicides</button>
-        </div>
+        <h2 class="section-title">Our Products</h2>
 
         <div class="product-grid">
             <div class="product-card show" data-category="insecticides">
@@ -656,50 +836,85 @@
     </section>
 
     <!-- Why Choose Cytronix -->
-    <section class="why-choose" id="about">
-        <h2 class="section-title">Why Choose Cytronix</h2>
-        <div class="quality-grid">
-            <div class="quality-badge">
-                <div class="quality-icon">✓</div>
-                <h3>Quality certified products</h3>
-                <p>Innovation and excellence that meets international standards</p>
+    <section class="why-choose fade-in" id="about">
+        <div class="why-choose-container">
+            <div class="why-choose-image">
+                <div class="image-wrapper">
+                    <img src="assets/images/plant-growth.jpg" alt="Healthy Crops">
+                    <div class="experience-badge">
+                        <span class="years">10+</span>
+                        <span class="text">Years of<br>EXCELLENCE</span>
+                    </div>
+                </div>
             </div>
-            <div class="quality-badge">
-                <div class="quality-icon">✓</div>
-                <h3>Quality certified products</h3>
-                <p>Innovation and excellence that meets international standards</p>
-            </div>
-            <div class="quality-badge">
-                <div class="quality-icon">✓</div>
-                <h3>Quality certified products</h3>
-                <p>Innovation and excellence that meets international standards</p>
-            </div>
-            <div class="quality-badge">
-                <div class="quality-icon">✓</div>
-                <h3>Quality certified products</h3>
-                <p>Innovation and excellence that meets international standards</p>
+            <div class="why-choose-content">
+                <h2 class="section-title">Why Choose Cytronix?</h2>
+                <div class="quality-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_0.png" alt="Research"></div>
+                        <div class="feature-text">
+                            <h3>Research-Based</h3>
+                            <p>Scientific R&D creating innovative agricultural solutions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_3.png" alt="Quality"></div>
+                        <div class="feature-text">
+                            <h3>Quality Certified</h3>
+                            <p>ISO certified manufacturing with tested formulations.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_1.png" alt="Sustainable"></div>
+                        <div class="feature-text">
+                            <h3>Sustainable</h3>
+                            <p>Eco-friendly solutions minimizing environmental impact.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_2.png" alt="Targeted"></div>
+                        <div class="feature-text">
+                            <h3>Targeted Action</h3>
+                            <p>Specialized formulations for diverse crop protection.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/farmer.png" alt="Support"></div>
+                        <div class="feature-text">
+                            <h3>Farmer Support</h3>
+                            <p>Expert guidance helping farmers choose right solutions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_4.png" alt="Innovation"></div>
+                        <div class="feature-text">
+                            <h3>Innovation</h3>
+                            <p>Continuous development of new agri-technologies.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Statistics -->
-    <section class="statistics">
+    <section class="statistics fade-in">
         <div class="stats-grid">
-            <div class="stat-item">
-                <h2>15+</h2>
-                <p>Formulations</p>
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Formulations</div>
             </div>
-            <div class="stat-item">
-                <h2>100+</h2>
-                <p>Product Range</p>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Products</div>
             </div>
-            <div class="stat-item">
-                <h2>1000+</h2>
-                <p>Distributors</p>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Distributors</div>
             </div>
-            <div class="stat-item">
-                <h2>150+</h2>
-                <p>Retailers</p>
+            <div class="stat-card">
+                <div class="stat-number">5M+</div>
+                <div class="stat-label">Farmers Served</div>
             </div>
         </div>
     </section>
@@ -829,8 +1044,24 @@
     <!-- AI Widget Script -->
     <script src="Ai.js"></script>
 
-    <!-- Product Filter Script -->
+    <!-- Product Filter & Animation Script -->
     <script>
+        // Hero Slider Logic
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            if (slides.length === 0) return;
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Initialize slider if slides exist
+        if (slides.length > 0) {
+            setInterval(nextSlide, 5000);
+        }
+
         // Product filtering
         const tabBtns = document.querySelectorAll('.tab-btn');
         const productCards = document.querySelectorAll('.product-card');
@@ -856,13 +1087,92 @@
         });
 
         // Expert Advice button - trigger AI widget
-        document.getElementById('getExpertAdvice').addEventListener('click', () => {
-            // Trigger the AI widget to open
-            const aiToggle = document.querySelector('.aiko-chat-toggle');
-            if (aiToggle) {
-                aiToggle.click();
-            }
+        const expertBtn = document.getElementById('getExpertAdvice');
+        if (expertBtn) {
+            expertBtn.addEventListener('click', () => {
+                // Trigger the AI widget to open
+                const aiToggle = document.querySelector('.aiko-chat-toggle');
+                if (aiToggle) {
+                    aiToggle.click();
+                } else {
+                    // Retry if widget not fully loaded
+                    setTimeout(() => {
+                        const toggle = document.querySelector('.aiko-chat-toggle');
+                        if (toggle) toggle.click();
+                    }, 500);
+                }
+            });
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add counter animation for stats
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Observe stats section for counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const value = parseInt(text.replace(/\D/g, ''));
+                        stat.dataset.suffix = text.replace(/[0-9]/g, '');
+                        stat.textContent = '0';
+                        animateValue(stat, 0, value, 2000);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.statistics');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
     </script>
 </body>
 

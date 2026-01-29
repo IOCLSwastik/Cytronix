@@ -44,7 +44,7 @@
     // Configuration - You can customize these values
     const AIKO_CONFIG = {
         apiKey: 'YOUR_PERPLEXITY_API_KEY', // Check https://docs.perplexity.ai/
-        primaryColor: '#8A2BE2',
+        primaryColor: '#2d5016',
         accentColor: '#ffffff',
         greeting: "Hi there! I'm Asuka. How can I assist you today?",
         websiteUrl: '', // Example: 'https://example.com' or leave empty to rely on configuration injection
@@ -58,10 +58,10 @@
 
     // Aiko avatar configuration
     const aikoAvatarConfig = {
-        imageUrl: '', // Set your avatar URL here
+        imageUrl: 'assets/aiko-avatar.png', // Set your avatar URL here
         fallbackSVG: `data:image/svg+xml;base64,${btoa(`
             <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#8A2BE2"/>
+                <circle cx="20" cy="20" r="20" fill="#2d5016"/>
                 <text x="20" y="27" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">A</text>
             </svg>
         `)}`
@@ -84,9 +84,9 @@
         }
 
         @keyframes aiko-pulse-glow {
-            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(138, 43, 226, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+            0% { box-shadow: 0 0 0 0 rgba(45, 80, 22, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(45, 80, 22, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(45, 80, 22, 0); }
         }
 
         @keyframes aiko-gradient-move {
@@ -107,13 +107,13 @@
         .aiko-chat-toggle {
             width: 65px;
             height: 65px;
-            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #6A0DAD);
+            background: linear-gradient(135deg, #2d5016, #6b9d3a);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.4);
+            box-shadow: 0 8px 25px rgba(45, 80, 22, 0.4);
             transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
             animation: aiko-pulse-glow 2s infinite;
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -122,7 +122,7 @@
 
         .aiko-chat-toggle:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 30px rgba(138, 43, 226, 0.6);
+            box-shadow: 0 12px 30px rgba(45, 80, 22, 0.6);
         }
 
         .aiko-chat-container {
@@ -151,7 +151,7 @@
         }
 
         .aiko-chat-header {
-            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #4B0082);
+            background: linear-gradient(135deg, #2d5016, #6b9d3a);
             color: white;
             padding: 20px;
             display: flex;
@@ -312,9 +312,9 @@
         }
 
         .aiko-user-message .aiko-message-content {
-            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #6A1B9A);
+            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #4a7c2a);
             border-bottom-right-radius: 4px;
-            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+            box-shadow: 0 4px 15px rgba(45, 80, 22, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
             color: white;
         }
 
@@ -482,7 +482,7 @@
         .aiko-input-wrapper:focus-within {
             background: white;
             border-color: ${AIKO_CONFIG.primaryColor};
-            box-shadow: 0 4px 12px rgba(138, 43, 226, 0.1);
+            box-shadow: 0 4px 12px rgba(45, 80, 22, 0.1);
         }
 
         .aiko-chat-input {
@@ -500,7 +500,7 @@
 
         .aiko-send-button {
             background: ${AIKO_CONFIG.primaryColor};
-            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #6A0DAD);
+            background: linear-gradient(135deg, ${AIKO_CONFIG.primaryColor}, #4a7c2a);
             border: none;
             border-radius: 50%;
             width: 40px;
@@ -511,12 +511,12 @@
             cursor: pointer;
             transition: all 0.2s;
             color: white;
-            box-shadow: 0 2px 5px rgba(138, 43, 226, 0.4);
+            box-shadow: 0 2px 5px rgba(45, 80, 22, 0.4);
         }
 
         .aiko-send-button:hover {
             transform: scale(1.1);
-            box-shadow: 0 4px 8px rgba(138, 43, 226, 0.6);
+            box-shadow: 0 4px 8px rgba(45, 80, 22, 0.6);
         }
         
         .aiko-branding span {
@@ -676,7 +676,7 @@
                           </button>
                       </div>
                       <div class="aiko-branding">
-                          <span style="font-size: 10px; color: #999; text-align: center; display: block; margin-top: 5px; margin-bottom: 5px;">Powered by <a href="https://aozoradesu.com" target="_blank" style="color: #8A2BE2; text-decoration: none;">AozoraDesu</a></span>
+                          <span style="font-size: 10px; color: #999; text-align: center; display: block; margin-top: 5px; margin-bottom: 5px;">Powered by <a href="https://aozoradesu.com" target="_blank" style="color: ${AIKO_CONFIG.primaryColor}; text-decoration: none;">AozoraDesu</a></span>
                       </div>
                   </div>
             </div>
@@ -1047,7 +1047,7 @@
                     replacement: (match) => {
                         const cleanUrl = match.replace(/[.,;:!?]*$/, '');
                         const trailing = match.substring(cleanUrl.length);
-                        return `<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" style="color: #8A2BE2; text-decoration: underline;">${cleanUrl}</a>${trailing}`;
+                        return `<a href="${cleanUrl}" target="_blank" rel="noopener noreferrer" style="color: ${AIKO_CONFIG.primaryColor}; text-decoration: underline;">${cleanUrl}</a>${trailing}`;
                     }
                 },
                 {
@@ -1057,7 +1057,7 @@
                         const trailing = match.substring(cleanEmail.length);
                         const href = cleanEmail.startsWith('mailto:') ? cleanEmail : `mailto:${cleanEmail}`;
                         const displayText = cleanEmail.startsWith('mailto:') ? cleanEmail.substring(7) : cleanEmail;
-                        return `<a href="${href}" style="color: #8A2BE2; text-decoration: underline;">${displayText}</a>${trailing}`;
+                        return `<a href="${href}" style="color: ${AIKO_CONFIG.primaryColor}; text-decoration: underline;">${displayText}</a>${trailing}`;
                     }
                 },
                 {
@@ -1072,7 +1072,7 @@
 
                         const href = cleanPhone.startsWith('tel:') ? cleanPhone : `tel:${cleanPhone}`;
                         const displayText = cleanPhone.startsWith('tel:') ? cleanPhone.substring(4) : cleanPhone;
-                        return `<a href="${href}" style="color: #8A2BE2; text-decoration: underline;">${displayText}</a>${trailing}`;
+                        return `<a href="${href}" style="color: ${AIKO_CONFIG.primaryColor}; text-decoration: underline;">${displayText}</a>${trailing}`;
                     }
                 }
             ];
