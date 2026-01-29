@@ -1,0 +1,2050 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cytronix - Effective Crop Protection Solutions for Modern Agriculture">
+    <title>Cytronix - Quality Pesticides & Agri Solutions</title>
+    <link rel="shortcut icon" href="assets/images/cytronix-logo.svg" type="image/x-icon">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Exact Logo Colors */
+            --primary-color: #008F85;
+            /* Teal/Cyan - Brand Primary */
+            --secondary-color: #032B40;
+            /* Deep Navy - Brand Secondary */
+            --accent-color: #7FCD45;
+            /* Lime Green - Leaf Highlight */
+            --text-dark: #0E0E0E;
+            /* Logo Black */
+            --text-medium: #333333;
+            --text-light: #999999;
+            --bg-white: #ffffff;
+            --bg-gray-light: #f4f6f7;
+            --bg-gray: #e6e6e6;
+            --border-color: #d1d5db;
+        }
+
+        html,
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+            -webkit-tap-highlight-color: transparent;
+            /* Removes blue click highlight */
+        }
+
+        /* Header & Navigation */
+        header {
+            background: rgba(255, 255, 255, 0.85);
+            /* Semi-transparent white for glassmorphism */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            /* Fixed to viewport */
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            /* Explicit height */
+            z-index: 10000;
+            /* Stay on top */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            display: flex;
+            /* Center vertical */
+            align-items: center;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            /* Remove vertical padding since header has flex/height */
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Updated Logo Style to Search Brand Image */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 2.2rem;
+            /* Larger to match impact */
+            font-weight: 800;
+            /* Extra Bold */
+            color: var(--text-dark);
+            /* Black #0E0E0E */
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -1px;
+            /* Tighter spacing like image */
+            text-transform: uppercase;
+        }
+
+        .logo img {
+            height: auto;
+            width: 200px;
+            /* Increased from default/small size */
+            max-height: 60px;
+            /* Ensure it fits height-wise */
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hide hamburger on desktop */
+        /* Hide hamburger and close menu on desktop */
+        .hamburger,
+        .close-menu {
+            display: none;
+        }
+
+        .btn-contact {
+            background: var(--accent-color);
+            /* Lime Green */
+            color: var(--text-dark);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: all 0.3s;
+            border: none;
+            text-transform: uppercase;
+            font-size: 0.9rem !important;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-contact:hover {
+            background: var(--primary-color);
+            color: white !important;
+            border-color: var(--primary-color);
+        }
+
+        /* Hero Section - Slider */
+        /* Hero Section Refactor */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-slider-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+            /* Premium ease */
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+            transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        /* Subtle parallax effect when slide is active */
+        .hero-slide.active .slide-bg {
+            transform: scale(1.05);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(3, 43, 64, 0.85) 0%, rgba(3, 43, 64, 0.6) 100%);
+            z-index: 2;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 2rem;
+            color: white;
+        }
+
+        .slide-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
+        }
+
+        .hero-slide.active .slide-content h1 {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-content h1 span {
+            color: var(--accent-color);
+            /* Lime Green */
+            position: relative;
+        }
+
+        /* Underline decoration for emphasis */
+        .slide-content h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: rgba(127, 205, 69, 0.3);
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .slide-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+        }
+
+        .hero-slide.active .slide-content p {
+            opacity: 0.95;
+            transform: translateY(0);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+        }
+
+        .hero-slide.active .hero-btns {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: var(--text-dark);
+        }
+
+        .btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(127, 205, 69, 0.3);
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px;
+            /* Bigger touch target */
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slider-arrow:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--text-dark);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-arrow {
+            left: 30px;
+        }
+
+        .next-arrow {
+            right: 30px;
+        }
+
+        /* Slide Indicators */
+        .slide-indicators {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 0;
+        }
+
+        .indicator:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.2);
+        }
+
+        .indicator.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            width: 40px;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .prev-arrow {
+                left: 10px;
+            }
+
+            .next-arrow {
+                right: 10px;
+            }
+
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero {
+                height: auto !important;
+                min-height: 500px;
+            }
+
+            /* Auto height on mobile */
+        }
+
+
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent-color);
+            /* Lime green button */
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(127, 205, 69, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-color);
+            /* Teal on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 143, 133, 0.4);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Products Section */
+        .products {
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .product-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .product-card.show {
+            display: block;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .why-choose {
+            padding: 7rem 2rem;
+            background: #faf8f3;
+            /* Soft warm beige - matches icon backgrounds */
+        }
+
+        .why-choose-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .image-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .why-choose-image {
+            position: relative;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Innovation Card Badge - Premium Glassmorphism */
+        .innovation-card {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 290px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .card-top {
+            padding: 1.75rem 1.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.1rem;
+            overflow: hidden;
+        }
+
+        .card-icon {
+            width: 80px !important;
+            height: 80px !important;
+            min-width: 80px;
+            min-height: 80px;
+            max-width: 80px;
+            max-height: 80px;
+            object-fit: contain;
+            background: rgba(244, 248, 241, 0.85);
+            padding: 16px;
+            border-radius: 11px;
+            display: block;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-logo {
+            width: auto !important;
+            height: 46px !important;
+            max-width: 150px !important;
+            max-height: 46px !important;
+            object-fit: contain;
+            display: block;
+            flex-shrink: 1;
+        }
+
+        .card-top h3 {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin: 0 0 0.6rem 0;
+            letter-spacing: -0.6px;
+        }
+
+        .card-top p {
+            font-size: 0.93rem;
+            color: #2d2d2d;
+            line-height: 1.55;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .card-bottom {
+            background: rgba(0, 143, 133, 0.82);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 1.3rem 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            position: relative;
+            border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+            border-radius: 0 0 18px 18px;
+        }
+
+        .years-big {
+            font-size: 3.6rem;
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -3px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .years-text {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            line-height: 1.45;
+            opacity: 1;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-content .section-title {
+            text-align: left;
+            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            position: relative;
+        }
+
+        .why-choose-content .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            flex-shrink: 0;
+            background: #f4f8f1;
+            /* Light greenish beige */
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .feature-text h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            /* Lime green headings */
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .why-choose-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .why-choose-image {
+                margin-bottom: 0;
+                order: 2;
+                /* Move image below content on mobile */
+            }
+
+            .why-choose-content {
+                order: 1;
+                /* Content first on mobile */
+            }
+
+            .why-choose-content .section-title {
+                text-align: center;
+            }
+
+            .why-choose-content .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .image-wrapper img {
+                height: 400px;
+                /* Smaller height on mobile */
+            }
+
+            .innovation-card {
+                bottom: 20px;
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 320px;
+                padding: 0;
+            }
+
+            .card-top {
+                padding: 1.25rem 1.25rem 1rem;
+            }
+
+            .card-bottom {
+                padding: 1rem 1.25rem;
+            }
+
+            .card-header {
+                justify-content: center;
+                flex-direction: column;
+                gap: 1rem;
+                margin-bottom: 2rem;
+                overflow: visible;
+            }
+
+            .card-icon {
+                margin: 0 auto;
+            }
+
+            .card-logo {
+                position: static;
+                transform: none;
+                opacity: 1;
+                filter: none;
+                margin: 0 auto;
+                max-width: 180px !important;
+                width: auto !important;
+            }
+
+            .card-top h3,
+            .card-top p {
+                text-align: center;
+            }
+
+            .years-big {
+                font-size: 3rem;
+            }
+        }
+
+        /* Statistics Section */
+        .statistics {
+            padding: 4rem 2rem;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .stats-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-card {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+            color: var(--primary-color);
+            /* Plain Teal */
+            display: inline-block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #333333;
+        }
+
+        /* Animations on Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Crops We Serve */
+        .crops-section {
+            padding: 4rem 2rem;
+            background: var(--bg-gray-light);
+        }
+
+        .crops-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .crop-card {
+            position: relative;
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .crop-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .crop-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .crop-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 1.5rem 1rem 1rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Expert Advice Section */
+        .expert-advice {
+            padding: 5rem 2rem;
+            background: var(--bg-gray);
+            text-align: center;
+        }
+
+        .expert-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .expert-advice h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .expert-advice p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+        }
+
+        .btn-expert {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-expert:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .contact-row {
+            display: flex;
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        .contact-details strong {
+            width: 80px;
+            flex-shrink: 0;
+            display: block;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .contact-details a,
+        .contact-details span {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 280px;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-white);
+        }
+
+        .footer-main {
+            background: var(--bg-gray-light);
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .footer-content p {
+            margin: 0;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            /* Lime green */
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .social-links img,
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-bottom {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 1rem 2rem;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-row {
+                flex-direction: column;
+                margin-bottom: 1rem;
+            }
+
+            .contact-details strong {
+                width: 100%;
+                margin-bottom: 0.2rem;
+            }
+
+            .contact-details span {
+                word-break: break-all;
+                /* Forces email to break if too long */
+            }
+
+        }
+    </style>
+    <style>
+        /* Mobile Navigation Styles */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            html,
+            body {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
+            }
+
+            * {
+                max-width: 100vw;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                /* Changed to fixed */
+                right: 0;
+                height: 100vh;
+                top: 0;
+                background: #032B40;
+                /* Plain Navy - matches logo */
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 80%;
+                /* Slightly wider */
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+                padding: 0;
+                z-index: 9999;
+                border-left: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .nav-links li {
+                opacity: 0;
+                margin: 0.8rem 0;
+                /* Reduced spacing - closer together */
+                list-style: none;
+            }
+
+            .close-menu {
+                display: block;
+                /* Show on mobile */
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                padding: 10px;
+                z-index: 10000;
+            }
+
+            .close-menu svg {
+                transition: transform 0.3s;
+            }
+
+            .close-menu:hover svg {
+                transform: rotate(90deg);
+            }
+
+            .nav-links li a {
+                font-size: 1.3rem;
+                color: white;
+                /* White text on green background */
+                font-weight: 600;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                transition: all 0.3s;
+            }
+
+            .nav-links li a:hover {
+                color: var(--accent-color);
+                transform: translateX(5px);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-active {
+                transform: translateX(0%);
+            }
+
+            @keyframes navLinkFade {
+                from {
+                    opacity: 0;
+                    transform: translateX(50px);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+
+            .toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .toggle .line2 {
+                opacity: 0;
+            }
+
+            .toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            /* Improved Hero responsiveness */
+            .hero {
+                min-height: 500px;
+                /* Reduced specific height */
+                height: auto;
+                padding: 100px 0 50px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                padding: 0 1rem;
+            }
+
+            /* Ensure grids stack */
+            .quality-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .stats-grid {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/images/cytronix-logo.svg" alt="Cytronix Logo">
+            </div>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <div class="close-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </div>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contacts" class="btn-contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider-container">
+            <div class="hero-slider-track">
+                <!-- Clone of last slide (for infinite loop) -->
+                <div class="hero-slide clone">
+                    <div class="slide-bg"
+                        style="background-image: url('assets/images/closeup-biologist-spraying-potted-flowers-with-nutritional-fertilizes-plant-nursery.jpg')">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Partnering for <br><span>Farmer Success</span></h1>
+                        <p>Expert guidance and quality certified products you can trust.</p>
+                        <div class="hero-btns">
+                            <a href="#contacts" class="btn btn-primary">Contact Us</a>
+                            <a href="#products" class="btn btn-outline">Find Dealers</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 1: General/Overview -->
+                <div class="hero-slide active">
+                    <div class="slide-bg" style="background-image: url('assets/images/farm12-dw-qmi1j-1800x488.jpg')">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Advanced Crop Protection <br>for <span>Max Yield</span></h1>
+                        <p>Empowering farmers with scientific solutions for a sustainable future.</p>
+                        <div class="hero-btns">
+                            <a href="#products" class="btn btn-primary">Explore Products</a>
+                            <a href="#about" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2: Innovation/Research -->
+                <div class="hero-slide">
+                    <div class="slide-bg" style="background-image: url('assets/images/farm32-dfpa1qzx-1800x488.jpg')">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Driving Innovation <br>in <span>Agri-Tech</span></h1>
+                        <p>Research-based formulations delivering superior crop health and productivity.</p>
+                        <div class="hero-btns">
+                            <a href="#about" class="btn btn-primary">Our Research</a>
+                            <a href="#products" class="btn btn-outline">View Solutions</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3: Quality/Support -->
+                <div class="hero-slide">
+                    <div class="slide-bg"
+                        style="background-image: url('assets/images/closeup-biologist-spraying-potted-flowers-with-nutritional-fertilizes-plant-nursery.jpg')">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Partnering for <br><span>Farmer Success</span></h1>
+                        <p>Expert guidance and quality certified products you can trust.</p>
+                        <div class="hero-btns">
+                            <a href="#contacts" class="btn btn-primary">Contact Us</a>
+                            <a href="#products" class="btn btn-outline">Find Dealers</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Clone of first slide (for infinite loop) -->
+                <div class="hero-slide clone">
+                    <div class="slide-bg" style="background-image: url('assets/images/farm12-dw-qmi1j-1800x488.jpg')">
+                    </div>
+                    <div class="slide-overlay"></div>
+                    <div class="slide-content">
+                        <h1>Advanced Crop Protection <br>for <span>Max Yield</span></h1>
+                        <p>Empowering farmers with scientific solutions for a sustainable future.</p>
+                        <div class="hero-btns">
+                            <a href="#products" class="btn btn-primary">Explore Products</a>
+                            <a href="#about" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Arrows -->
+        <button class="slider-arrow prev-arrow" aria-label="Previous Slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+        </button>
+        <button class="slider-arrow next-arrow" aria-label="Next Slide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+        </button>
+
+        <!-- Slide Indicators -->
+        <div class="slide-indicators">
+            <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+            <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+            <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <h2 class="section-title">Our Products</h2>
+
+        <div class="product-grid">
+            <div class="product-card show" data-category="insecticides">
+                <img src="assets/images/insecticides.jpg" alt="Insecticides">
+                <div class="product-info">
+                    <h3>Insecticides</h3>
+                </div>
+            </div>
+
+            <div class="product-card show" data-category="herbicides">
+                <img src="assets/images/herbicides.jpg" alt="Herbicides">
+                <div class="product-info">
+                    <h3>Herbicides</h3>
+                </div>
+            </div>
+
+            <div class="product-card show" data-category="fungicides">
+                <img src="assets/images/fungicides.jpg" alt="Fungicides">
+                <div class="product-info">
+                    <h3>Fungicides</h3>
+                </div>
+            </div>
+
+            <div class="product-card show" data-category="fertilizers">
+                <img src="assets/images/micro-fertilizers.jpg" alt="Micro Fertilizers">
+                <div class="product-info">
+                    <h3>Micro Fertilizers</h3>
+                </div>
+            </div>
+
+            <div class="product-card show" data-category="growth">
+                <img src="assets/images/plant-growth.jpg" alt="Plant Growth">
+                <div class="product-info">
+                    <h3>Plant Growth</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Cytronix -->
+    <section class="why-choose fade-in" id="about">
+        <div class="why-choose-container">
+            <div class="why-choose-image">
+                <div class="image-wrapper">
+                    <img src="assets/images/plant-growth.jpg" alt="Healthy Crops">
+                    <div class="innovation-card">
+                        <div class="card-top">
+                            <div class="card-header">
+                                <img src="assets/images/icon_2.png" alt="Icon" class="card-icon">
+                                <img src="assets/images/cytronix-logo.svg" alt="Cytronix" class="card-logo">
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>Continuous development of new agri-technologies.</p>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="years-big">10+</div>
+                            <div class="years-text">YEARS OF<br>EXCELLENCE</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-choose-content">
+                <h2 class="section-title">Why Choose Cytronix?</h2>
+                <div class="quality-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_0.png" alt="Research"></div>
+                        <div class="feature-text">
+                            <h3>Research-Based</h3>
+                            <p>Scientific R&D creating innovative agricultural solutions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_3.png" alt="Quality"></div>
+                        <div class="feature-text">
+                            <h3>Quality Certified</h3>
+                            <p>ISO certified manufacturing with tested formulations.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_1.png" alt="Sustainable"></div>
+                        <div class="feature-text">
+                            <h3>Sustainable</h3>
+                            <p>Eco-friendly solutions minimizing environmental impact.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_2.png" alt="Targeted"></div>
+                        <div class="feature-text">
+                            <h3>Targeted Action</h3>
+                            <p>Specialized formulations for diverse crop protection.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/farmer.png" alt="Support"></div>
+                        <div class="feature-text">
+                            <h3>Farmer Support</h3>
+                            <p>Expert guidance helping farmers choose right solutions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_4.png" alt="Innovation"></div>
+                        <div class="feature-text">
+                            <h3>Innovation</h3>
+                            <p>Continuous development of new agri-technologies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="statistics fade-in">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Formulations</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Products</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Distributors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5M+</div>
+                <div class="stat-label">Farmers Served</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Crop We Serve -->
+    <section class="crops-section">
+        <h2 class="section-title">Crop We Serve</h2>
+        <div class="crops-grid">
+            <div class="crop-card">
+                <img src="assets/images/top-view-raw-rice-inside-plate-dark-desk.jpg" alt="Rice">
+                <div class="crop-label">Rice</div>
+            </div>
+            <div class="crop-card">
+                <img src="assets/images/avinash-kumar-OvUAL6Vx3uY-unsplash.jpg" alt="Wheat">
+                <div class="crop-label">Wheat</div>
+            </div>
+            <div class="crop-card">
+                <img src="assets/images/sze-yin-chan-cE35j-5Y7Ug-unsplash.jpg" alt="Cotton">
+                <div class="crop-label">Cotton</div>
+            </div>
+            <div class="crop-card">
+                <img src="assets/images/chantal-garnier-910GanwBoew-unsplash.jpg" alt="Vegetables">
+                <div class="crop-label">Vegetables</div>
+            </div>
+            <div class="crop-card">
+                <img src="assets/images/wei-EcmTb7yFgUg-unsplash.jpg" alt="Pulses">
+                <div class="crop-label">Pulses</div>
+            </div>
+            <div class="crop-card">
+                <img src="assets/images/c34365b5-953a-52e1-900e-a52e3bf2fd5e.jpg" alt="Sice">
+                <div class="crop-label">Sice</div>
+            </div>
+            <div class="crop-card">
+                <img src="assets/images/emma-miller-Y0SeiGEl2L4-unsplash.jpg" alt="Rice">
+                <div class="crop-label">Rice</div>
+            </div>
+            <div class="crop-card">
+                <img src="assets/images/farm22-dga8tdgf-1800x488.jpg" alt="Sice">
+                <div class="crop-label">Sice</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Advice -->
+    <section class="expert-advice">
+        <div class="expert-content">
+            <h2>Need The Right Solution?</h2>
+            <p>No problem. We'll connect you with our expert team!</p>
+            <button class="btn-expert" id="getExpertAdvice">Get Expert Advice</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contacts">
+        <h2 class="section-title">Get in Touch</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-details">
+                    <p class="contact-row"><strong>Phone:</strong> <span><a href="tel:+918238592892">+91
+                                8238592892</a></span></p>
+                    <p class="contact-row"><strong>Email:</strong> <span><a
+                                href="mailto:Cytronix.agrochemical@gmail.com">Cytronix.agrochemical@gmail.com</a></span>
+                    </p>
+                    <p class="contact-row"><strong>Address:</strong> <span>Plot No. 20, Uma Industrial
+                            Estate,<br>Ahmedabad, Gujarat.</span></p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235014.29749479905!2d72.43965646869485!3d23.02015809786016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bbcd3%3A0x4f295b6388ca6292!2sAhmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1689597362021!5m2!1sen!2sin"
+                    allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-main">
+            <div class="footer-content">
+                <p>&copy; Copyright 2026 Cytronix - All Rights Reserved</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook" title="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#1877F2" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Instagram" title="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="url(#instagram-gradient)" viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient id="instagram-gradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                                    <stop offset="0%" style="stop-color:#feda75;stop-opacity:1" />
+                                    <stop offset="25%" style="stop-color:#fa7e1e;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#d62976;stop-opacity:1" />
+                                    <stop offset="75%" style="stop-color:#962fbf;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#4f5bd5;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="YouTube" title="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#FF0000" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="WhatsApp" title="WhatsApp">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="#25D366" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
+        </div>
+    </footer>
+
+    <!-- AI Widget Script -->
+    <script src="Ai.js"></script>
+
+    <!-- Product Filter & Animation Script -->
+    <script>
+        // Hero Slider Logic - Infinite Loop Edition
+        const track = document.querySelector('.hero-slider-track');
+        const allSlides = document.querySelectorAll('.hero-slide');
+        const realSlides = document.querySelectorAll('.hero-slide:not(.clone)');
+        const prevBtn = document.querySelector('.prev-arrow');
+        const nextBtn = document.querySelector('.next-arrow');
+        const indicators = document.querySelectorAll('.indicator');
+        let currentSlide = 1; // Start at index 1 (first real slide, after clone)
+        let slideInterval;
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let isTransitioning = false;
+
+        // Set initial position
+        if (track && allSlides.length > 0) {
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            allSlides[currentSlide].classList.add('active');
+        }
+
+        function updateSlidePosition(immediate = false) {
+            if (allSlides.length === 0) return;
+
+            isTransitioning = true;
+
+            // Temporarily disable transition for instant jump
+            if (immediate) {
+                track.style.transition = 'none';
+            }
+
+            // Move track
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+            // Update active class for content animation
+            allSlides.forEach(slide => slide.classList.remove('active'));
+            allSlides[currentSlide].classList.add('active');
+
+            // Update indicators (map to real slides)
+            const realIndex = currentSlide - 1; // Account for first clone
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === realIndex % realSlides.length);
+            });
+
+            // Re-enable transition after instant jump
+            if (immediate) {
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.6s cubic-bezier(0.65, 0, 0.35, 1)';
+                    isTransitioning = false;
+                }, 50);
+            } else {
+                setTimeout(() => {
+                    isTransitioning = false;
+                }, 600); // Match transition duration
+            }
+        }
+
+        function nextSlide() {
+            if (isTransitioning) return;
+
+            currentSlide++;
+            updateSlidePosition();
+
+            // If we're at the cloned first slide (last position), jump to real first slide
+            if (currentSlide === allSlides.length - 1) {
+                setTimeout(() => {
+                    currentSlide = 1; // Jump to real first slide
+                    updateSlidePosition(true); // Instant jump
+                }, 650); // After transition completes
+            }
+        }
+
+        function prevSlide() {
+            if (isTransitioning) return;
+
+            currentSlide--;
+            updateSlidePosition();
+
+            // If we're at the cloned last slide (first position), jump to real last slide
+            if (currentSlide === 0) {
+                setTimeout(() => {
+                    currentSlide = allSlides.length - 2; // Jump to real last slide
+                    updateSlidePosition(true); // Instant jump
+                }, 650); // After transition completes
+            }
+        }
+
+        function goToSlide(index) {
+            if (isTransitioning) return;
+
+            // Map indicator index to real slide index (accounting for first clone)
+            currentSlide = index + 1;
+            updateSlidePosition();
+        }
+
+        // Initialize slider if slides exist
+        if (allSlides.length > 0) {
+            // Arrow button controls
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetInterval();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetInterval();
+                });
+            }
+
+            // Indicator controls
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlide(index);
+                    resetInterval();
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    resetInterval();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    resetInterval();
+                }
+            });
+
+            // Touch/Swipe support for mobile
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                heroSection.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe();
+                }, { passive: true });
+            }
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    nextSlide();
+                    resetInterval();
+                } else if (touchEndX - touchStartX > swipeThreshold) {
+                    prevSlide();
+                    resetInterval();
+                }
+            }
+
+            // Auto slide
+            function startInterval() {
+                slideInterval = setInterval(nextSlide, 6000);
+            }
+
+            function resetInterval() {
+                clearInterval(slideInterval);
+                startInterval();
+            }
+
+            // Start slider
+            startInterval();
+        }
+
+        // Product filtering
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const category = btn.dataset.category;
+
+                // Filter products
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.classList.add('show');
+                    } else {
+                        card.classList.remove('show');
+                    }
+                });
+            });
+        });
+
+        // Expert Advice button - trigger AI widget
+        const expertBtn = document.getElementById('getExpertAdvice');
+        if (expertBtn) {
+            expertBtn.addEventListener('click', () => {
+                // Trigger the AI widget to open
+                const aiToggle = document.querySelector('.aiko-chat-toggle');
+                if (aiToggle) {
+                    aiToggle.click();
+                } else {
+                    // Retry if widget not fully loaded
+                    setTimeout(() => {
+                        const toggle = document.querySelector('.aiko-chat-toggle');
+                        if (toggle) toggle.click();
+                    }, 500);
+                }
+            });
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add counter animation for stats
+        const animateValue = (element, start, end, duration) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = value + (element.dataset.suffix || '');
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Observe stats section for counter animation
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => {
+                        const text = stat.textContent;
+                        const value = parseInt(text.replace(/\D/g, ''));
+                        stat.dataset.suffix = text.replace(/[0-9]/g, '');
+                        stat.textContent = '0';
+                        animateValue(stat, 0, value, 2000);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.statistics');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+    </script>
+    <script>
+        const navSlide = () => {
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+            const closeMenu = document.querySelector('.close-menu');
+
+            // Open menu with hamburger
+            hamburger.addEventListener('click', () => {
+                //Toggle Nav
+                nav.classList.toggle('nav-active');
+
+                //Animate Links
+                navLinks.forEach((link, index) => {
+                    if (link.style.animation) {
+                        link.style.animation = '';
+                    } else {
+                        link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                    }
+                });
+
+                //Hamburger Animation
+                hamburger.classList.toggle('toggle');
+            });
+
+            // Close menu with X button
+            closeMenu.addEventListener('click', () => {
+                nav.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+                navLinks.forEach((link) => {
+                    link.style.animation = '';
+                });
+            });
+
+            // Close menu when clicking on a link
+            navLinks.forEach((link) => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('nav-active');
+                    hamburger.classList.remove('toggle');
+                    navLinks.forEach((l) => {
+                        l.style.animation = '';
+                    });
+                });
+            });
+        }
+
+        navSlide();
+    </script>
+</body>
+
+</html>
