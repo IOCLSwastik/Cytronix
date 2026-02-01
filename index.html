@@ -50,6 +50,48 @@
             /* Removes blue click highlight */
         }
 
+        /* ============================================
+           PREMIUM CUSTOM SCROLLBAR
+           ============================================ */
+        /* Webkit browsers (Chrome, Safari, Edge) */
+        ::-webkit-scrollbar {
+            width: 10px;
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            transition: all 0.3s ease;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, var(--accent-color), var(--primary-color));
+            box-shadow: 0 0 10px rgba(127, 205, 69, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background: var(--primary-color);
+        }
+
+        /* Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hide scrollbar arrows (Webkit) */
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
         /* Header & Navigation */
         header {
             background: rgba(255, 255, 255, 0.85);
@@ -1171,6 +1213,832 @@
 
         }
     </style>
+
+    <!-- 3D Apple-Style Effects -->
+    <style>
+        /* ============================================
+           3D CARD TILT EFFECT
+           ============================================ */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+            will-change: transform;
+        }
+
+        .tilt-card:hover {
+            box-shadow:
+                0 25px 50px rgba(0, 0, 0, 0.15),
+                0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* ============================================
+           FLOATING BOB ANIMATION
+           ============================================ */
+        @keyframes float-bob {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .float-element {
+            animation: float-bob 3s ease-in-out infinite;
+        }
+
+        /* Apply to Innovation Card */
+        .innovation-card {
+            animation: float-bob 4s ease-in-out infinite;
+        }
+
+        /* ============================================
+           ENHANCED SCROLL ANIMATIONS
+           ============================================ */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered reveal for grid items */
+        .stagger-item {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Stagger delays */
+        .stagger-item:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .stagger-item:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .stagger-item:nth-child(3) {
+            transition-delay: 0.15s;
+        }
+
+        .stagger-item:nth-child(4) {
+            transition-delay: 0.2s;
+        }
+
+        .stagger-item:nth-child(5) {
+            transition-delay: 0.25s;
+        }
+
+        .stagger-item:nth-child(6) {
+            transition-delay: 0.3s;
+        }
+
+        .stagger-item:nth-child(7) {
+            transition-delay: 0.35s;
+        }
+
+        .stagger-item:nth-child(8) {
+            transition-delay: 0.4s;
+        }
+
+        /* ============================================
+           PARALLAX HERO EFFECT
+           ============================================ */
+        .parallax-hero {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .parallax-bg {
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+
+        /* ============================================
+           MULTI-LAYER DEPTH SHADOWS
+           ============================================ */
+        .depth-shadow {
+            box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.04),
+                0 2px 4px rgba(0, 0, 0, 0.04),
+                0 4px 8px rgba(0, 0, 0, 0.04),
+                0 8px 16px rgba(0, 0, 0, 0.04),
+                0 16px 32px rgba(0, 0, 0, 0.04);
+            transition: box-shadow 0.4s ease, transform 0.4s ease;
+        }
+
+        .depth-shadow:hover {
+            box-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.06),
+                0 4px 8px rgba(0, 0, 0, 0.06),
+                0 8px 16px rgba(0, 0, 0, 0.06),
+                0 16px 32px rgba(0, 0, 0, 0.06),
+                0 32px 64px rgba(0, 0, 0, 0.06);
+            transform: translateY(-5px);
+        }
+
+        /* Apply depth shadow to feature cards */
+        .feature-card {
+            box-shadow:
+                0 1px 2px rgba(0, 0, 0, 0.04),
+                0 2px 4px rgba(0, 0, 0, 0.04),
+                0 4px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-card:hover {
+            box-shadow:
+                0 4px 8px rgba(0, 0, 0, 0.08),
+                0 8px 16px rgba(0, 0, 0, 0.08),
+                0 16px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Apply depth shadow to product cards */
+        .product-card {
+            box-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.04),
+                0 4px 8px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover {
+            box-shadow:
+                0 8px 16px rgba(0, 0, 0, 0.1),
+                0 16px 32px rgba(0, 0, 0, 0.1),
+                0 32px 64px rgba(0, 0, 0, 0.05);
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        /* ============================================
+           SMOOTH SCROLL BEHAVIOR
+           ============================================ */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ============================================
+           PREMIUM HOVER EFFECTS
+           ============================================ */
+        .btn-primary,
+        .btn-expert,
+        .btn-outline {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before,
+        .btn-expert::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn-primary:hover::before,
+        .btn-expert:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* ============================================
+           CROP CARD 3D TILT
+           ============================================ */
+        .crop-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .crop-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.15),
+                0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .crop-card img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .crop-card:hover img {
+            transform: scale(1.15);
+        }
+
+        /* ============================================
+           SECTION REVEAL ANIMATIONS
+           ============================================ */
+        .reveal-section {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           GLASSMORPHISM ENHANCEMENT
+           ============================================ */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        /* ============================================
+           HERO TEXT ANIMATIONS
+           ============================================ */
+        .hero-slide.active .slide-content h1 {
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-slide.active .slide-content p {
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-slide.active .slide-content .hero-btns {
+            animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+            opacity: 0;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ============================================
+           SCROLL INDICATOR PULSE
+           ============================================ */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(127, 205, 69, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 15px rgba(127, 205, 69, 0);
+            }
+        }
+
+        .indicator.active {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           SCROLL PROGRESS BAR (Apple-Style)
+           ============================================ */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 99999;
+            transition: width 0.1s linear;
+        }
+
+        /* ============================================
+           MAGNETIC BUTTON EFFECT
+           ============================================ */
+        .magnetic-btn {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* ============================================
+           TEXT SPLIT REVEAL ANIMATION
+           ============================================ */
+        .split-text {
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .split-text .char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .split-text.visible .char {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ============================================
+           GRADIENT BORDER GLOW (Adobe XD Style)
+           ============================================ */
+        .glow-border {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg,
+                    var(--primary-color),
+                    var(--accent-color),
+                    var(--primary-color),
+                    var(--accent-color));
+            background-size: 400% 400%;
+            z-index: -1;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        .glow-border:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes gradient-shift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* ============================================
+           MORPHING BLOB BACKGROUND
+           ============================================ */
+        .morph-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            animation: morph 15s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .morph-blob.blob-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--primary-color);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .morph-blob.blob-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-color);
+            bottom: -50px;
+            left: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+                transform: rotate(0deg) scale(1);
+            }
+
+            33% {
+                border-radius: 70% 30% 50% 50% / 30% 60% 40% 70%;
+                transform: rotate(90deg) scale(1.1);
+            }
+
+            66% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+                transform: rotate(180deg) scale(0.95);
+            }
+        }
+
+        /* ============================================
+           NOISE TEXTURE OVERLAY (Film Grain)
+           ============================================ */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 99998;
+            opacity: 0.02;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        /* ============================================
+           STAT NUMBER GLOW ANIMATION
+           ============================================ */
+        .stat-number {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .stat-number::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            border-radius: 2px;
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .stat-card:hover .stat-number::after {
+            width: 60px;
+        }
+
+        .stat-card:hover .stat-number {
+            transform: scale(1.1);
+            text-shadow: 0 0 30px rgba(0, 143, 133, 0.3);
+        }
+
+        /* ============================================
+           ENHANCED SECTION TITLES (Apple Style)
+           ============================================ */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .section-title.visible::before {
+            transform: translateX(-50%) scaleX(1);
+        }
+
+        /* Use the new animated underline for Why Choose section too (hide the old ::after) */
+        .why-choose-content .section-title::after {
+            display: none;
+        }
+
+        /* Center the animated underline for Why Choose (it was left-aligned) */
+        .why-choose-content .section-title::before {
+            left: 0;
+            transform: translateX(0) scaleX(0);
+        }
+
+        .why-choose-content .section-title.visible::before {
+            transform: translateX(0) scaleX(1);
+        }
+
+        /* ============================================
+           SMOOTH IMAGE ZOOM ON SCROLL
+           ============================================ */
+        .zoom-on-scroll {
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .zoom-on-scroll.visible {
+            transform: scale(1.02);
+        }
+
+        /* ============================================
+           CURSOR FOLLOWER DOT (Premium Feel)
+           ============================================ */
+        .cursor-dot {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 99999;
+            mix-blend-mode: difference;
+            transition: transform 0.15s ease-out, width 0.3s, height 0.3s;
+        }
+
+        .cursor-dot.hover {
+            width: 40px;
+            height: 40px;
+            background: rgba(127, 205, 69, 0.3);
+        }
+
+        /* ============================================
+           SOCIAL ICON BOUNCE
+           ============================================ */
+        .social-links a {
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* ============================================
+           CONTACT CARD SHINE EFFECT
+           ============================================ */
+        .contact-info {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.4),
+                    transparent);
+            transition: left 0.6s ease;
+        }
+
+        .contact-info:hover::before {
+            left: 100%;
+        }
+
+        /* ============================================
+           COMPREHENSIVE MOBILE RESPONSIVENESS
+           ============================================ */
+        @media (max-width: 768px) {
+
+            /* Disable floating animation on mobile (causes layout issues) */
+            .innovation-card {
+                animation: none !important;
+            }
+
+            /* Keep Innovation Card overlapping image but scaled for mobile */
+            .innovation-card {
+                position: absolute !important;
+                bottom: 10px !important;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
+                width: 90% !important;
+                max-width: 320px !important;
+            }
+
+            /* Ensure image wrapper maintains relative positioning for card */
+            .image-wrapper {
+                position: relative;
+                overflow: visible;
+            }
+
+            /* Disable cursor dot on mobile (touch devices) */
+            .cursor-dot {
+                display: none !important;
+            }
+
+            /* Disable morphing blobs on mobile (performance) */
+            .morph-blob {
+                display: none !important;
+            }
+
+            /* Reduce section title size */
+            .section-title {
+                font-size: 1.8rem !important;
+            }
+
+            /* Center section title underlines */
+            .section-title::before {
+                left: 50% !important;
+                transform: translateX(-50%) scaleX(0) !important;
+            }
+
+            .section-title.visible::before {
+                transform: translateX(-50%) scaleX(1) !important;
+            }
+
+            /* Why Choose section title */
+            .why-choose-content .section-title::before {
+                left: 50% !important;
+                transform: translateX(-50%) scaleX(0) !important;
+            }
+
+            .why-choose-content .section-title.visible::before {
+                transform: translateX(-50%) scaleX(1) !important;
+            }
+
+            /* Fix Hero section */
+            .hero {
+                min-height: 80vh;
+            }
+
+            .slide-content h1 {
+                font-size: 2rem !important;
+                line-height: 1.3;
+            }
+
+            .slide-content p {
+                font-size: 1rem !important;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* Slider arrows */
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+            }
+
+            .prev-arrow {
+                left: 10px;
+            }
+
+            .next-arrow {
+                right: 10px;
+            }
+
+            /* Products grid - single column */
+            .product-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem;
+            }
+
+            /* Disable 3D tilt on mobile (touch doesn't work well) */
+            .product-card:hover,
+            .feature-card:hover {
+                transform: none !important;
+            }
+
+            .product-card,
+            .feature-card {
+                transform: none !important;
+            }
+
+            /* Feature cards - single column */
+            .quality-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .feature-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .feature-icon {
+                margin: 0 auto 1rem;
+            }
+
+            /* Crops grid */
+            .crops-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem;
+            }
+
+            .crop-card {
+                height: 150px;
+            }
+
+            .crop-card:hover {
+                transform: none !important;
+            }
+
+            /* Stats grid */
+            .stats-grid {
+                flex-direction: column;
+            }
+
+            .stat-card {
+                min-width: 100%;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            /* Contact section */
+            .contact-container {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Footer */
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Scroll progress bar - slightly thicker for visibility */
+            .scroll-progress {
+                height: 4px;
+            }
+
+            /* Reduce padding on sections */
+            .products,
+            .crops-section,
+            .contact-section,
+            .statistics {
+                padding: 3rem 1.5rem;
+            }
+
+            .why-choose {
+                padding: 4rem 1.5rem;
+            }
+
+            /* Fix header logo */
+            .logo img {
+                width: 150px;
+                max-height: 50px;
+            }
+
+            /* Expert advice section */
+            .expert-advice h2 {
+                font-size: 1.8rem;
+            }
+
+            .expert-advice p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.5rem !important;
+            }
+
+            .slide-content h1 {
+                font-size: 1.6rem !important;
+            }
+
+            .crops-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .crop-card {
+                height: 180px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .logo img {
+                width: 120px;
+            }
+        }
+    </style>
+
     <style>
         /* Mobile Navigation Styles */
         .hamburger {
@@ -2052,6 +2920,304 @@
         }
 
         navSlide();
+    </script>
+
+    <!-- 3D Apple-Style Effects JavaScript -->
+    <script>
+        // ============================================
+        // 3D CARD TILT EFFECT
+        // ============================================
+        const initTiltCards = () => {
+            const tiltCards = document.querySelectorAll('.product-card, .feature-card');
+
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+
+                    const rotateX = (y - centerY) / 20;
+                    const rotateY = (centerX - x) / 20;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px) scale(1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+                });
+            });
+        };
+
+        // ============================================
+        // PARALLAX SCROLL EFFECT
+        // ============================================
+        const initParallax = () => {
+            const hero = document.querySelector('.hero');
+            const slideBgs = document.querySelectorAll('.slide-bg');
+
+            if (!hero) return;
+
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const heroHeight = hero.offsetHeight;
+
+                // Only apply parallax when hero is visible
+                if (scrolled < heroHeight) {
+                    slideBgs.forEach(bg => {
+                        bg.style.transform = `translateY(${scrolled * 0.15}px)`;
+                    });
+                }
+            });
+        };
+
+        // ============================================
+        // STAGGERED REVEAL ANIMATION
+        // ============================================
+        const initStaggeredReveal = () => {
+            // Add stagger-item class to grid items
+            const gridItems = document.querySelectorAll('.product-card, .crop-card, .feature-card');
+            gridItems.forEach(item => item.classList.add('stagger-item'));
+
+            const staggerObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            gridItems.forEach(item => staggerObserver.observe(item));
+        };
+
+        // ============================================
+        // SECTION REVEAL ANIMATION
+        // ============================================
+        const initSectionReveal = () => {
+            const sections = document.querySelectorAll('.products, .crops-section, .why-choose, .contact-section, .statistics');
+            sections.forEach(section => section.classList.add('reveal-section'));
+
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -100px 0px'
+            });
+
+            sections.forEach(section => sectionObserver.observe(section));
+        };
+
+        // ============================================
+        // SMOOTH MOUSE TRAIL ON HERO (Optional Premium Effect)
+        // ============================================
+        const initMouseGlow = () => {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+
+            const glow = document.createElement('div');
+            glow.style.cssText = `
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                background: radial-gradient(circle, rgba(127, 205, 69, 0.15) 0%, transparent 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                transition: transform 0.3s ease-out, opacity 0.3s;
+                opacity: 0;
+                z-index: 1;
+            `;
+            hero.style.position = 'relative';
+            hero.appendChild(glow);
+
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = e.clientX - rect.left - 200;
+                const y = e.clientY - rect.top - 200;
+                glow.style.transform = `translate(${x}px, ${y}px)`;
+                glow.style.opacity = '1';
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                glow.style.opacity = '0';
+            });
+        };
+
+        // ============================================
+        // INITIALIZE ALL EFFECTS
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            initTiltCards();
+            initParallax();
+            initStaggeredReveal();
+            initSectionReveal();
+            initMouseGlow();
+        });
+    </script>
+
+    <!-- Advanced Premium Effects JavaScript -->
+    <script>
+        // ============================================
+        // SCROLL PROGRESS BAR
+        // ============================================
+        const initScrollProgress = () => {
+            // Create progress bar element
+            const progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.prepend(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercent = (scrollTop / docHeight) * 100;
+                progressBar.style.width = scrollPercent + '%';
+            });
+        };
+
+        // ============================================
+        // CUSTOM CURSOR DOT
+        // ============================================
+        const initCursorDot = () => {
+            // Only on desktop
+            if (window.innerWidth < 768) return;
+
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor-dot';
+            document.body.appendChild(cursor);
+
+            let mouseX = 0, mouseY = 0;
+            let cursorX = 0, cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            // Smooth cursor following
+            const animateCursor = () => {
+                cursorX += (mouseX - cursorX) * 0.15;
+                cursorY += (mouseY - cursorY) * 0.15;
+                cursor.style.left = cursorX - 4 + 'px';
+                cursor.style.top = cursorY - 4 + 'px';
+                requestAnimationFrame(animateCursor);
+            };
+            animateCursor();
+
+            // Hover effect on interactive elements
+            const hoverElements = document.querySelectorAll('a, button, .product-card, .feature-card, .crop-card');
+            hoverElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        };
+
+        // ============================================
+        // SECTION TITLE ANIMATION
+        // ============================================
+        const initSectionTitles = () => {
+            const titles = document.querySelectorAll('.section-title');
+
+            const titleObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            titles.forEach(title => titleObserver.observe(title));
+        };
+
+        // ============================================
+        // MAGNETIC BUTTON EFFECT
+        // ============================================
+        const initMagneticButtons = () => {
+            const buttons = document.querySelectorAll('.btn-primary, .btn-expert, .btn-contact');
+
+            buttons.forEach(btn => {
+                btn.classList.add('magnetic-btn');
+
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    btn.style.transform = 'translate(0, 0)';
+                });
+            });
+        };
+
+        // ============================================
+        // NOISE OVERLAY (Subtle Film Grain)
+        // ============================================
+        const initNoiseOverlay = () => {
+            const noise = document.createElement('div');
+            noise.className = 'noise-overlay';
+            document.body.appendChild(noise);
+        };
+
+        // ============================================
+        // MORPHING BLOBS (Hero Background)
+        // ============================================
+        const initMorphingBlobs = () => {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+
+            const blob1 = document.createElement('div');
+            blob1.className = 'morph-blob blob-1';
+
+            const blob2 = document.createElement('div');
+            blob2.className = 'morph-blob blob-2';
+
+            hero.appendChild(blob1);
+            hero.appendChild(blob2);
+        };
+
+        // ============================================
+        // STAT CARDS HOVER EFFECT
+        // ============================================
+        const initStatCards = () => {
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach(card => {
+                card.style.cursor = 'pointer';
+                card.style.transition = 'transform 0.3s ease';
+
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'scale(1.05)';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'scale(1)';
+                });
+            });
+        };
+
+        // ============================================
+        // INITIALIZE ALL NEW EFFECTS
+        // ============================================
+        document.addEventListener('DOMContentLoaded', () => {
+            initScrollProgress();
+            initCursorDot();
+            initSectionTitles();
+            initMagneticButtons();
+            initNoiseOverlay();
+            initMorphingBlobs();
+            initStatCards();
+        });
     </script>
 </body>
 
