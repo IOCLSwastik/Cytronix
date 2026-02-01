@@ -51,6 +51,85 @@
         }
 
         /* ============================================
+           PREMIUM PRELOADER
+           ============================================ */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999999;
+            display: flex;
+            pointer-events: none;
+        }
+
+        .preloader-split {
+            width: 50%;
+            height: 100%;
+            background: #ffffff;
+            transition: transform 1.2s cubic-bezier(0.87, 0, 0.13, 1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .preloader-left {
+            transform-origin: left;
+        }
+
+        .preloader-right {
+            transform-origin: right;
+        }
+
+        .preloader-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader-logo {
+            width: 120px;
+            animation: pulse-logo 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse-logo {
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        /* Hiding state */
+        .preloader.hide {
+            visibility: hidden;
+            transition-delay: 1.2s;
+            /* Wait for split animation */
+        }
+
+        .preloader.hide .preloader-left {
+            transform: translateX(-100%);
+        }
+
+        .preloader.hide .preloader-right {
+            transform: translateX(100%);
+        }
+
+        .preloader.hide .preloader-content {
+            opacity: 0;
+        }
+
+        /* ============================================
            PREMIUM CUSTOM SCROLLBAR
            ============================================ */
         /* Webkit browsers (Chrome, Safari, Edge) */
@@ -2197,6 +2276,31 @@
 </head>
 
 <body>
+    <!-- Premium Split Preloader -->
+    <div class="preloader">
+        <div class="preloader-split preloader-left"></div>
+        <div class="preloader-split preloader-right"></div>
+        <div class="preloader-content">
+            <img src="assets/images/cytronix-logo.svg" alt="Cytronix" class="preloader-logo">
+        </div>
+    </div>
+
+    <!-- Preloader Removal Script -->
+    <script>
+        const hidePreloader = () => {
+            const preloader = document.querySelector('.preloader');
+            if (preloader && !preloader.classList.contains('hide')) {
+                preloader.classList.add('hide');
+            }
+        };
+
+        // Primary: Wait for load (smooth experience)
+        window.addEventListener('load', () => setTimeout(hidePreloader, 2000));
+
+        // Fail-safe: Force remove after 5 seconds if something hangs
+        setTimeout(hidePreloader, 5000);
+    </script>
+
     <!-- Header -->
     <header>
         <nav>
