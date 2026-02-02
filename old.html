@@ -668,210 +668,307 @@
             color: var(--text-dark);
         }
 
-        /* =========================================
-           WHY CHOOSE CYTRONIX - FARM STYLE
-           ========================================= */
         .why-choose {
-            padding: 6rem 2rem 0;
-            background: linear-gradient(180deg, #1a3a2f 0%, #0d2318 100%);
-            position: relative;
-            overflow: hidden;
-            min-height: 700px;
+            padding: 7rem 2rem;
+            background: #faf8f3;
+            /* Soft warm beige - matches icon backgrounds */
         }
 
         .why-choose-container {
             max-width: 1200px;
             margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .image-wrapper {
             position: relative;
-            z-index: 2;
-        }
-
-        /* Title Styling */
-        .why-choose .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .why-choose .section-label {
-            color: var(--accent-color);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-
-        .why-choose .section-title {
-            color: white;
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin: 0;
-        }
-
-        .why-choose .section-title::after {
-            display: none;
-        }
-
-        /* Hexagonal Grid Layout */
-        .hex-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 180px;
-            /* Space for tractor */
-        }
-
-        .hex-card {
-            position: relative;
-            width: 220px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 20px;
-            padding: 2rem 1.5rem;
-            text-align: center;
-            transition: transform 0.3s ease, background 0.3s ease;
-            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
-        .hex-card:nth-child(even) {
-            margin-top: 60px;
+        .why-choose-image {
+            position: relative;
         }
 
-        .hex-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+        .image-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
         }
 
-        /* Numbered Badge */
-        .hex-card .card-number {
+        .image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Innovation Card Badge - Premium Glassmorphism */
+        .innovation-card {
             position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-color);
-            color: #1a3a2f;
-            font-size: 0.75rem;
+            bottom: 30px;
+            right: 30px;
+            width: 290px;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+            font-family: 'Inter', sans-serif;
+            text-align: left;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+        }
+
+        .card-top {
+            padding: 1.75rem 1.5rem 1.5rem;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1.1rem;
+            overflow: hidden;
+        }
+
+        .card-icon {
+            width: 80px !important;
+            height: 80px !important;
+            min-width: 80px;
+            min-height: 80px;
+            max-width: 80px;
+            max-height: 80px;
+            object-fit: contain;
+            background: rgba(244, 248, 241, 0.85);
+            padding: 16px;
+            border-radius: 11px;
+            display: block;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        }
+
+        .card-logo {
+            width: auto !important;
+            height: 46px !important;
+            max-width: 150px !important;
+            max-height: 46px !important;
+            object-fit: contain;
+            display: block;
+            flex-shrink: 1;
+        }
+
+        .card-top h3 {
+            font-size: 1.45rem;
             font-weight: 800;
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
+            color: var(--accent-color);
+            margin: 0 0 0.6rem 0;
+            letter-spacing: -0.6px;
         }
 
-        .hex-card h3 {
+        .card-top p {
+            font-size: 0.93rem;
+            color: #2d2d2d;
+            line-height: 1.55;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .card-bottom {
+            background: rgba(0, 143, 133, 0.82);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 1.3rem 1.5rem;
             color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 2.5rem 0 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            position: relative;
+            border-top: 1.5px solid rgba(255, 255, 255, 0.25);
+            border-radius: 0 0 18px 18px;
         }
 
-        .hex-card p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
+        .years-big {
+            font-size: 3.6rem;
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -3px;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .years-text {
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            line-height: 1.45;
+            opacity: 1;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .why-choose-content .section-title {
+            text-align: left;
+            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            position: relative;
+        }
+
+        .why-choose-content .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            border-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            flex-shrink: 0;
+            background: #f4f8f1;
+            /* Light greenish beige */
+            border-radius: 12px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .feature-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .feature-text h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+            /* Lime green headings */
+        }
+
+        .feature-text p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
             line-height: 1.5;
             margin: 0;
         }
 
-        /* Tractor Animation Keyframes */
-        @keyframes tractorSlideIn {
-            0% {
-                left: -20%;
-                opacity: 0;
-            }
-
-            100% {
-                left: 50%;
-                opacity: 1;
-            }
-        }
-
-        @keyframes tractorBob {
-
-            0%,
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
-
-            50% {
-                transform: translateX(-50%) translateY(-12px);
-            }
-        }
-
-        /* Tractor Image - Animated from left to center */
-        .why-choose-tractor {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 380px;
-            height: auto;
-            z-index: 3;
-            filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.5));
-            pointer-events: none;
-            /* Slide in from left to center, then bobbing */
-            animation:
-                tractorSlideIn 2s ease-out forwards,
-                tractorBob 2.5s ease-in-out 2s infinite;
-        }
-
-        /* Soil Strip at Bottom - Full image with fade at top */
-        .why-choose-soil {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 460px;
-            object-fit: cover;
-            object-position: center top;
-            z-index: 1;
-            /* Fade gradient from transparent at top to visible at bottom */
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 25%, rgba(0, 0, 0, 1) 55%);
-            mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.3) 25%, rgba(0, 0, 0, 1) 55%);
-        }
-
         /* Responsive */
         @media (max-width: 900px) {
-            .hex-grid {
-                padding-bottom: 100px;
+            .why-choose-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
             }
 
-            .hex-card {
-                width: 180px;
-                padding: 1.5rem 1rem;
-                clip-path: none;
-                border-radius: 16px;
+            .why-choose-image {
+                margin-bottom: 0;
+                order: 2;
+                /* Move image below content on mobile */
             }
 
-            .hex-card:nth-child(even) {
-                margin-top: 0;
+            .why-choose-content {
+                order: 1;
+                /* Content first on mobile */
             }
 
-            .why-choose-tractor {
-                width: 280px;
-                bottom: 30px;
+            .why-choose-content .section-title {
+                text-align: center;
             }
 
-            .why-choose-soil {
-                height: 150px;
+            .why-choose-content .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
 
-            .why-choose .section-title {
-                font-size: 2rem;
+            .image-wrapper img {
+                height: 400px;
+                /* Smaller height on mobile */
             }
-        }
 
-        @media (max-width: 600px) {
-            .hex-grid {
+            .innovation-card {
+                bottom: 20px;
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                max-width: 320px;
+                padding: 0;
+            }
+
+            .card-top {
+                padding: 1.25rem 1.25rem 1rem;
+            }
+
+            .card-bottom {
+                padding: 1rem 1.25rem;
+            }
+
+            .card-header {
+                justify-content: center;
                 flex-direction: column;
-                align-items: center;
+                gap: 1rem;
+                margin-bottom: 2rem;
+                overflow: visible;
             }
 
-            .why-choose-tractor {
-                width: 220px;
+            .card-icon {
+                margin: 0 auto;
+            }
+
+            .card-logo {
+                position: static;
+                transform: none;
+                opacity: 1;
+                filter: none;
+                margin: 0 auto;
+                max-width: 180px !important;
+                width: auto !important;
+            }
+
+            .card-top h3,
+            .card-top p {
+                text-align: center;
+            }
+
+            .years-big {
+                font-size: 3rem;
             }
         }
-
 
         /* Statistics Section */
         .statistics {
@@ -2654,49 +2751,76 @@
     <!-- Why Choose Cytronix -->
     <section class="why-choose fade-in" id="about">
         <div class="why-choose-container">
-            <!-- Section Header -->
-            <div class="section-header">
-                <span class="section-label">Why Choose Cytronix</span>
-                <h2 class="section-title">Rooted in Quality,<br>Growing with Purpose</h2>
+            <div class="why-choose-image">
+                <div class="image-wrapper">
+                    <img src="assets/images/plant-growth.jpg" alt="Healthy Crops">
+                    <div class="innovation-card">
+                        <div class="card-top">
+                            <div class="card-header">
+                                <img src="assets/images/icon_2.png" alt="Icon" class="card-icon">
+                                <img src="assets/images/cytronix-logo.svg" alt="Cytronix" class="card-logo">
+                            </div>
+                            <h3>Innovation</h3>
+                            <p>Continuous development of new agri-technologies.</p>
+                        </div>
+                        <div class="card-bottom">
+                            <div class="years-big">10+</div>
+                            <div class="years-text">YEARS OF<br>EXCELLENCE</div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Hexagonal Cards Grid -->
-            <div class="hex-grid">
-                <div class="hex-card">
-                    <span class="card-number">01</span>
-                    <h3>Research-Based Solutions</h3>
-                    <p>Scientific R&D creating innovative agricultural solutions.</p>
-                </div>
-                <div class="hex-card">
-                    <span class="card-number">02</span>
-                    <h3>Technology Meets the Soil</h3>
-                    <p>Advanced formulations for maximum crop effectiveness.</p>
-                </div>
-                <div class="hex-card">
-                    <span class="card-number">03</span>
-                    <h3>Faithful Shared Prosperity</h3>
-                    <p>Building lasting partnerships with farmers nationwide.</p>
-                </div>
-                <div class="hex-card">
-                    <span class="card-number">04</span>
-                    <h3>Health From the Earth</h3>
-                    <p>Eco-friendly solutions minimizing environmental impact.</p>
-                </div>
-                <div class="hex-card">
-                    <span class="card-number">05</span>
-                    <h3>Seeds Sprouting Sustainable</h3>
-                    <p>Continuous development of new agri-technologies.</p>
+            <div class="why-choose-content">
+                <h2 class="section-title">Why Choose Cytronix?</h2>
+                <div class="quality-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_0.png" alt="Research"></div>
+                        <div class="feature-text">
+                            <h3>Research-Based</h3>
+                            <p>Scientific R&D creating innovative agricultural solutions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_3.png" alt="Quality"></div>
+                        <div class="feature-text">
+                            <h3>Quality Certified</h3>
+                            <p>ISO certified manufacturing with tested formulations.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_1.png" alt="Sustainable"></div>
+                        <div class="feature-text">
+                            <h3>Sustainable</h3>
+                            <p>Eco-friendly solutions minimizing environmental impact.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_2.png" alt="Targeted"></div>
+                        <div class="feature-text">
+                            <h3>Targeted Action</h3>
+                            <p>Specialized formulations for diverse crop protection.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/farmer.png" alt="Support"></div>
+                        <div class="feature-text">
+                            <h3>Farmer Support</h3>
+                            <p>Expert guidance helping farmers choose right solutions.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><img src="assets/images/icon_4.png" alt="Innovation"></div>
+                        <div class="feature-text">
+                            <h3>Innovation</h3>
+                            <p>Continuous development of new agri-technologies.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- Tractor Image -->
-        <img src="assets/images/shape-9.webp" alt="Tractor" class="why-choose-tractor">
-
-        <!-- Soil Strip -->
-        <img src="assets/images/pngtree-soil-agriculture-png-image_16037466.png" alt="Soil" class="why-choose-soil">
     </section>
 
+    <!-- Statistics -->
     <section class="statistics fade-in">
         <div class="stats-grid">
             <div class="stat-card">
