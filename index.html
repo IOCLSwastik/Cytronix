@@ -672,6 +672,19 @@
             min-height: 700px;
         }
 
+        /* White fade-up effect at the top */
+        .why-choose::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(180deg, white 0%, rgba(255, 255, 255, 0) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .why-choose-container {
             max-width: 1200px;
             margin: 0 auto;
