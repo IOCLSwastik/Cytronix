@@ -672,15 +672,20 @@
             min-height: 700px;
         }
 
-        /* White fade-up effect at the top */
+        /* White fade-up effect - covers entire section, solid white at top */
         .why-choose::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 150px;
-            background: linear-gradient(180deg, white 0%, rgba(255, 255, 255, 0) 100%);
+            height: 100%;
+            background: linear-gradient(180deg,
+                    #FFFFFF 0%,
+                    #FFFFFF 25%,
+                    rgba(255, 255, 255, 0.9) 40%,
+                    rgba(255, 255, 255, 0.4) 65%,
+                    rgba(255, 255, 255, 0) 100%);
             z-index: 1;
             pointer-events: none;
         }
@@ -699,17 +704,19 @@
         }
 
         .why-choose .section-label {
-            color: var(--accent-color);
+            color: #4a7c59;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 0.75rem;
             display: block;
+            font-weight: 700;
         }
 
         .why-choose .section-title {
-            color: white;
-            font-size: 2.8rem;
+            color: #1a3a2f;
+            /* Dark green for visibility on white */
+            font-size: 3rem;
             font-weight: 700;
             line-height: 1.2;
             margin: 0;
