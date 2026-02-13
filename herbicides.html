@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cytronix Herbicides - Effective Weed Control Solutions">
+    <title>Herbicides - Cytronix</title>
+    <link rel="shortcut icon" href="assets/images/cytronix-logo.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --primary-color: #008F85;
+            --secondary-color: #032B40;
+            --accent-color: #7FCD45;
+            --text-dark: #0E0E0E;
+            --text-medium: #333;
+            --text-light: #999;
+            --bg-white: #fff;
+            --bg-gray-light: #f4f6f7;
+            --border-color: #d1d5db
+        }
+
+        ::selection {
+            background-color: var(--accent-color);
+            color: var(--secondary-color)
+        }
+
+        html,
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, .05);
+            border-radius: 10px
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background-clip: padding-box
+        }
+
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary-color) rgba(0, 0, 0, .05)
+        }
+
+        header {
+            background: rgba(255, 255, 255, .85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, .05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            z-index: 10000;
+            border-bottom: 1px solid rgba(0, 0, 0, .08);
+            display: flex;
+            align-items: center
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            text-decoration: none
+        }
+
+        .logo img {
+            height: auto;
+            width: 200px;
+            max-height: 60px;
+            object-fit: contain
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color .3s
+        }
+
+        .nav-links li a:hover {
+            color: var(--primary-color)
+        }
+
+        .hamburger,
+        .close-menu {
+            display: none
+        }
+
+        .btn-contact {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: .8rem 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all .3s;
+            border: none;
+            text-decoration: none;
+            display: inline-block
+        }
+
+        .btn-contact:hover {
+            background: #fff
+        }
+
+        .page-hero {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(3, 43, 64, .9), rgba(0, 143, 133, .85)), url('assets/images/herbicides.jpg') center/cover no-repeat;
+            text-align: center;
+            color: #fff
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: .5rem
+        }
+
+        .page-hero h1 span {
+            color: var(--accent-color)
+        }
+
+        .page-hero p {
+            font-size: 1.15rem;
+            opacity: .9;
+            max-width: 600px;
+            margin: 0 auto
+        }
+
+        .breadcrumb {
+            margin-top: 1rem;
+            font-size: .9rem;
+            opacity: .8
+        }
+
+        .breadcrumb a {
+            color: var(--accent-color);
+            text-decoration: none
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline
+        }
+
+        .product-count {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: .3rem 1rem;
+            border-radius: 20px;
+            font-size: .85rem;
+            font-weight: 700;
+            margin-top: 1rem
+        }
+
+        .search-section {
+            padding: 2rem 2rem 0;
+            background: var(--bg-white)
+        }
+
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+            align-items: center
+        }
+
+        .search-input {
+            flex: 1;
+            padding: .8rem 1.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color .3s;
+            outline: none
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color)
+        }
+
+        .search-input::placeholder {
+            color: var(--text-light)
+        }
+
+        .result-count {
+            font-size: .9rem;
+            color: var(--text-light);
+            font-weight: 500;
+            white-space: nowrap
+        }
+
+        .products-section {
+            padding: 2rem 2rem 4rem;
+            background: var(--bg-white)
+        }
+
+        .products-table-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow-x: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .06)
+        }
+
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .92rem
+        }
+
+        .products-table thead {
+            background: var(--secondary-color);
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 10
+        }
+
+        .products-table thead th {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: .8rem;
+            letter-spacing: .5px;
+            white-space: nowrap
+        }
+
+        .products-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+            transition: background .2s
+        }
+
+        .products-table tbody tr:hover {
+            background: rgba(127, 205, 69, .08)
+        }
+
+        .products-table tbody tr:nth-child(even) {
+            background: var(--bg-gray-light)
+        }
+
+        .products-table tbody tr:nth-child(even):hover {
+            background: rgba(127, 205, 69, .12)
+        }
+
+        .products-table td {
+            padding: .9rem 1.2rem;
+            vertical-align: middle
+        }
+
+        .products-table td:first-child {
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            width: 50px
+        }
+
+        .brand-name {
+            font-weight: 700;
+            color: var(--secondary-color)
+        }
+
+        .product-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-gray-light);
+            display: block
+        }
+
+        .img-placeholder {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 2px dashed var(--border-color);
+            background: var(--bg-gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 4px;
+            color: var(--text-light);
+            font-size: .65rem;
+            text-align: center
+        }
+
+        .img-placeholder svg {
+            width: 24px;
+            height: 24px;
+            opacity: .4
+        }
+
+        .back-to-top {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--accent-color);
+            color: var(--text-dark);
+            padding: .8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+            margin-top: 2rem
+        }
+
+        .back-to-top:hover {
+            background: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(127, 205, 69, .3)
+        }
+
+        .cta-section {
+            padding: 3rem 2rem;
+            background: var(--bg-gray-light);
+            text-align: center
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem
+        }
+
+        footer {
+            background: var(--bg-white)
+        }
+
+        .footer-main {
+            background: var(--bg-gray-light);
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--border-color);
+            position: relative
+        }
+
+        .footer-main::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-color) 20%, var(--accent-color) 50%, var(--primary-color) 80%, transparent)
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem
+        }
+
+        .footer-content p {
+            margin: 0;
+            color: var(--text-dark);
+            font-size: .95rem
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            text-decoration: none;
+            transition: all .4s cubic-bezier(.68, -.55, .265, 1.55)
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-5px) scale(1.1)
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px
+        }
+
+        .footer-bottom {
+            background: var(--text-dark);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 2rem
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            font-size: .9rem
+        }
+
+        .footer-bottom a {
+            color: #fff;
+            text-decoration: none;
+            transition: color .3s
+        }
+
+        .footer-bottom a:hover {
+            color: var(--accent-color)
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 99999;
+            transition: width .1s linear
+        }
+
+        html {
+            cursor: url('./assets/cursor/Normal.cur'), auto !important
+        }
+
+        body,
+        body * {
+            cursor: inherit
+        }
+
+        a:not([disabled]),
+        button:not([disabled]),
+        .btn-contact {
+            cursor: url('./assets/cursor/Link.cur'), pointer !important
+        }
+
+        input[type="text"],
+        input[type="search"],
+        textarea {
+            cursor: url('./assets/cursor/Handwriting.cur'), text !important
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all .8s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px;
+            transition: all .3s ease
+        }
+
+        @media(max-width:768px) {
+
+            html,
+            body {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer
+            }
+
+            .nav-links {
+                position: fixed;
+                right: 0;
+                height: 100vh;
+                top: 0;
+                background: #032B40;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                width: 80%;
+                transform: translateX(100%);
+                transition: transform .4s;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, .3);
+                z-index: 9999;
+                border-left: 1px solid rgba(255, 255, 255, .2)
+            }
+
+            .nav-links li {
+                opacity: 0;
+                margin: .8rem 0;
+                list-style: none
+            }
+
+            .close-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                cursor: pointer;
+                padding: 10px;
+                z-index: 10000
+            }
+
+            .close-menu svg {
+                transition: transform .3s
+            }
+
+            .close-menu:hover svg {
+                transform: rotate(90deg)
+            }
+
+            .nav-links li a {
+                font-size: 1.3rem;
+                color: #fff;
+                font-weight: 600;
+                letter-spacing: 1px;
+                text-transform: uppercase
+            }
+
+            .nav-links li a:hover {
+                color: var(--accent-color)
+            }
+
+            .nav-active {
+                transform: translateX(0%)
+            }
+
+            @keyframes navLinkFade {
+                from {
+                    opacity: 0;
+                    transform: translateX(50px)
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateX(0)
+                }
+            }
+
+            .toggle .line1 {
+                transform: rotate(-45deg) translate(-5px, 6px)
+            }
+
+            .toggle .line2 {
+                opacity: 0
+            }
+
+            .toggle .line3 {
+                transform: rotate(45deg) translate(-5px, -6px)
+            }
+
+            .page-hero h1 {
+                font-size: 2rem
+            }
+
+            .products-table {
+                font-size: .82rem
+            }
+
+            .products-table thead th {
+                padding: .7rem .8rem;
+                font-size: .7rem
+            }
+
+            .products-table td {
+                padding: .6rem .8rem
+            }
+
+            .search-container {
+                flex-direction: column
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center
+            }
+
+            .logo img {
+                width: 150px;
+                max-height: 50px
+            }
+
+            .product-img,
+            .img-placeholder {
+                width: 60px;
+                height: 60px
+            }
+        }
+
+        @media(max-width:480px) {
+            .page-hero h1 {
+                font-size: 1.6rem
+            }
+
+            .logo img {
+                width: 120px
+            }
+
+            .product-img,
+            .img-placeholder {
+                width: 50px;
+                height: 50px
+            }
+        }
+
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .9);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease;
+            cursor: zoom-out
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .lightbox-overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
+            transform: scale(.8);
+            transition: transform .3s ease
+        }
+
+        .lightbox-overlay.active img {
+            transform: scale(1)
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            z-index: 100000;
+            transition: transform .3s
+        }
+
+        .lightbox-close:hover {
+            transform: rotate(90deg)
+        }
+
+        .product-img {
+            cursor: zoom-in
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav><a href="index.html" class="logo"><img src="assets/images/cytronix-logo.svg" alt="Cytronix Logo"></a>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <div class="close-menu"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
+                        viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg></div>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#contacts" class="btn-contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>Our <span>Herbicides</span></h1>
+        <p>Effective weed control solutions to keep your fields clean and maximize crop productivity.</p>
+        <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#products">Products</a>
+            &nbsp;/&nbsp; Herbicides</div>
+        <div class="product-count">13 Products</div>
+    </section>
+
+    <section class="search-section">
+        <div class="search-container"><input type="search" class="search-input" id="searchInput"
+                placeholder="Search by brand name, technical name..."><span class="result-count"
+                id="resultCount">Showing 13 of 13</span></div>
+    </section>
+
+    <section class="products-section fade-in">
+        <div class="products-table-container">
+            <table class="products-table" id="productsTable">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Image</th>
+                        <th>Technical Name</th>
+                        <th>Brand Name</th>
+                        <th>Packaging</th>
+                        <th>Sizes Available</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>2, 4 – D Ethyl Ester 38% EC</td>
+                        <td class="brand-name">D-WEED 38</td>
+                        <td>Pet Regular: White Bottle - White Cap</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Atrazine 50% WP</td>
+                        <td class="brand-name">TREDZON</td>
+                        <td>Pouch</td>
+                        <td>1 Kg. / 500 Gm. / 250 Gm.</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Bispyribac-Sodium 10% SC</td>
+                        <td class="brand-name">NOMINE IBM</td>
+                        <td>Regular: White Bottle - White Cap</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml. / 200 ml. / 100 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Clodinafop Propargyl 15% WP</td>
+                        <td class="brand-name">HAZAR</td>
+                        <td>Pouch With Metallic Box</td>
+                        <td>400 Gm. / 160 Gm.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Fenoxaprop-P-Ethyl 6.7% EC</td>
+                        <td class="brand-name">PUMA 6.7</td>
+                        <td>Aluminium</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml. / 100 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Fenoxaprop-P-Ethyl 6.9% EC</td>
+                        <td class="brand-name">PUMA 6.9</td>
+                        <td>Aluminium</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml. / 100 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Imazethapyr 10% SL</td>
+                        <td class="brand-name">THUNDER</td>
+                        <td>Pet Regular: White Bottle - White Cap</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml. / 100 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Metribuzin 70% WP</td>
+                        <td class="brand-name">MATADOR</td>
+                        <td>Silver Pouch With Metallic Box</td>
+                        <td>500 Gm. / 250 Gm. / 100 Gm. / 60 Gm.</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Paraquat Dichloride 24% SL</td>
+                        <td class="brand-name">PROTECTOR</td>
+                        <td>Pet Regular: White Bottle - White Cap</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml. / 100 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Pretilachlor 37% EW</td>
+                        <td class="brand-name">—</td>
+                        <td>—</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Propaquizafop 10% EC</td>
+                        <td class="brand-name">SAMURAI</td>
+                        <td>Aluminium</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml. / 100 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Quizalofop Ethyl 5% EC</td>
+                        <td class="brand-name">ARROW 5</td>
+                        <td>Aluminium</td>
+                        <td>1 Ltr. / 500 ml. / 250 ml. / 100 ml.</td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>
+                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
+                        </td>
+                        <td>Sulfosulfuron 75% WG</td>
+                        <td class="brand-name">SWEEPER 75</td>
+                        <td>Pet Regular: White Bottle - White Cap</td>
+                        <td>500 Gm. / 250 Gm. / 100 Gm. / 13.3 Gm.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <p>Need help choosing the right herbicide for your crop and weed type?</p>
+        <a href="javascript:void(0)" class="back-to-top"
+            onclick="document.querySelector('.aiko-chat-toggle')?.click()">Get Expert Advice</a><br>
+        <a href="index.html#products" class="back-to-top" style="background:var(--secondary-color);color:#fff;">← Back
+            to All Products</a>
+    </section>
+
+    <footer>
+        <div class="footer-main">
+            <div class="footer-content">
+                <p>&copy; Copyright 2026 Cytronix - All Rights Reserved</p>
+                <div class="social-links"><a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg"
+                            fill="#1877F2" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg></a><a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg"
+                            fill="#E4405F" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98C.014 8.332 0 8.74 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.332 23.986 8.74 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98C23.986 15.668 24 15.26 24 12c0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        </svg></a><a href="#" aria-label="YouTube"><svg xmlns="http://www.w3.org/2000/svg"
+                            fill="#FF0000" viewBox="0 0 24 24">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg></a><a href="#" aria-label="WhatsApp"><svg xmlns="http://www.w3.org/2000/svg"
+                            fill="#25D366" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a1.07 1.07 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                        </svg></a></div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
+        </div>
+    </footer>
+
+    <script src="Ai.js"></script>
+    <script>
+        const pb = document.createElement('div'); pb.className = 'scroll-progress'; document.body.prepend(pb); window.addEventListener('scroll', () => { pb.style.width = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%' });
+        const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: 0 }); document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), tr = document.querySelectorAll('#productsTable tbody tr'), tp = tr.length; si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; tr.forEach(r => { const m = !q || r.textContent.toLowerCase().includes(q); r.style.display = m ? '' : 'none'; if (m) v++ }); rc.textContent = `Showing ${v} of ${tp}` });
+        const hb = document.querySelector('.hamburger'), nv = document.querySelector('.nav-links'), nl = document.querySelectorAll('.nav-links li'), cm = document.querySelector('.close-menu'); hb.addEventListener('click', () => { nv.classList.toggle('nav-active'); nl.forEach((l, i) => { l.style.animation = l.style.animation ? '' : `navLinkFade .5s ease forwards ${i / 7 + .3}s` }); hb.classList.toggle('toggle') }); cm.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(l => l.style.animation = '') }); nl.forEach(l => { l.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(x => x.style.animation = '') }) });
+        const lb = document.createElement('div'); lb.className = 'lightbox-overlay'; lb.innerHTML = '<button class="lightbox-close">&times;</button><img>'; document.body.appendChild(lb); lb.addEventListener('click', () => { lb.classList.remove('active') }); document.querySelectorAll('.product-img').forEach(img => { img.addEventListener('click', () => { lb.querySelector('img').src = img.src; lb.classList.add('active') }) });
+        document.querySelectorAll('#productsTable tbody tr').forEach(r => { const n = r.cells[0]?.textContent.trim(); if (n) r.id = n }); const hash = decodeURIComponent(window.location.hash.slice(1)); if (hash) { const tgt = document.getElementById(hash); if (tgt) { window.addEventListener('load', () => { setTimeout(() => { window.scrollTo({ top: tgt.getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' }) }, 100) }); tgt.style.background = 'rgba(127,205,69,.3)'; tgt.style.boxShadow = 'inset 4px 0 0 var(--primary-color)'; tgt.style.transition = 'background 2s,box-shadow 2s'; setTimeout(() => { tgt.style.background = ''; tgt.style.boxShadow = '' }, 5000) } }
+    </script>
+</body>
+
+</html>

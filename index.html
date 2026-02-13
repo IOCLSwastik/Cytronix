@@ -424,16 +424,21 @@
         }
 
         .btn {
+            display: inline-block;
             padding: 0.8rem 2rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
             background: var(--accent-color);
             color: var(--text-dark);
+            box-shadow: 0 4px 15px rgba(127, 205, 69, 0.3);
         }
 
         .btn-primary:hover {
@@ -563,41 +568,9 @@
             justify-content: center;
         }
 
-        .btn-primary {
-            display: inline-block;
-            background: var(--accent-color);
-            /* Lime green button */
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(127, 205, 69, 0.3);
-            border: none;
-            cursor: pointer;
-        }
 
-        .btn-primary:hover {
-            background: var(--primary-color);
-            /* Teal on hover */
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 143, 133, 0.4);
-        }
 
-        .btn-outline {
-            display: inline-block;
-            background: transparent;
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            border: 2px solid white;
-        }
+
 
         .btn-outline:hover {
             background: white;
@@ -672,6 +645,24 @@
             min-height: 700px;
         }
 
+        /* White fade-up effect - covers entire section, solid white at top */
+        .why-choose::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(180deg,
+                    #FFFFFF 0%,
+                    #FFFFFF 25%,
+                    rgba(255, 255, 255, 0.9) 40%,
+                    rgba(255, 255, 255, 0.4) 65%,
+                    rgba(255, 255, 255, 0) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
         .why-choose-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -686,17 +677,19 @@
         }
 
         .why-choose .section-label {
-            color: var(--accent-color);
+            color: #000000;
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 3px;
             margin-bottom: 0.75rem;
             display: block;
+            font-weight: 700;
         }
 
         .why-choose .section-title {
-            color: white;
-            font-size: 2.8rem;
+            color: #000000;
+            /* Pure black */
+            font-size: 3rem;
             font-weight: 700;
             line-height: 1.2;
             margin: 0;
@@ -720,8 +713,8 @@
         .hex-card {
             position: relative;
             width: 220px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.08);
             border-radius: 20px;
             padding: 2rem 1.5rem;
             text-align: center;
@@ -735,7 +728,7 @@
 
         .hex-card:hover {
             transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.95);
         }
 
         /* Numbered Badge */
@@ -753,14 +746,14 @@
         }
 
         .hex-card h3 {
-            color: white;
+            color: #1a3a2f;
             font-size: 1rem;
             font-weight: 600;
             margin: 2.5rem 0 0.5rem;
         }
 
         .hex-card p {
-            color: rgba(255, 255, 255, 0.7);
+            color: #4a7c59;
             font-size: 0.85rem;
             line-height: 1.5;
             margin: 0;
@@ -1726,6 +1719,7 @@
             background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
             border-radius: 2px;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            display: none;
         }
 
         .section-title.visible::before {
@@ -2605,29 +2599,32 @@
 
     <!-- Products Section -->
     <section class="products" id="products">
-        <h2 class="section-title">Our Products</h2>
+        <h2
+            style="color: #000000 !important; font-size: 2.5rem !important; font-weight: 700 !important; margin-bottom: 3rem !important; text-align: center !important;">
+            Our <span style="color: var(--accent-color) !important;">Products</span></h2>
 
         <div class="product-grid">
-            <div class="product-card show" data-category="insecticides">
+            <a href="insecticides.html" class="product-card show" data-category="insecticides"
+                style="text-decoration:none">
                 <img src="assets/images/insecticides.jpg" alt="Insecticides">
                 <div class="product-info">
                     <h3>Insecticides</h3>
                 </div>
-            </div>
+            </a>
 
-            <div class="product-card show" data-category="herbicides">
+            <a href="herbicides.html" class="product-card show" data-category="herbicides" style="text-decoration:none">
                 <img src="assets/images/herbicides.jpg" alt="Herbicides">
                 <div class="product-info">
                     <h3>Herbicides</h3>
                 </div>
-            </div>
+            </a>
 
-            <div class="product-card show" data-category="fungicides">
+            <a href="fungicides.html" class="product-card show" data-category="fungicides" style="text-decoration:none">
                 <img src="assets/images/fungicides.jpg" alt="Fungicides">
                 <div class="product-info">
                     <h3>Fungicides</h3>
                 </div>
-            </div>
+            </a>
 
             <div class="product-card show" data-category="fertilizers">
                 <img src="assets/images/micro-fertilizers.jpg" alt="Micro Fertilizers">
@@ -2636,12 +2633,12 @@
                 </div>
             </div>
 
-            <div class="product-card show" data-category="growth">
+            <a href="pgr.html" class="product-card show" data-category="growth" style="text-decoration:none">
                 <img src="assets/images/plant-growth.jpg" alt="Plant Growth">
                 <div class="product-info">
                     <h3>Plant Growth</h3>
                 </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -2650,8 +2647,16 @@
         <div class="why-choose-container">
             <!-- Section Header -->
             <div class="section-header">
-                <span class="section-label">Why Choose Cytronix</span>
-                <h2 class="section-title">Rooted in Quality,<br>Growing with Purpose</h2>
+                <span class="section-label" style="color: black;">Why Choose Cytronix</span>
+                <h2
+                    style="color: #000000 !important; font-size: 3rem !important; font-weight: 700 !important; line-height: 1.2 !important; margin: 0 !important; text-align: center !important;">
+                    <span style="color: #000000 !important;">Rooted</span> <span
+                        style="color: #000000 !important;">in</span> <span
+                        style="color: var(--accent-color) !important;">Quality,</span><br><span
+                        style="color: #000000 !important;">Growing</span> <span
+                        style="color: #000000 !important;">with</span> <span
+                        style="color: var(--accent-color) !important;">Purpose</span>
+                </h2>
             </div>
 
             <!-- Hexagonal Cards Grid -->
@@ -2714,7 +2719,9 @@
 
     <!-- Crop We Serve -->
     <section class="crops-section">
-        <h2 class="section-title">Crop We Serve</h2>
+        <h2
+            style="color: #000000 !important; font-size: 2.5rem !important; font-weight: 700 !important; margin-bottom: 3rem !important; text-align: center !important;">
+            Crop <span style="color: var(--accent-color) !important;">We Serve</span></h2>
         <div class="crops-grid">
             <div class="crop-card">
                 <img src="assets/images/top-view-raw-rice-inside-plate-dark-desk.jpg" alt="Rice">
@@ -2754,15 +2761,19 @@
     <!-- Expert Advice -->
     <section class="expert-advice">
         <div class="expert-content">
-            <h2>Need The Right Solution?</h2>
+            <h2
+                style="color: #000000 !important; font-size: 2.5rem !important; font-weight: 700 !important; margin-bottom: 1rem !important;">
+                Need The <span style="color: var(--accent-color) !important;">Right Solution?</span></h2>
             <p>No problem. We'll connect you with our expert team!</p>
-            <button class="btn-expert" id="getExpertAdvice">Get Expert Advice</button>
+            <a href="#contacts" class="btn btn-primary" id="getExpertAdvice">Get Expert Advice</a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact-section" id="contacts">
-        <h2 class="section-title">Get in Touch</h2>
+        <h2
+            style="color: #000000 !important; font-size: 2.5rem !important; font-weight: 700 !important; margin-bottom: 3rem !important; text-align: center !important;">
+            Get in <span style="color: var(--accent-color) !important;">Touch</span></h2>
         <div class="contact-container">
             <div class="contact-info">
                 <div class="contact-details">
