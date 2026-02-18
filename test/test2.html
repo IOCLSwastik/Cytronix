@@ -1179,9 +1179,7 @@
         if (hash) {
             const targetCard = document.querySelector(`.product-card[data-id="${hash}"]`);
             if (targetCard) {
-                window.addEventListener('load', () => {
-                    setTimeout(() => openPopup(targetCard), 200);
-                });
+                setTimeout(() => openPopup(targetCard), 100);
             }
         }
     </script>
