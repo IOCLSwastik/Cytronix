@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cytronix Insecticides - Premium Crop Protection Solutions">
+    <meta name="description" content="Cytronix Insecticides - Advanced Crop Protection Against Harmful Pests">
     <title>Insecticides - Cytronix</title>
     <link rel="shortcut icon" href="assets/images/cytronix-logo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,8 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent
         }
 
         :root {
@@ -147,7 +148,7 @@
         .page-hero {
             margin-top: 80px;
             padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(3, 43, 64, .9), rgba(0, 143, 133, .85)), url('assets/images/insecticides.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(3, 43, 64, .9), rgba(0, 143, 133, .85)), url('assets/images/plant-growth.jpg') center/cover no-repeat;
             text-align: center;
             color: #fff
         }
@@ -234,108 +235,298 @@
             white-space: nowrap
         }
 
-        .products-section {
+        .products-grid-section {
             padding: 2rem 2rem 4rem;
             background: var(--bg-white)
         }
 
-        .products-table-container {
+        .products-grid {
             max-width: 1200px;
             margin: 0 auto;
-            overflow-x: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem
+        }
+
+        .product-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .06)
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all .3s ease;
+            display: flex;
+            flex-direction: column
         }
 
-        .products-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: .92rem
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .1);
+            border-color: var(--primary-color)
         }
 
-        .products-table thead {
-            background: var(--secondary-color);
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 10
-        }
-
-        .products-table thead th {
-            padding: 1rem 1.2rem;
-            text-align: left;
-            font-weight: 600;
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            right: -32px;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            font-size: .7rem;
+            font-weight: 700;
+            padding: 4px 40px;
+            transform: rotate(45deg);
             text-transform: uppercase;
-            font-size: .8rem;
             letter-spacing: .5px;
-            white-space: nowrap
+            z-index: 2;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .15)
         }
 
-        .products-table tbody tr {
-            border-bottom: 1px solid var(--border-color);
-            transition: background .2s
-        }
-
-        .products-table tbody tr:hover {
-            background: rgba(127, 205, 69, .08)
-        }
-
-        .products-table tbody tr:nth-child(even) {
-            background: var(--bg-gray-light)
-        }
-
-        .products-table tbody tr:nth-child(even):hover {
-            background: rgba(127, 205, 69, .12)
-        }
-
-        .products-table td {
-            padding: .9rem 1.2rem;
-            vertical-align: middle
-        }
-
-        .products-table td:first-child {
-            font-weight: 700;
-            color: var(--primary-color);
-            text-align: center;
-            width: 50px
-        }
-
-        .brand-name {
-            font-weight: 700;
-            color: var(--secondary-color)
-        }
-
-        .product-img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            background: var(--bg-gray-light);
-            display: block
-        }
-
-        .img-placeholder {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            border: 2px dashed var(--border-color);
+        .card-img-wrap {
+            width: 100%;
+            aspect-ratio: 1;
             background: var(--bg-gray-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            color: var(--text-light);
-            font-size: .65rem;
-            text-align: center
+            padding: 1.5rem;
+            overflow: hidden
         }
 
-        .img-placeholder svg {
-            width: 24px;
-            height: 24px;
-            opacity: .4
+        .card-img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform .3s ease
+        }
+
+        .product-card:hover .card-img-wrap img {
+            transform: scale(1.05)
+        }
+
+        .card-body {
+            padding: 1rem 1.2rem 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column
+        }
+
+        .card-brand {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 2px
+        }
+
+        .card-technical {
+            font-size: .85rem;
+            color: var(--text-medium);
+            margin-bottom: .8rem
+        }
+
+        .card-packing-label {
+            font-size: .75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 2px
+        }
+
+        .card-packing {
+            font-size: .82rem;
+            color: var(--text-medium);
+            line-height: 1.4
+        }
+
+        .detail-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(4px);
+            z-index: 90000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease
+        }
+
+        .detail-overlay.active {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .detail-popup {
+            background: var(--bg-white);
+            border-radius: 16px;
+            max-width: 850px;
+            width: 92%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, .3);
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            transform: scale(.92) translateY(20px);
+            transition: transform .3s ease
+        }
+
+        .detail-overlay.active .detail-popup {
+            transform: scale(1) translateY(0)
+        }
+
+        .detail-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--text-medium);
+            cursor: pointer;
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all .3s
+        }
+
+        .detail-close:hover {
+            background: var(--bg-gray-light);
+            transform: rotate(90deg)
+        }
+
+        .detail-img-side {
+            width: 40%;
+            min-height: 300px;
+            background: var(--bg-gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 16px 0 0 16px;
+            flex-shrink: 0
+        }
+
+        .detail-img-side img {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain
+        }
+
+        .detail-content {
+            flex: 1;
+            padding: 2rem 2rem 1.5rem;
+            display: flex;
+            flex-direction: column
+        }
+
+        .detail-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: .4rem;
+            margin-bottom: .3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .detail-category-tag {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: rgba(0, 143, 133, .08);
+            padding: .2rem .8rem;
+            border-radius: 4px
+        }
+
+        .detail-technical {
+            font-size: .95rem;
+            color: var(--text-medium);
+            margin-bottom: 1.2rem
+        }
+
+        .detail-field {
+            margin-bottom: .8rem
+        }
+
+        .detail-field-label {
+            font-weight: 700;
+            font-size: .9rem;
+            color: var(--text-dark);
+            margin-bottom: .2rem
+        }
+
+        .detail-field-value {
+            font-size: .88rem;
+            color: var(--text-medium);
+            line-height: 1.5
+        }
+
+        .detail-features {
+            margin: 0;
+            padding-left: 1.2rem
+        }
+
+        .detail-features li {
+            font-size: .88rem;
+            color: var(--text-medium);
+            margin-bottom: .3rem;
+            line-height: 1.5
+        }
+
+        .detail-packing {
+            margin-top: .5rem;
+            padding-top: .8rem;
+            border-top: 1px solid var(--border-color)
+        }
+
+        .detail-packing-label {
+            font-weight: 700;
+            font-size: .9rem;
+            color: var(--text-dark);
+            display: inline
+        }
+
+        .detail-packing-value {
+            font-size: .9rem;
+            color: var(--text-medium);
+            display: inline;
+            margin-left: .5rem
+        }
+
+        .detail-actions {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: flex-end
+        }
+
+        .btn-inquiry {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            padding: .6rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            font-weight: 600;
+            font-size: .9rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .btn-inquiry:hover {
+            background: transparent;
+            color: var(--accent-color)
         }
 
         .back-to-top {
@@ -484,7 +675,8 @@
 
         a:not([disabled]),
         button:not([disabled]),
-        .btn-contact {
+        .btn-contact,
+        .product-card {
             cursor: url('./assets/cursor/Link.cur'), pointer !important
         }
 
@@ -511,6 +703,12 @@
             background-color: var(--primary-color);
             margin: 5px;
             transition: all .3s ease
+        }
+
+        @media(max-width:1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
         }
 
         @media(max-width:768px) {
@@ -613,17 +811,9 @@
                 font-size: 2rem
             }
 
-            .products-table {
-                font-size: .82rem
-            }
-
-            .products-table thead th {
-                padding: .7rem .8rem;
-                font-size: .7rem
-            }
-
-            .products-table td {
-                padding: .6rem .8rem
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem
             }
 
             .search-container {
@@ -640,10 +830,20 @@
                 max-height: 50px
             }
 
-            .product-img,
-            .img-placeholder {
-                width: 60px;
-                height: 60px
+            .detail-popup {
+                flex-direction: column;
+                max-height: 92vh
+            }
+
+            .detail-img-side {
+                width: 100%;
+                min-height: 200px;
+                border-radius: 16px 16px 0 0;
+                padding: 1.5rem
+            }
+
+            .detail-content {
+                padding: 1.5rem
             }
         }
 
@@ -656,68 +856,14 @@
                 width: 120px
             }
 
-            .product-img,
-            .img-placeholder {
-                width: 50px;
-                height: 50px
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem
             }
-        }
 
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, .9);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all .3s ease;
-            cursor: zoom-out
-        }
-
-        .lightbox-overlay.active {
-            opacity: 1;
-            visibility: visible
-        }
-
-        .lightbox-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
-            transform: scale(.8);
-            transition: transform .3s ease
-        }
-
-        .lightbox-overlay.active img {
-            transform: scale(1)
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 40px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 100000;
-            transition: transform .3s
-        }
-
-        .lightbox-close:hover {
-            transform: rotate(90deg)
-        }
-
-        .product-img {
-            cursor: zoom-in
+            .card-img-wrap {
+                aspect-ratio: 4/3
+            }
         }
     </style>
 </head>
@@ -744,7 +890,6 @@
             </ul>
         </nav>
     </header>
-
     <section class="page-hero">
         <h1>Our <span>Insecticides</span></h1>
         <p>Advanced crop protection solutions to safeguard your harvest against harmful pests.</p>
@@ -752,386 +897,20 @@
             &nbsp;/&nbsp; Insecticides</div>
         <div class="product-count">58 Products</div>
     </section>
-
     <section class="search-section">
         <div class="search-container"><input type="search" class="search-input" id="searchInput"
                 placeholder="Search by brand name, technical name..."><span class="result-count"
                 id="resultCount">Showing 58 of 58</span></div>
     </section>
-
-    <section class="products-section fade-in">
-        <div class="products-table-container">
-            <table class="products-table" id="productsTable">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Image</th>
-                        <th>Technical Name</th>
-                        <th>Brand Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Abamectin 1.9% EC</td>
-                        <td class="brand-name">CYTROSILD</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Acephate 75% SP</td>
-                        <td class="brand-name">TIGER 75</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Acetamiprid 20% SP</td>
-                        <td class="brand-name">LAUNCHER LD</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Betacyfluthrin 8.49% + Imidacloprid 19.81% OD</td>
-                        <td class="brand-name">SOLARO IBM</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Bifenthrin 10% EC</td>
-                        <td class="brand-name">FELIX</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Buprofenzin 15% + Acephate 35% WP</td>
-                        <td class="brand-name">ZORIXEM</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Buprofezin 25% SC</td>
-                        <td class="brand-name">BUPRO GOLD IBM</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Cartap Hydrochloride 50% SP</td>
-                        <td class="brand-name">CAPTURE 50</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Chlorantraniliprole 9.3% + Lambdacyhalothrin 4.6% ZC</td>
-                        <td class="brand-name">CONTRA IBM</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Chlorantraniliprole 18.5% SC</td>
-                        <td class="brand-name">CYTRAZON</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Chlorpyrifos 50% EC</td>
-                        <td class="brand-name">CLORIX 50</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Chlorpyriphos 10% GR</td>
-                        <td class="brand-name">CLORIX GR</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Chlorpyriphos 20% EC</td>
-                        <td class="brand-name">CLORIX 20</td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Chlorpyriphos 50% + Cypermethrin 5% EC</td>
-                        <td class="brand-name">ATOM 505</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Cyantraniliprole 10.26% OD</td>
-                        <td class="brand-name">BENEFIT IBM</td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Cyantraniliprole 19.8% + Thiamethoxam 19.8% FS</td>
-                        <td class="brand-name">CLOCKMET IBM</td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Cypermethrin 25% EC</td>
-                        <td class="brand-name">CYPERMET 25</td>
-                    </tr>
-                    <tr>
-                        <td>18</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Deltamethrin 1.8% EC</td>
-                        <td class="brand-name">DIZON</td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Deltamethrin 11% EC</td>
-                        <td class="brand-name">DIZON 11</td>
-                    </tr>
-                    <tr>
-                        <td>20</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Diafenthiuron 47% + Bifenthrin 9.4% SC</td>
-                        <td class="brand-name">POWER JET IBM</td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Diafenthiuron 47.8% SC</td>
-                        <td class="brand-name">LINGGER IBM</td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Diafenthiuron 50% WP</td>
-                        <td class="brand-name">LINGGER 50</td>
-                    </tr>
-                    <tr>
-                        <td>23</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Dimethoate 30% EC</td>
-                        <td class="brand-name">PROGAR</td>
-                    </tr>
-                    <tr>
-                        <td>24</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Dinotefuran 15% + Pymetrozine 45% WG</td>
-                        <td class="brand-name">OPTIMUS</td>
-                    </tr>
-                    <tr>
-                        <td>25</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Dinotefuran 20% SG</td>
-                        <td class="brand-name">DINO 20</td>
-                    </tr>
-                    <tr>
-                        <td>26</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Emamectin Benzoate 1.9% EC</td>
-                        <td class="brand-name">LARVEXON IBM</td>
-                    </tr>
-                    <tr>
-                        <td>27</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Emamectin Benzoate 3.0% + Thiamethoxam 12.0% WG</td>
-                        <td class="brand-name">MECMET</td>
-                    </tr>
-                    <tr>
-                        <td>28</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Emamectin Benzoate 5% SG</td>
-                        <td class="brand-name">PROLAM SG</td>
-                    </tr>
-                    <tr>
-                        <td>29</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Ethion 40% + Cypermethrin 5% EC</td>
-                        <td class="brand-name">REGALOT</td>
-                    </tr>
-                    <tr>
-                        <td>30</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Ethion 50% EC</td>
-                        <td class="brand-name">ESSAN</td>
-                    </tr>
-                    <tr>
-                        <td>31</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Fenobucarb (BPMC) 50% EC</td>
-                        <td class="brand-name">FENO STAR</td>
-                    </tr>
-                    <tr>
-                        <td>32</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Fenvalerate 20% EC</td>
-                        <td class="brand-name">DYNAMO 20</td>
-                    </tr>
-                    <tr>
-                        <td>33</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Fipronil 4% + Acetamiprid 4% SC</td>
-                        <td class="brand-name">ABSOLUTE IBM</td>
-                    </tr>
-                    <tr>
-                        <td>34</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Fipronil 18.87% SC</td>
-                        <td class="brand-name">FESTER IBM</td>
-                    </tr>
-                    <tr>
-                        <td>35</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Fipronil 40% + Imidacloprid 40% WG</td>
-                        <td class="brand-name">IPS 40 40</td>
-                    </tr>
-                    <tr>
-                        <td>36</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Flonicamid 50% WG</td>
-                        <td class="brand-name">FEMIRO</td>
-                    </tr>
-                    <tr>
-                        <td>37</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Flubendiamide 8.33% + Deltamethrin 5.56% SC</td>
-                        <td class="brand-name">ZENTRY IBM</td>
-                    </tr>
-                    <tr>
-                        <td>38</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Flubendiamide 19.92% + Thiacloprid 19.92% SC</td>
-                        <td class="brand-name">RANGER IBM</td>
-                    </tr>
-                    <tr>
-                        <td>39</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Flufenzin 20% SC</td>
-                        <td class="brand-name">ARREST IBM</td>
-                    </tr>
-                    <tr>
-                        <td>40</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Imidacloprid 17.8% SL</td>
-                        <td class="brand-name">IMANEX IBM</td>
-                    </tr>
-                    <tr>
-                        <td>41</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Imidacloprid 30.5% SC</td>
-                        <td class="brand-name">IMANEX PLUS IBM</td>
-                    </tr>
-                    <tr>
-                        <td>42</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Imidacloprid 48% FS</td>
-                        <td class="brand-name">IMANEX FS IBM</td>
-                    </tr>
-                    <tr>
-                        <td>43</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Imidacloprid 70% WG</td>
-                        <td class="brand-name">IMANEX WG</td>
-                    </tr>
-                    <tr>
-                        <td>44</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Imidacloprid 18.5% + Hexaconazole 1.5% FS</td>
-                        <td class="brand-name">IMOZOL IBM</td>
-                    </tr>
-                    <tr>
-                        <td>45</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Lambdacyhalothrin 4.9% CS</td>
-                        <td class="brand-name">CENTURE 4.9 IBM</td>
-                    </tr>
-                    <tr>
-                        <td>46</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Lambdacyhalothrin 5% EC</td>
-                        <td class="brand-name">CENTURE PLUS IBM</td>
-                    </tr>
-                    <tr>
-                        <td>47</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Malathion 50% EC</td>
-                        <td class="brand-name">MALABAR 50</td>
-                    </tr>
-                    <tr>
-                        <td>48</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Novaluron 5.25% + Indoxacarb 4.5% SC</td>
-                        <td class="brand-name">KREDOK</td>
-                    </tr>
-                    <tr>
-                        <td>49</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Profenofos 40% + Cypermethrin 4% EC</td>
-                        <td class="brand-name">PROXY SUPER</td>
-                    </tr>
-                    <tr>
-                        <td>50</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Pymetrozine 50% WG</td>
-                        <td class="brand-name">MAJOR 50</td>
-                    </tr>
-                    <tr>
-                        <td>51</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Pyriproxyfen 5% + Diafenthiuron 25% SE</td>
-                        <td class="brand-name">ASTER 525 IBM</td>
-                    </tr>
-                    <tr>
-                        <td>52</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Pyriproxyfen 10% EC</td>
-                        <td class="brand-name">CLUSTER</td>
-                    </tr>
-                    <tr>
-                        <td>53</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Quinalphos 25% EC</td>
-                        <td class="brand-name">QUINTOK</td>
-                    </tr>
-                    <tr>
-                        <td>54</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Spinosad 45% SC</td>
-                        <td class="brand-name">SPINOTRIX IBM</td>
-                    </tr>
-                    <tr>
-                        <td>55</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Thiamethoxam 12.6% + Lambda-Cyhalothrin 9.5% ZC</td>
-                        <td class="brand-name">RADAR IBM</td>
-                    </tr>
-                    <tr>
-                        <td>56</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Thiamethoxam 25% WG</td>
-                        <td class="brand-name">LOCKER</td>
-                    </tr>
-                    <tr>
-                        <td>57</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Thiamethoxam 30% FS</td>
-                        <td class="brand-name">LOCKER FS IBM</td>
-                    </tr>
-                    <tr>
-                        <td>58</td>
-                        <td><img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image"></td>
-                        <td>Thiamethoxam 75% SG</td>
-                        <td class="brand-name">LOCKER 75</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <section class="products-grid-section fade-in">
+        <div class="products-grid" id="productsGrid"></div>
     </section>
-
     <section class="cta-section">
         <p>Need guidance on the right insecticide for your crops?</p>
-        <a href="javascript:void(0)" class="back-to-top"
-            onclick="document.querySelector('.aiko-chat-toggle')?.click()">Get Expert Advice</a><br>
+        <a href="tel:+918238592892" class="back-to-top" style="text-decoration:none;">📞 Get Expert Advice</a><br>
         <a href="index.html#products" class="back-to-top" style="background:var(--secondary-color);color:#fff;">← Back
             to All Products</a>
     </section>
-
     <footer>
         <div class="footer-main">
             <div class="footer-content">
@@ -1159,15 +938,128 @@
             <p>Made by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
         </div>
     </footer>
-
+    <div class="detail-overlay" id="detailOverlay">
+        <div class="detail-popup">
+            <button class="detail-close" id="detailClose">&times;</button>
+            <div class="detail-img-side"><img id="popupImg" src="" alt="Product"></div>
+            <div class="detail-content">
+                <div class="detail-brand"><span id="popupBrand"></span><span class="detail-category-tag"
+                        id="popupCategory"></span></div>
+                <div class="detail-technical" id="popupTechnical"></div>
+                <div class="detail-field" id="popupDosageWrap">
+                    <div class="detail-field-label">Dosage:</div>
+                    <div class="detail-field-value" id="popupDosage"></div>
+                </div>
+                <div class="detail-field" id="popupFeaturesWrap">
+                    <div class="detail-field-label">Features &amp; Benefits:</div>
+                    <ul class="detail-features" id="popupFeatures"></ul>
+                </div>
+                <div class="detail-packing"><span class="detail-packing-label">Packing:</span><span
+                        class="detail-packing-value" id="popupPacking"></span></div>
+                <div class="detail-actions"><a href="tel:+918238592892" class="btn-inquiry"
+                        style="text-decoration:none;">📞 Send Inquiry</a></div>
+            </div>
+        </div>
+    </div>
     <script src="Ai.js"></script>
     <script>
+        const PRODUCTS = [
+            ["CYTROSILD", "Abamectin 1.9% EC"],
+            ["TIGER 75", "Acephate 75% SP"],
+            ["LAUNCHER LD", "Acetamiprid 20% SP"],
+            ["SOLARO IBM", "Betacyfluthrin 8.49% + Imidacloprid 19.81% OD"],
+            ["FELIX", "Bifenthrin 10% EC"],
+            ["ZORIXEM", "Buprofenzin 15% + Acephate 35% WP"],
+            ["BUPRO GOLD IBM", "Buprofezin 25% SC"],
+            ["CAPTURE 50", "Cartap Hydrochloride 50% SP"],
+            ["CONTRA IBM", "Chlorantraniliprole 9.3% + Lambdacyhalothrin 4.6% ZC"],
+            ["CYTRAZON", "Chlorantraniliprole 18.5% SC"],
+            ["CLORIX 50", "Chlorpyrifos 50% EC"],
+            ["CLORIX GR", "Chlorpyriphos 10% GR"],
+            ["CLORIX 20", "Chlorpyriphos 20% EC"],
+            ["ATOM 505", "Chlorpyriphos 50% + Cypermethrin 5% EC"],
+            ["BENEFIT IBM", "Cyantraniliprole 10.26% OD"],
+            ["CLOCKMET IBM", "Cyantraniliprole 19.8% + Thiamethoxam 19.8% FS"],
+            ["CYPERMET 25", "Cypermethrin 25% EC"],
+            ["DIZON", "Deltamethrin 1.8% EC"],
+            ["DIZON 11", "Deltamethrin 11% EC"],
+            ["POWER JET IBM", "Diafenthiuron 47% + Bifenthrin 9.4% SC"],
+            ["LINGGER IBM", "Diafenthiuron 47.8% SC"],
+            ["LINGGER 50", "Diafenthiuron 50% WP"],
+            ["PROGAR", "Dimethoate 30% EC"],
+            ["OPTIMUS", "Dinotefuran 15% + Pymetrozine 45% WG"],
+            ["DINO 20", "Dinotefuran 20% SG"],
+            ["LARVEXON IBM", "Emamectin Benzoate 1.9% EC"],
+            ["MECMET", "Emamectin Benzoate 3.0% + Thiamethoxam 12.0% WG"],
+            ["PROLAM SG", "Emamectin Benzoate 5% SG"],
+            ["REGALOT", "Ethion 40% + Cypermethrin 5% EC"],
+            ["ESSAN", "Ethion 50% EC"],
+            ["FENO STAR", "Fenobucarb (BPMC) 50% EC"],
+            ["DYNAMO 20", "Fenvalerate 20% EC"],
+            ["ABSOLUTE IBM", "Fipronil 4% + Acetamiprid 4% SC"],
+            ["FESTER IBM", "Fipronil 18.87% SC"],
+            ["IPS 40 40", "Fipronil 40% + Imidacloprid 40% WG"],
+            ["FEMIRO", "Flonicamid 50% WG"],
+            ["ZENTRY IBM", "Flubendiamide 8.33% + Deltamethrin 5.56% SC"],
+            ["RANGER IBM", "Flubendiamide 19.92% + Thiacloprid 19.92% SC"],
+            ["ARREST IBM", "Flufenzin 20% SC"],
+            ["IMANEX IBM", "Imidacloprid 17.8% SL"],
+            ["IMANEX PLUS IBM", "Imidacloprid 30.5% SC"],
+            ["IMANEX FS IBM", "Imidacloprid 48% FS"],
+            ["IMANEX WG", "Imidacloprid 70% WG"],
+            ["IMOZOL IBM", "Imidacloprid 18.5% + Hexaconazole 1.5% FS"],
+            ["CENTURE 4.9 IBM", "Lambdacyhalothrin 4.9% CS"],
+            ["CENTURE PLUS IBM", "Lambdacyhalothrin 5% EC"],
+            ["MALABAR 50", "Malathion 50% EC"],
+            ["KREDOK", "Novaluron 5.25% + Indoxacarb 4.5% SC"],
+            ["PROXY SUPER", "Profenofos 40% + Cypermethrin 4% EC"],
+            ["MAJOR 50", "Pymetrozine 50% WG"],
+            ["ASTER 525 IBM", "Pyriproxyfen 5% + Diafenthiuron 25% SE"],
+            ["CLUSTER", "Pyriproxyfen 10% EC"],
+            ["QUINTOK", "Quinalphos 25% EC"],
+            ["SPINOTRIX IBM", "Spinosad 45% SC"],
+            ["RADAR IBM", "Thiamethoxam 12.6% + Lambda-Cyhalothrin 9.5% ZC"],
+            ["LOCKER", "Thiamethoxam 25% WG"],
+            ["LOCKER FS IBM", "Thiamethoxam 30% FS"],
+            ["LOCKER 75", "Thiamethoxam 75% SG"]
+        ];
+        const grid = document.getElementById('productsGrid');
+        PRODUCTS.forEach((p, i) => {
+            const id = i + 1, brand = p[0], tech = p[1], img = "assets/images/antibiotics.jpg";
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.dataset.id = id; card.dataset.brand = brand; card.dataset.technical = tech; card.dataset.category = 'Insecticide'; card.dataset.dosage = '-'; card.dataset.features = '[]'; card.dataset.packing = '-'; card.dataset.img = img;
+            card.innerHTML = `<div class="card-badge">Insecticide</div><div class="card-img-wrap"><img src="${img}" alt="${brand}"></div><div class="card-body"><div class="card-brand">${brand}</div><div class="card-technical">${tech}</div></div>`;
+            grid.appendChild(card);
+        });
+
         const pb = document.createElement('div'); pb.className = 'scroll-progress'; document.body.prepend(pb); window.addEventListener('scroll', () => { pb.style.width = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%' });
         const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: 0 }); document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), tr = document.querySelectorAll('#productsTable tbody tr'), tp = tr.length; si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; tr.forEach(r => { const m = !q || r.textContent.toLowerCase().includes(q); r.style.display = m ? '' : 'none'; if (m) v++ }); rc.textContent = `Showing ${v} of ${tp}` });
         const hb = document.querySelector('.hamburger'), nv = document.querySelector('.nav-links'), nl = document.querySelectorAll('.nav-links li'), cm = document.querySelector('.close-menu'); hb.addEventListener('click', () => { nv.classList.toggle('nav-active'); nl.forEach((l, i) => { l.style.animation = l.style.animation ? '' : `navLinkFade .5s ease forwards ${i / 7 + .3}s` }); hb.classList.toggle('toggle') }); cm.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(l => l.style.animation = '') }); nl.forEach(l => { l.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(x => x.style.animation = '') }) });
-        const lb = document.createElement('div'); lb.className = 'lightbox-overlay'; lb.innerHTML = '<button class="lightbox-close">&times;</button><img>'; document.body.appendChild(lb); lb.addEventListener('click', () => { lb.classList.remove('active') }); document.querySelectorAll('.product-img').forEach(img => { img.addEventListener('click', () => { lb.querySelector('img').src = img.src; lb.classList.add('active') }) });
-        document.querySelectorAll('#productsTable tbody tr').forEach(r => { const n = r.cells[0]?.textContent.trim(); if (n) r.id = n }); const hash = decodeURIComponent(window.location.hash.slice(1)); if (hash) { const tgt = document.getElementById(hash); if (tgt) { window.addEventListener('load', () => { setTimeout(() => { window.scrollTo({ top: tgt.getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' }) }, 100) }); tgt.style.background = 'rgba(127,205,69,.3)'; tgt.style.boxShadow = 'inset 4px 0 0 var(--primary-color)'; tgt.style.transition = 'background 2s,box-shadow 2s'; setTimeout(() => { tgt.style.background = ''; tgt.style.boxShadow = '' }, 5000) } }
+
+        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), cards = document.querySelectorAll('.product-card'), tp = cards.length;
+        si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; cards.forEach(c => { const m = !q || c.textContent.toLowerCase().includes(q); c.style.display = m ? '' : 'none'; if (m) v++ }); rc.textContent = `Showing ${v} of ${tp}` });
+
+        const overlay = document.getElementById('detailOverlay'), closeBtn = document.getElementById('detailClose');
+        function openPopup(card) {
+            document.getElementById('popupImg').src = card.dataset.img;
+            document.getElementById('popupBrand').textContent = card.dataset.brand;
+            document.getElementById('popupCategory').textContent = card.dataset.category;
+            document.getElementById('popupTechnical').textContent = card.dataset.technical;
+            const dosage = card.dataset.dosage, dw = document.getElementById('popupDosageWrap');
+            if (dosage && dosage !== '-') { document.getElementById('popupDosage').textContent = dosage; dw.style.display = '' } else { dw.style.display = 'none' }
+            const fw = document.getElementById('popupFeaturesWrap');
+            try { const f = JSON.parse(card.dataset.features || '[]'); if (f.length) { document.getElementById('popupFeatures').innerHTML = f.map(x => `<li>${x}</li>`).join(''); fw.style.display = '' } else { fw.style.display = 'none' } } catch (e) { fw.style.display = 'none' }
+            document.getElementById('popupPacking').textContent = card.dataset.packing || '-';
+            overlay.classList.add('active'); document.body.style.overflow = 'hidden';
+        }
+        function closePopup() { overlay.classList.remove('active'); document.body.style.overflow = '' }
+        closeBtn.addEventListener('click', closePopup);
+        overlay.addEventListener('click', e => { if (e.target === overlay) closePopup() });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) closePopup() });
+        cards.forEach(card => { card.addEventListener('click', () => openPopup(card)) });
+        const hash = decodeURIComponent(window.location.hash.slice(1));
+        if (hash) { const t = document.querySelector(`.product-card[data-id="${hash}"]`); if (t) { setTimeout(() => openPopup(t), 100) } }
     </script>
 </body>
 

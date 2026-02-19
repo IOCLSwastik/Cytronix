@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cytronix Fungicides - Effective Disease Control for Healthy Crops">
+    <meta name="description" content="Cytronix Fungicides - Premium Crop Protection Solutions for Disease-Free Farming">
     <title>Fungicides - Cytronix</title>
     <link rel="shortcut icon" href="assets/images/cytronix-logo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,8 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent
         }
 
         :root {
@@ -147,7 +148,7 @@
         .page-hero {
             margin-top: 80px;
             padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(3, 43, 64, .9), rgba(0, 143, 133, .85)), url('assets/images/fungicides.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(3, 43, 64, .9), rgba(0, 143, 133, .85)), url('assets/images/plant-growth.jpg') center/cover no-repeat;
             text-align: center;
             color: #fff
         }
@@ -234,108 +235,298 @@
             white-space: nowrap
         }
 
-        .products-section {
+        .products-grid-section {
             padding: 2rem 2rem 4rem;
             background: var(--bg-white)
         }
 
-        .products-table-container {
+        .products-grid {
             max-width: 1200px;
             margin: 0 auto;
-            overflow-x: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem
+        }
+
+        .product-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .06)
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all .3s ease;
+            display: flex;
+            flex-direction: column
         }
 
-        .products-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: .92rem
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .1);
+            border-color: var(--primary-color)
         }
 
-        .products-table thead {
-            background: var(--secondary-color);
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 10
-        }
-
-        .products-table thead th {
-            padding: 1rem 1.2rem;
-            text-align: left;
-            font-weight: 600;
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            right: -32px;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            font-size: .7rem;
+            font-weight: 700;
+            padding: 4px 40px;
+            transform: rotate(45deg);
             text-transform: uppercase;
-            font-size: .8rem;
             letter-spacing: .5px;
-            white-space: nowrap
+            z-index: 2;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .15)
         }
 
-        .products-table tbody tr {
-            border-bottom: 1px solid var(--border-color);
-            transition: background .2s
-        }
-
-        .products-table tbody tr:hover {
-            background: rgba(127, 205, 69, .08)
-        }
-
-        .products-table tbody tr:nth-child(even) {
-            background: var(--bg-gray-light)
-        }
-
-        .products-table tbody tr:nth-child(even):hover {
-            background: rgba(127, 205, 69, .12)
-        }
-
-        .products-table td {
-            padding: .9rem 1.2rem;
-            vertical-align: middle
-        }
-
-        .products-table td:first-child {
-            font-weight: 700;
-            color: var(--primary-color);
-            text-align: center;
-            width: 50px
-        }
-
-        .brand-name {
-            font-weight: 700;
-            color: var(--secondary-color)
-        }
-
-        .product-img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            background: var(--bg-gray-light);
-            display: block
-        }
-
-        .img-placeholder {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            border: 2px dashed var(--border-color);
+        .card-img-wrap {
+            width: 100%;
+            aspect-ratio: 1;
             background: var(--bg-gray-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            color: var(--text-light);
-            font-size: .65rem;
-            text-align: center
+            padding: 1.5rem;
+            overflow: hidden
         }
 
-        .img-placeholder svg {
-            width: 24px;
-            height: 24px;
-            opacity: .4
+        .card-img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform .3s ease
+        }
+
+        .product-card:hover .card-img-wrap img {
+            transform: scale(1.05)
+        }
+
+        .card-body {
+            padding: 1rem 1.2rem 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column
+        }
+
+        .card-brand {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 2px
+        }
+
+        .card-technical {
+            font-size: .85rem;
+            color: var(--text-medium);
+            margin-bottom: .8rem
+        }
+
+        .card-packing-label {
+            font-size: .75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 2px
+        }
+
+        .card-packing {
+            font-size: .82rem;
+            color: var(--text-medium);
+            line-height: 1.4
+        }
+
+        .detail-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(4px);
+            z-index: 90000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease
+        }
+
+        .detail-overlay.active {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .detail-popup {
+            background: var(--bg-white);
+            border-radius: 16px;
+            max-width: 850px;
+            width: 92%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, .3);
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            transform: scale(.92) translateY(20px);
+            transition: transform .3s ease
+        }
+
+        .detail-overlay.active .detail-popup {
+            transform: scale(1) translateY(0)
+        }
+
+        .detail-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--text-medium);
+            cursor: pointer;
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all .3s
+        }
+
+        .detail-close:hover {
+            background: var(--bg-gray-light);
+            transform: rotate(90deg)
+        }
+
+        .detail-img-side {
+            width: 40%;
+            min-height: 300px;
+            background: var(--bg-gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 16px 0 0 16px;
+            flex-shrink: 0
+        }
+
+        .detail-img-side img {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain
+        }
+
+        .detail-content {
+            flex: 1;
+            padding: 2rem 2rem 1.5rem;
+            display: flex;
+            flex-direction: column
+        }
+
+        .detail-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: .4rem;
+            margin-bottom: .3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .detail-category-tag {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: rgba(0, 143, 133, .08);
+            padding: .2rem .8rem;
+            border-radius: 4px
+        }
+
+        .detail-technical {
+            font-size: .95rem;
+            color: var(--text-medium);
+            margin-bottom: 1.2rem
+        }
+
+        .detail-field {
+            margin-bottom: .8rem
+        }
+
+        .detail-field-label {
+            font-weight: 700;
+            font-size: .9rem;
+            color: var(--text-dark);
+            margin-bottom: .2rem
+        }
+
+        .detail-field-value {
+            font-size: .88rem;
+            color: var(--text-medium);
+            line-height: 1.5
+        }
+
+        .detail-features {
+            margin: 0;
+            padding-left: 1.2rem
+        }
+
+        .detail-features li {
+            font-size: .88rem;
+            color: var(--text-medium);
+            margin-bottom: .3rem;
+            line-height: 1.5
+        }
+
+        .detail-packing {
+            margin-top: .5rem;
+            padding-top: .8rem;
+            border-top: 1px solid var(--border-color)
+        }
+
+        .detail-packing-label {
+            font-weight: 700;
+            font-size: .9rem;
+            color: var(--text-dark);
+            display: inline
+        }
+
+        .detail-packing-value {
+            font-size: .9rem;
+            color: var(--text-medium);
+            display: inline;
+            margin-left: .5rem
+        }
+
+        .detail-actions {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: flex-end
+        }
+
+        .btn-inquiry {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            padding: .6rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            font-weight: 600;
+            font-size: .9rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .btn-inquiry:hover {
+            background: transparent;
+            color: var(--accent-color)
         }
 
         .back-to-top {
@@ -484,7 +675,8 @@
 
         a:not([disabled]),
         button:not([disabled]),
-        .btn-contact {
+        .btn-contact,
+        .product-card {
             cursor: url('./assets/cursor/Link.cur'), pointer !important
         }
 
@@ -511,6 +703,12 @@
             background-color: var(--primary-color);
             margin: 5px;
             transition: all .3s ease
+        }
+
+        @media(max-width:1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
         }
 
         @media(max-width:768px) {
@@ -613,17 +811,9 @@
                 font-size: 2rem
             }
 
-            .products-table {
-                font-size: .82rem
-            }
-
-            .products-table thead th {
-                padding: .7rem .8rem;
-                font-size: .7rem
-            }
-
-            .products-table td {
-                padding: .6rem .8rem
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem
             }
 
             .search-container {
@@ -640,10 +830,20 @@
                 max-height: 50px
             }
 
-            .product-img,
-            .img-placeholder {
-                width: 60px;
-                height: 60px
+            .detail-popup {
+                flex-direction: column;
+                max-height: 92vh
+            }
+
+            .detail-img-side {
+                width: 100%;
+                min-height: 200px;
+                border-radius: 16px 16px 0 0;
+                padding: 1.5rem
+            }
+
+            .detail-content {
+                padding: 1.5rem
             }
         }
 
@@ -656,68 +856,14 @@
                 width: 120px
             }
 
-            .product-img,
-            .img-placeholder {
-                width: 50px;
-                height: 50px
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem
             }
-        }
 
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, .9);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all .3s ease;
-            cursor: zoom-out
-        }
-
-        .lightbox-overlay.active {
-            opacity: 1;
-            visibility: visible
-        }
-
-        .lightbox-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
-            transform: scale(.8);
-            transition: transform .3s ease
-        }
-
-        .lightbox-overlay.active img {
-            transform: scale(1)
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 40px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 100000;
-            transition: transform .3s
-        }
-
-        .lightbox-close:hover {
-            transform: rotate(90deg)
-        }
-
-        .product-img {
-            cursor: zoom-in
+            .card-img-wrap {
+                aspect-ratio: 4/3
+            }
         }
     </style>
 </head>
@@ -747,240 +893,255 @@
 
     <section class="page-hero">
         <h1>Our <span>Fungicides</span></h1>
-        <p>Powerful disease control solutions to protect your crops from fungal infections and ensure healthy yields.
-        </p>
+        <p>Premium crop protection solutions to shield your harvest from fungal diseases and maximize yield.</p>
         <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#products">Products</a>
             &nbsp;/&nbsp; Fungicides</div>
-        <div class="product-count">25 Products</div>
+        <div class="product-count">16 Products</div>
     </section>
 
     <section class="search-section">
         <div class="search-container"><input type="search" class="search-input" id="searchInput"
                 placeholder="Search by brand name, technical name..."><span class="result-count"
-                id="resultCount">Showing 25 of 25</span></div>
+                id="resultCount">Showing 16 of 16</span></div>
     </section>
 
-    <section class="products-section fade-in">
-        <div class="products-table-container">
-            <table class="products-table" id="productsTable">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Image</th>
-                        <th>Technical Name</th>
-                        <th>Brand Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Azoxystrobin 2.5% + Thiophanate methyl 11.25% + Thiamethoxam 25% FS</td>
-                        <td class="brand-name">TROCYT IBM</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Azoxystrobin 7.1% + Propiconazole 11.9% SE</td>
-                        <td class="brand-name">PRAXLE IBM</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Azoxystrobin 11% + Tebuconazole 18.3% SC</td>
-                        <td class="brand-name">AZOTEB IBM</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Azoxystrobin 18.2% + Difenoconazole 11.4% SC</td>
-                        <td class="brand-name">AXODIF IBM</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Azoxystrobin 23% SC</td>
-                        <td class="brand-name">NO NEED IBM</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Carbendazim 12% + Mancozeb 63% WP</td>
-                        <td class="brand-name">SCORT</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Carbendazim 46.27% SC</td>
-                        <td class="brand-name">CENVA IBM</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Carbendazim 50% WP</td>
-                        <td class="brand-name">CENVA PLUS</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Copper Oxychloride WG formulation containing 50% COC</td>
-                        <td class="brand-name">COC 50</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Difenoconazole 25% EC</td>
-                        <td class="brand-name">GRIPTEK</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Hexaconazole 4% + Carbendazim 16% SC</td>
-                        <td class="brand-name">ZIMACON IBM</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Hexaconazole 5% EC</td>
-                        <td class="brand-name">HEXOCY</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Hexaconazole 5% SC</td>
-                        <td class="brand-name">HEXOCY PLUS</td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Kasugamycin 6% + Thifluzamide 26% SC</td>
-                        <td class="brand-name">PEXON IBM</td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Mancozeb 75% WP</td>
-                        <td class="brand-name">TROMIC 45</td>
-                    </tr>
-                    <tr>
-                        <td>16</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Metalaxyl 8% + Mancozeb 64% WP</td>
-                        <td class="brand-name">ARMOR</td>
-                    </tr>
-                    <tr>
-                        <td>17</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Metalaxyl 35% WS</td>
-                        <td class="brand-name">RONY 35</td>
-                    </tr>
-                    <tr>
-                        <td>18</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Metalaxyl-M 3.3% + Chlorothalonil 33.1% SC</td>
-                        <td class="brand-name">PROVIA IBM</td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Picoxystrobin 7.05% + Propiconazole 11.71% SC</td>
-                        <td class="brand-name">ALDRIN IBM</td>
-                    </tr>
-                    <tr>
-                        <td>20</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Propiconazole 25% EC</td>
-                        <td class="brand-name">TITLE</td>
-                    </tr>
-                    <tr>
-                        <td>21</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Sulphur 55.16% SC</td>
-                        <td class="brand-name">SUZEX IBM</td>
-                    </tr>
-                    <tr>
-                        <td>22</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Sulphur 80% WDG</td>
-                        <td class="brand-name">SUZEX 80</td>
-                    </tr>
-                    <tr>
-                        <td>23</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Tebuconazole 10% + Sulphur 65% WG</td>
-                        <td class="brand-name">FREEZAR</td>
-                    </tr>
-                    <tr>
-                        <td>24</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Thiophanate Methyl 70% WP</td>
-                        <td class="brand-name">VECTORA</td>
-                    </tr>
-                    <tr>
-                        <td>25</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Ziram 27% SC</td>
-                        <td class="brand-name">ZIRAMEX IBM</td>
-                    </tr>
-                </tbody>
-            </table>
+    <section class="products-grid-section fade-in">
+        <div class="products-grid" id="productsGrid">
+
+            <div class="product-card" data-id="1" data-brand="HEXACON IBM" data-technical="Hexaconazole 5% EC"
+                data-category="Fungicide" data-dosage="2 ml per litre of water"
+                data-features='["Systemic triazole fungicide","Controls powdery mildew, rust, and sheath blight","Effective in rice, mango, grapes, and vegetables","Rapidly absorbed and translocated","Preventive and curative action"]'
+                data-packing="5 Ltr. / 1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="HEXACON IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">HEXACON IBM</div>
+                    <div class="card-technical">Hexaconazole 5% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">5 Ltr., 1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="2" data-brand="HEXACON 5% SC" data-technical="Hexaconazole 5% SC"
+                data-category="Fungicide" data-dosage="2 ml per litre of water"
+                data-features='["Suspension concentrate formulation","Better crop safety than EC formulation","Controls sheath blight in rice","Effective against powdery mildew","Long-lasting protection"]'
+                data-packing="5 Ltr. / 1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="HEXACON 5% SC"></div>
+                <div class="card-body">
+                    <div class="card-brand">HEXACON 5% SC</div>
+                    <div class="card-technical">Hexaconazole 5% SC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">5 Ltr., 1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="3" data-brand="SAAF IBM"
+                data-technical="Carbendazim 12% + Mancozeb 63% WP" data-category="Fungicide"
+                data-dosage="2 - 2.5 gm per litre of water"
+                data-features='["Broad-spectrum combination fungicide","Dual mode of action: systemic + contact","Controls leaf spot, blight, and anthracnose","Suitable for all major crops","Excellent rain fastness"]'
+                data-packing="1 Kg. / 500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SAAF IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">SAAF IBM</div>
+                    <div class="card-technical">Carbendazim 12% + Mancozeb 63% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Kg., 500 gm., 250 gm., 100 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="4" data-brand="BAVISTIN IBM" data-technical="Carbendazim 50% WP"
+                data-category="Fungicide" data-dosage="1 - 2 gm per litre of water"
+                data-features='["Systemic benzimidazole fungicide","Controls a wide range of fungal diseases","Effective seed treatment and foliar application","Used in cereals, pulses, fruits, and vegetables","Excellent compatibility with other pesticides"]'
+                data-packing="1 Kg. / 500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="BAVISTIN IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">BAVISTIN IBM</div>
+                    <div class="card-technical">Carbendazim 50% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Kg., 500 gm., 250 gm., 100 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="5" data-brand="COPPER KING" data-technical="Copper Hydroxide 53.8% DF"
+                data-category="Fungicide" data-dosage="2 - 3 gm per litre of water"
+                data-features='["Contact copper-based fungicide","Controls bacterial and fungal diseases","Effective in citrus, potato, tomato, and grapes","Dry flowable formulation for easy mixing","Protective barrier on plant surface"]'
+                data-packing="1 Kg. / 500 gm. / 250 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="COPPER KING"></div>
+                <div class="card-body">
+                    <div class="card-brand">COPPER KING</div>
+                    <div class="card-technical">Copper Hydroxide 53.8% DF</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Kg., 500 gm., 250 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="6" data-brand="COC IBM" data-technical="Copper Oxychloride 50% WP"
+                data-category="Fungicide" data-dosage="2.5 - 3 gm per litre of water"
+                data-features='["Multi-purpose contact fungicide","Controls downy mildew, late blight, and leaf spot","Widely used in grapes, potato, and vegetables","Protects against bacterial infections","Excellent sticking property on leaves"]'
+                data-packing="1 Kg. / 500 gm. / 250 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="COC IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">COC IBM</div>
+                    <div class="card-technical">Copper Oxychloride 50% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Kg., 500 gm., 250 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="7" data-brand="SIXER IBM" data-technical="Difenoconazole 25% EC"
+                data-category="Fungicide" data-dosage="1 ml per litre of water"
+                data-features='["Broad-spectrum triazole fungicide","Controls early blight, powdery mildew, and tikka disease","Systemic with preventive and curative activity","Effective in tomato, chilli, groundnut, and mango","Excellent rainfastness within 2 hours"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SIXER IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">SIXER IBM</div>
+                    <div class="card-technical">Difenoconazole 25% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="8" data-brand="KASUGAMYCIN IBM" data-technical="Kasugamycin 3% SL"
+                data-category="Fungicide" data-dosage="2 - 2.5 ml per litre of water"
+                data-features='["Antibiotic fungicide derived from natural sources","Controls bacterial leaf blight and blast in rice","Effective against bacterial wilt in vegetables","Systemic action with quick translocation","Safe for beneficial organisms"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="KASUGAMYCIN IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">KASUGAMYCIN IBM</div>
+                    <div class="card-technical">Kasugamycin 3% SL</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="9" data-brand="MANCOZEB IBM" data-technical="Mancozeb 75% WP"
+                data-category="Fungicide" data-dosage="2 - 2.5 gm per litre of water"
+                data-features='["Broad-spectrum contact fungicide","Controls early and late blight, downy mildew","Multi-site mode of action reduces resistance","Contains manganese and zinc for crop nutrition","Used in potato, tomato, grapes, and cucurbits"]'
+                data-packing="1 Kg. / 500 gm. / 250 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="MANCOZEB IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">MANCOZEB IBM</div>
+                    <div class="card-technical">Mancozeb 75% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Kg., 500 gm., 250 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="10" data-brand="SPRINTER IBM"
+                data-technical="Metalaxyl 8% + Mancozeb 64% WP" data-category="Fungicide"
+                data-dosage="2.5 - 3 gm per litre of water"
+                data-features='["Systemic + contact combination fungicide","Controls downy mildew and late blight","Dual protection: curative and preventive","Effective in grapes, potato, and vegetables","Quick absorption and long-lasting activity"]'
+                data-packing="1 Kg. / 500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SPRINTER IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">SPRINTER IBM</div>
+                    <div class="card-technical">Metalaxyl 8% + Mancozeb 64% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Kg., 500 gm., 250 gm., 100 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="11" data-brand="MERGER IBM"
+                data-technical="Tricyclazole 18% + Mancozeb 62% WP" data-category="Fungicide"
+                data-dosage="2 gm per litre of water"
+                data-features='["Combination fungicide for rice blast management","Systemic tricyclazole + contact mancozeb","Controls neck blast, leaf blast, and sheath blight","Dual mode of action for resistance management","Excellent preventive protection"]'
+                data-packing="500 gm. / 250 gm. / 120 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="MERGER IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">MERGER IBM</div>
+                    <div class="card-technical">Tricyclazole 18% + Mancozeb 62% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">500 gm., 250 gm., 120 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="12" data-brand="PROPICONAZOLE IBM" data-technical="Propiconazole 25% EC"
+                data-category="Fungicide" data-dosage="1 ml per litre of water"
+                data-features='["Systemic triazole fungicide","Controls sheath blight and rust diseases","Effective in rice, wheat, and groundnut","Rapidly translocated in plant system","Curative and protective action"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="PROPICONAZOLE IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">PROPICONAZOLE IBM</div>
+                    <div class="card-technical">Propiconazole 25% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="13" data-brand="SULPHUR IBM" data-technical="Sulphur 80% WDG"
+                data-category="Fungicide" data-dosage="2 - 3 gm per litre of water"
+                data-features='["Contact fungicide and acaricide","Controls powdery mildew and mites","Essential micronutrient for crop growth","Water-dispersible granules for easy application","Safe for use in organic farming"]'
+                data-packing="1 Kg. / 500 gm. / 250 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SULPHUR IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">SULPHUR IBM</div>
+                    <div class="card-technical">Sulphur 80% WDG</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Kg., 500 gm., 250 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="14" data-brand="THIOPHANATE IBM"
+                data-technical="Thiophanate Methyl 70% WP" data-category="Fungicide"
+                data-dosage="1 - 2 gm per litre of water"
+                data-features='["Systemic benzimidazole fungicide","Controls sclerotinia, botrytis, and soil-borne diseases","Effective as seed treatment and foliar spray","Used in vegetables, ornamentals, and fruits","Excellent compatibility with other pesticides"]'
+                data-packing="500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="THIOPHANATE IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">THIOPHANATE IBM</div>
+                    <div class="card-technical">Thiophanate Methyl 70% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">500 gm., 250 gm., 100 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="15" data-brand="BEAM IBM" data-technical="Tricyclazole 75% WP"
+                data-category="Fungicide" data-dosage="0.6 gm per litre of water"
+                data-features='["Systemic fungicide specific for rice blast","Controls leaf blast, neck blast, and node blast","Preventive application gives best results","Absorbed quickly by leaves","Most trusted fungicide for rice cultivation"]'
+                data-packing="500 gm. / 250 gm. / 120 gm. / 60 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="BEAM IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">BEAM IBM</div>
+                    <div class="card-technical">Tricyclazole 75% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">500 gm., 250 gm., 120 gm., 60 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="16" data-brand="VALIDAMYCIN IBM" data-technical="Validamycin 3% L"
+                data-category="Fungicide" data-dosage="2 - 2.5 ml per litre of water"
+                data-features='["Antibiotic fungicide for sheath blight control","Effective in rice and other crops","Inhibits growth of Rhizoctonia solani","Systemic action with quick translocation","Safe for the environment and beneficial insects"]'
+                data-packing="5 Ltr. / 1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Fungicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="VALIDAMYCIN IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">VALIDAMYCIN IBM</div>
+                    <div class="card-technical">Validamycin 3% L</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">5 Ltr., 1 Ltr., 500 ml., 250 ml.</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <section class="cta-section">
-        <p>Looking for the right fungicide to protect your crops from disease?</p>
-        <a href="javascript:void(0)" class="back-to-top"
-            onclick="document.querySelector('.aiko-chat-toggle')?.click()">Get Expert Advice</a><br>
+        <p>Need help choosing the right fungicide for your crop disease?</p>
+        <a href="tel:+918238592892" class="back-to-top" style="text-decoration:none;">📞 Get Expert Advice</a><br>
         <a href="index.html#products" class="back-to-top" style="background:var(--secondary-color);color:#fff;">← Back
             to All Products</a>
     </section>
@@ -1013,14 +1174,61 @@
         </div>
     </footer>
 
+    <!-- Detail popup overlay -->
+    <div class="detail-overlay" id="detailOverlay">
+        <div class="detail-popup">
+            <button class="detail-close" id="detailClose">&times;</button>
+            <div class="detail-img-side"><img id="popupImg" src="" alt="Product"></div>
+            <div class="detail-content">
+                <div class="detail-brand"><span id="popupBrand"></span><span class="detail-category-tag"
+                        id="popupCategory"></span></div>
+                <div class="detail-technical" id="popupTechnical"></div>
+                <div class="detail-field" id="popupDosageWrap">
+                    <div class="detail-field-label">Dosage:</div>
+                    <div class="detail-field-value" id="popupDosage"></div>
+                </div>
+                <div class="detail-field" id="popupFeaturesWrap">
+                    <div class="detail-field-label">Features &amp; Benefits:</div>
+                    <ul class="detail-features" id="popupFeatures"></ul>
+                </div>
+                <div class="detail-packing"><span class="detail-packing-label">Packing:</span><span
+                        class="detail-packing-value" id="popupPacking"></span></div>
+                <div class="detail-actions"><a href="tel:+918238592892" class="btn-inquiry"
+                        style="text-decoration:none;">📞 Send Inquiry</a></div>
+            </div>
+        </div>
+    </div>
+
     <script src="Ai.js"></script>
     <script>
         const pb = document.createElement('div'); pb.className = 'scroll-progress'; document.body.prepend(pb); window.addEventListener('scroll', () => { pb.style.width = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%' });
         const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: 0 }); document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), tr = document.querySelectorAll('#productsTable tbody tr'), tp = tr.length; si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; tr.forEach(r => { const m = !q || r.textContent.toLowerCase().includes(q); r.style.display = m ? '' : 'none'; if (m) v++ }); rc.textContent = `Showing ${v} of ${tp}` });
         const hb = document.querySelector('.hamburger'), nv = document.querySelector('.nav-links'), nl = document.querySelectorAll('.nav-links li'), cm = document.querySelector('.close-menu'); hb.addEventListener('click', () => { nv.classList.toggle('nav-active'); nl.forEach((l, i) => { l.style.animation = l.style.animation ? '' : `navLinkFade .5s ease forwards ${i / 7 + .3}s` }); hb.classList.toggle('toggle') }); cm.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(l => l.style.animation = '') }); nl.forEach(l => { l.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(x => x.style.animation = '') }) });
-        const lb = document.createElement('div'); lb.className = 'lightbox-overlay'; lb.innerHTML = '<button class="lightbox-close">&times;</button><img>'; document.body.appendChild(lb); lb.addEventListener('click', () => { lb.classList.remove('active') }); document.querySelectorAll('.product-img').forEach(img => { img.addEventListener('click', () => { lb.querySelector('img').src = img.src; lb.classList.add('active') }) });
-        document.querySelectorAll('#productsTable tbody tr').forEach(r => { const n = r.cells[0]?.textContent.trim(); if (n) r.id = n }); const hash = decodeURIComponent(window.location.hash.slice(1)); if (hash) { const tgt = document.getElementById(hash); if (tgt) { window.addEventListener('load', () => { setTimeout(() => { window.scrollTo({ top: tgt.getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' }) }, 100) }); tgt.style.background = 'rgba(127,205,69,.3)'; tgt.style.boxShadow = 'inset 4px 0 0 var(--primary-color)'; tgt.style.transition = 'background 2s,box-shadow 2s'; setTimeout(() => { tgt.style.background = ''; tgt.style.boxShadow = '' }, 5000) } }
+
+        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), cards = document.querySelectorAll('.product-card'), tp = cards.length;
+        si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; cards.forEach(c => { const m = !q || c.textContent.toLowerCase().includes(q); c.style.display = m ? '' : 'none'; if (m) v++; }); rc.textContent = `Showing ${v} of ${tp}`; });
+
+        const overlay = document.getElementById('detailOverlay');
+        const closeBtn = document.getElementById('detailClose');
+        function openPopup(card) {
+            document.getElementById('popupImg').src = card.dataset.img;
+            document.getElementById('popupBrand').textContent = card.dataset.brand;
+            document.getElementById('popupCategory').textContent = card.dataset.category;
+            document.getElementById('popupTechnical').textContent = card.dataset.technical;
+            const dosage = card.dataset.dosage, dosageWrap = document.getElementById('popupDosageWrap');
+            if (dosage && dosage !== '-') { document.getElementById('popupDosage').textContent = dosage; dosageWrap.style.display = ''; } else { dosageWrap.style.display = 'none'; }
+            const featuresWrap = document.getElementById('popupFeaturesWrap');
+            try { const features = JSON.parse(card.dataset.features || '[]'); if (features.length) { document.getElementById('popupFeatures').innerHTML = features.map(f => `<li>${f}</li>`).join(''); featuresWrap.style.display = ''; } else { featuresWrap.style.display = 'none'; } } catch (e) { featuresWrap.style.display = 'none'; }
+            document.getElementById('popupPacking').textContent = card.dataset.packing || '-';
+            overlay.classList.add('active'); document.body.style.overflow = 'hidden';
+        }
+        function closePopup() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        closeBtn.addEventListener('click', closePopup);
+        overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) closePopup(); });
+        cards.forEach(card => { card.addEventListener('click', () => openPopup(card)); });
+        const hash = decodeURIComponent(window.location.hash.slice(1));
+        if (hash) { const targetCard = document.querySelector(`.product-card[data-id="${hash}"]`); if (targetCard) { setTimeout(() => openPopup(targetCard), 100); } }
     </script>
 </body>
 

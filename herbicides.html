@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cytronix Herbicides - Effective Weed Control Solutions">
+    <meta name="description"
+        content="Cytronix Herbicides - Effective Weed Control Solutions for Maximum Crop Productivity">
     <title>Herbicides - Cytronix</title>
     <link rel="shortcut icon" href="assets/images/cytronix-logo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +15,8 @@
         * {
             margin: 0;
             padding: 0;
-            box-sizing: border-box
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent
         }
 
         :root {
@@ -147,7 +149,7 @@
         .page-hero {
             margin-top: 80px;
             padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(3, 43, 64, .9), rgba(0, 143, 133, .85)), url('assets/images/herbicides.jpg') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(3, 43, 64, .9), rgba(0, 143, 133, .85)), url('assets/images/plant-growth.jpg') center/cover no-repeat;
             text-align: center;
             color: #fff
         }
@@ -234,108 +236,298 @@
             white-space: nowrap
         }
 
-        .products-section {
+        .products-grid-section {
             padding: 2rem 2rem 4rem;
             background: var(--bg-white)
         }
 
-        .products-table-container {
+        .products-grid {
             max-width: 1200px;
             margin: 0 auto;
-            overflow-x: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem
+        }
+
+        .product-card {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, .06)
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all .3s ease;
+            display: flex;
+            flex-direction: column
         }
 
-        .products-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: .92rem
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .1);
+            border-color: var(--primary-color)
         }
 
-        .products-table thead {
-            background: var(--secondary-color);
-            color: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 10
-        }
-
-        .products-table thead th {
-            padding: 1rem 1.2rem;
-            text-align: left;
-            font-weight: 600;
+        .card-badge {
+            position: absolute;
+            top: 16px;
+            right: -32px;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            font-size: .7rem;
+            font-weight: 700;
+            padding: 4px 40px;
+            transform: rotate(45deg);
             text-transform: uppercase;
-            font-size: .8rem;
             letter-spacing: .5px;
-            white-space: nowrap
+            z-index: 2;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .15)
         }
 
-        .products-table tbody tr {
-            border-bottom: 1px solid var(--border-color);
-            transition: background .2s
-        }
-
-        .products-table tbody tr:hover {
-            background: rgba(127, 205, 69, .08)
-        }
-
-        .products-table tbody tr:nth-child(even) {
-            background: var(--bg-gray-light)
-        }
-
-        .products-table tbody tr:nth-child(even):hover {
-            background: rgba(127, 205, 69, .12)
-        }
-
-        .products-table td {
-            padding: .9rem 1.2rem;
-            vertical-align: middle
-        }
-
-        .products-table td:first-child {
-            font-weight: 700;
-            color: var(--primary-color);
-            text-align: center;
-            width: 50px
-        }
-
-        .brand-name {
-            font-weight: 700;
-            color: var(--secondary-color)
-        }
-
-        .product-img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            background: var(--bg-gray-light);
-            display: block
-        }
-
-        .img-placeholder {
-            width: 80px;
-            height: 80px;
-            border-radius: 8px;
-            border: 2px dashed var(--border-color);
+        .card-img-wrap {
+            width: 100%;
+            aspect-ratio: 1;
             background: var(--bg-gray-light);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
-            gap: 4px;
-            color: var(--text-light);
-            font-size: .65rem;
-            text-align: center
+            padding: 1.5rem;
+            overflow: hidden
         }
 
-        .img-placeholder svg {
-            width: 24px;
-            height: 24px;
-            opacity: .4
+        .card-img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform .3s ease
+        }
+
+        .product-card:hover .card-img-wrap img {
+            transform: scale(1.05)
+        }
+
+        .card-body {
+            padding: 1rem 1.2rem 1.2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column
+        }
+
+        .card-brand {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 2px
+        }
+
+        .card-technical {
+            font-size: .85rem;
+            color: var(--text-medium);
+            margin-bottom: .8rem
+        }
+
+        .card-packing-label {
+            font-size: .75rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-style: italic;
+            margin-bottom: 2px
+        }
+
+        .card-packing {
+            font-size: .82rem;
+            color: var(--text-medium);
+            line-height: 1.4
+        }
+
+        .detail-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(4px);
+            z-index: 90000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease
+        }
+
+        .detail-overlay.active {
+            opacity: 1;
+            visibility: visible
+        }
+
+        .detail-popup {
+            background: var(--bg-white);
+            border-radius: 16px;
+            max-width: 850px;
+            width: 92%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, .3);
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            transform: scale(.92) translateY(20px);
+            transition: transform .3s ease
+        }
+
+        .detail-overlay.active .detail-popup {
+            transform: scale(1) translateY(0)
+        }
+
+        .detail-close {
+            position: absolute;
+            top: 12px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--text-medium);
+            cursor: pointer;
+            z-index: 10;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all .3s
+        }
+
+        .detail-close:hover {
+            background: var(--bg-gray-light);
+            transform: rotate(90deg)
+        }
+
+        .detail-img-side {
+            width: 40%;
+            min-height: 300px;
+            background: var(--bg-gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 16px 0 0 16px;
+            flex-shrink: 0
+        }
+
+        .detail-img-side img {
+            max-width: 100%;
+            max-height: 350px;
+            object-fit: contain
+        }
+
+        .detail-content {
+            flex: 1;
+            padding: 2rem 2rem 1.5rem;
+            display: flex;
+            flex-direction: column
+        }
+
+        .detail-brand {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: .4rem;
+            margin-bottom: .3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .detail-category-tag {
+            font-size: .8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: rgba(0, 143, 133, .08);
+            padding: .2rem .8rem;
+            border-radius: 4px
+        }
+
+        .detail-technical {
+            font-size: .95rem;
+            color: var(--text-medium);
+            margin-bottom: 1.2rem
+        }
+
+        .detail-field {
+            margin-bottom: .8rem
+        }
+
+        .detail-field-label {
+            font-weight: 700;
+            font-size: .9rem;
+            color: var(--text-dark);
+            margin-bottom: .2rem
+        }
+
+        .detail-field-value {
+            font-size: .88rem;
+            color: var(--text-medium);
+            line-height: 1.5
+        }
+
+        .detail-features {
+            margin: 0;
+            padding-left: 1.2rem
+        }
+
+        .detail-features li {
+            font-size: .88rem;
+            color: var(--text-medium);
+            margin-bottom: .3rem;
+            line-height: 1.5
+        }
+
+        .detail-packing {
+            margin-top: .5rem;
+            padding-top: .8rem;
+            border-top: 1px solid var(--border-color)
+        }
+
+        .detail-packing-label {
+            font-weight: 700;
+            font-size: .9rem;
+            color: var(--text-dark);
+            display: inline
+        }
+
+        .detail-packing-value {
+            font-size: .9rem;
+            color: var(--text-medium);
+            display: inline;
+            margin-left: .5rem
+        }
+
+        .detail-actions {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            justify-content: flex-end
+        }
+
+        .btn-inquiry {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: var(--accent-color);
+            color: var(--secondary-color);
+            padding: .6rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--accent-color);
+            font-weight: 600;
+            font-size: .9rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .btn-inquiry:hover {
+            background: transparent;
+            color: var(--accent-color)
         }
 
         .back-to-top {
@@ -484,7 +676,8 @@
 
         a:not([disabled]),
         button:not([disabled]),
-        .btn-contact {
+        .btn-contact,
+        .product-card {
             cursor: url('./assets/cursor/Link.cur'), pointer !important
         }
 
@@ -511,6 +704,12 @@
             background-color: var(--primary-color);
             margin: 5px;
             transition: all .3s ease
+        }
+
+        @media(max-width:1024px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr)
+            }
         }
 
         @media(max-width:768px) {
@@ -613,17 +812,9 @@
                 font-size: 2rem
             }
 
-            .products-table {
-                font-size: .82rem
-            }
-
-            .products-table thead th {
-                padding: .7rem .8rem;
-                font-size: .7rem
-            }
-
-            .products-table td {
-                padding: .6rem .8rem
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem
             }
 
             .search-container {
@@ -640,10 +831,20 @@
                 max-height: 50px
             }
 
-            .product-img,
-            .img-placeholder {
-                width: 60px;
-                height: 60px
+            .detail-popup {
+                flex-direction: column;
+                max-height: 92vh
+            }
+
+            .detail-img-side {
+                width: 100%;
+                min-height: 200px;
+                border-radius: 16px 16px 0 0;
+                padding: 1.5rem
+            }
+
+            .detail-content {
+                padding: 1.5rem
             }
         }
 
@@ -656,68 +857,14 @@
                 width: 120px
             }
 
-            .product-img,
-            .img-placeholder {
-                width: 50px;
-                height: 50px
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem
             }
-        }
 
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, .9);
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all .3s ease;
-            cursor: zoom-out
-        }
-
-        .lightbox-overlay.active {
-            opacity: 1;
-            visibility: visible
-        }
-
-        .lightbox-overlay img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, .5);
-            transform: scale(.8);
-            transition: transform .3s ease
-        }
-
-        .lightbox-overlay.active img {
-            transform: scale(1)
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #fff;
-            font-size: 40px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            z-index: 100000;
-            transition: transform .3s
-        }
-
-        .lightbox-close:hover {
-            transform: rotate(90deg)
-        }
-
-        .product-img {
-            cursor: zoom-in
+            .card-img-wrap {
+                aspect-ratio: 4/3
+            }
         }
     </style>
 </head>
@@ -759,131 +906,197 @@
                 id="resultCount">Showing 13 of 13</span></div>
     </section>
 
-    <section class="products-section fade-in">
-        <div class="products-table-container">
-            <table class="products-table" id="productsTable">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Image</th>
-                        <th>Technical Name</th>
-                        <th>Brand Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>2, 4 – D Ethyl Ester 38% EC</td>
-                        <td class="brand-name">D-WEED 38</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Atrazine 50% WP</td>
-                        <td class="brand-name">TREDZON</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Bispyribac-Sodium 10% SC</td>
-                        <td class="brand-name">NOMINE IBM</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Clodinafop Propargyl 15% WP</td>
-                        <td class="brand-name">HAZAR</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Fenoxaprop-P-Ethyl 6.7% EC</td>
-                        <td class="brand-name">PUMA 6.7</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Fenoxaprop-P-Ethyl 6.9% EC</td>
-                        <td class="brand-name">PUMA 6.9</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Imazethapyr 10% SL</td>
-                        <td class="brand-name">THUNDER</td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Metribuzin 70% WP</td>
-                        <td class="brand-name">MATADOR</td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Paraquat Dichloride 24% SL</td>
-                        <td class="brand-name">PROTECTOR</td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Pretilachlor 37% EW</td>
-                        <td class="brand-name">—</td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Propaquizafop 10% EC</td>
-                        <td class="brand-name">SAMURAI</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Quizalofop Ethyl 5% EC</td>
-                        <td class="brand-name">ARROW 5</td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>
-                            <img src="assets/images/antibiotics.jpg" class="product-img" alt="Product Image">
-                        </td>
-                        <td>Sulfosulfuron 75% WG</td>
-                        <td class="brand-name">SWEEPER 75</td>
-                    </tr>
-                </tbody>
-            </table>
+    <section class="products-grid-section fade-in">
+        <div class="products-grid" id="productsGrid">
+
+            <div class="product-card" data-id="1" data-brand="D-WEED 38" data-technical="2, 4 – D Ethyl Ester 38% EC"
+                data-category="Herbicide" data-dosage="1.5 - 2.5 ml per litre of water"
+                data-features='["Selective post-emergence herbicide","Controls broadleaf weeds effectively","Suitable for wheat, rice, sugarcane, and maize","Systemic action for complete weed kill","Cost-effective weed management solution"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="D-WEED 38"></div>
+                <div class="card-body">
+                    <div class="card-brand">D-WEED 38</div>
+                    <div class="card-technical">2, 4 – D Ethyl Ester 38% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="2" data-brand="TREDZON" data-technical="Atrazine 50% WP"
+                data-category="Herbicide" data-dosage="500 gm per acre"
+                data-features='["Pre and post-emergence herbicide","Controls annual broadleaf and grassy weeds","Widely used in sugarcane and maize fields","Long-lasting weed control","Easy to apply as wettable powder"]'
+                data-packing="500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="TREDZON"></div>
+                <div class="card-body">
+                    <div class="card-brand">TREDZON</div>
+                    <div class="card-technical">Atrazine 50% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">500 gm., 250 gm., 100 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="3" data-brand="NOMINE IBM" data-technical="Bispyribac-Sodium 10% SC"
+                data-category="Herbicide" data-dosage="100 ml per acre"
+                data-features='["Post-emergence herbicide for rice","Controls grassy, sedge, and broadleaf weeds","Safe for transplanted and direct-seeded rice","Absorbed through leaves with systemic action","No residual effect on succeeding crops"]'
+                data-packing="500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="NOMINE IBM"></div>
+                <div class="card-body">
+                    <div class="card-brand">NOMINE IBM</div>
+                    <div class="card-technical">Bispyribac-Sodium 10% SC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="4" data-brand="HAZAR" data-technical="Clodinafop Propargyl 15% WP"
+                data-category="Herbicide" data-dosage="160 gm per acre"
+                data-features='["Post-emergence herbicide for wheat","Effective against wild oat and other grassy weeds","Quick absorption and translocation","Does not affect broadleaf crops","Rain-fast within 1-2 hours of application"]'
+                data-packing="500 gm. / 160 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="HAZAR"></div>
+                <div class="card-body">
+                    <div class="card-brand">HAZAR</div>
+                    <div class="card-technical">Clodinafop Propargyl 15% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">500 gm., 160 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="5" data-brand="PUMA 6.7" data-technical="Fenoxaprop-P-Ethyl 6.7% EC"
+                data-category="Herbicide" data-dosage="400 ml per acre"
+                data-features='["Selective post-emergence herbicide","Controls grassy weeds in wheat and rice","Rapid absorption through foliage","Compatible with other herbicides","Safe for broadleaf crops"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="PUMA 6.7"></div>
+                <div class="card-body">
+                    <div class="card-brand">PUMA 6.7</div>
+                    <div class="card-technical">Fenoxaprop-P-Ethyl 6.7% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="6" data-brand="PUMA 6.9" data-technical="Fenoxaprop-P-Ethyl 6.9% EC"
+                data-category="Herbicide" data-dosage="400 ml per acre"
+                data-features='["Enhanced formulation for better weed control","Effective against Phalaris minor and other grasses","Systemic herbicide with quick action","Minimal crop phytotoxicity","Ideal for wheat and barley fields"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="PUMA 6.9"></div>
+                <div class="card-body">
+                    <div class="card-brand">PUMA 6.9</div>
+                    <div class="card-technical">Fenoxaprop-P-Ethyl 6.9% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="7" data-brand="THUNDER" data-technical="Imazethapyr 10% SL"
+                data-category="Herbicide" data-dosage="300 ml per acre"
+                data-features='["Broad-spectrum post-emergence herbicide","Controls grassy and broadleaf weeds","Suitable for soybean, groundnut, and pulses","Absorbed through roots and foliage","Long-lasting residual activity"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="THUNDER"></div>
+                <div class="card-body">
+                    <div class="card-brand">THUNDER</div>
+                    <div class="card-technical">Imazethapyr 10% SL</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="8" data-brand="MATADOR" data-technical="Metribuzin 70% WP"
+                data-category="Herbicide" data-dosage="100 - 150 gm per acre"
+                data-features='["Pre and post-emergence herbicide","Controls a wide range of broadleaf and grassy weeds","Highly effective in soybean, potato, and sugarcane","Absorbed through roots and foliage","Quick knockdown and residual action"]'
+                data-packing="500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="MATADOR"></div>
+                <div class="card-body">
+                    <div class="card-brand">MATADOR</div>
+                    <div class="card-technical">Metribuzin 70% WP</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">500 gm., 250 gm., 100 gm.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="9" data-brand="PROTECTOR" data-technical="Paraquat Dichloride 24% SL"
+                data-category="Herbicide" data-dosage="1 - 1.5 Ltr. per acre"
+                data-features='["Non-selective contact herbicide","Rapid desiccation of green plant tissue","Ideal for pre-planting and inter-row application","Deactivated on contact with soil","Quick acting with visible results in hours"]'
+                data-packing="5 Ltr. / 1 Ltr. / 500 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="PROTECTOR"></div>
+                <div class="card-body">
+                    <div class="card-brand">PROTECTOR</div>
+                    <div class="card-technical">Paraquat Dichloride 24% SL</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">5 Ltr., 1 Ltr., 500 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="10" data-brand="—" data-technical="Pretilachlor 37% EW"
+                data-category="Herbicide" data-dosage="600 ml per acre"
+                data-features='["Pre-emergence herbicide for rice","Controls annual grasses and some broadleaf weeds","Applied after transplanting in paddy fields","Long residual activity in soil","Safe for rice crop at recommended doses"]'
+                data-packing="1 Ltr. / 500 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="Pretilachlor 37% EW"></div>
+                <div class="card-body">
+                    <div class="card-brand">—</div>
+                    <div class="card-technical">Pretilachlor 37% EW</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="11" data-brand="SAMURAI" data-technical="Propaquizafop 10% EC"
+                data-category="Herbicide" data-dosage="300 - 400 ml per acre"
+                data-features='["Post-emergence herbicide for broadleaf crops","Effective against annual and perennial grasses","Systemic action with quick translocation","Safe for soybean, cotton, and groundnut","Flexible application timing"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SAMURAI"></div>
+                <div class="card-body">
+                    <div class="card-brand">SAMURAI</div>
+                    <div class="card-technical">Propaquizafop 10% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="12" data-brand="ARROW 5" data-technical="Quizalofop Ethyl 5% EC"
+                data-category="Herbicide" data-dosage="400 ml per acre"
+                data-features='["Selective post-emergence herbicide","Controls grassy weeds in broadleaf crops","Effective against volunteer cereals in oilseeds","Systemic action through foliage","Suitable for soybean, groundnut, and cotton"]'
+                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="ARROW 5"></div>
+                <div class="card-body">
+                    <div class="card-brand">ARROW 5</div>
+                    <div class="card-technical">Quizalofop Ethyl 5% EC</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-id="13" data-brand="SWEEPER 75" data-technical="Sulfosulfuron 75% WG"
+                data-category="Herbicide" data-dosage="13.3 gm per acre"
+                data-features='["Post-emergence herbicide for wheat","Controls broadleaf and grassy weeds including Phalaris","Long-lasting weed control activity","Applied as foliar spray at 25-35 days after sowing","Water-dispersible granule for easy mixing"]'
+                data-packing="100 gm. / 50 gm. / 13.3 gm." data-img="assets/images/antibiotics.jpg">
+                <div class="card-badge">Herbicide</div>
+                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SWEEPER 75"></div>
+                <div class="card-body">
+                    <div class="card-brand">SWEEPER 75</div>
+                    <div class="card-technical">Sulfosulfuron 75% WG</div>
+                    <div class="card-packing-label">Packing</div>
+                    <div class="card-packing">100 gm., 50 gm., 13.3 gm.</div>
+                </div>
+            </div>
+
         </div>
     </section>
 
     <section class="cta-section">
         <p>Need help choosing the right herbicide for your crop and weed type?</p>
-        <a href="javascript:void(0)" class="back-to-top"
-            onclick="document.querySelector('.aiko-chat-toggle')?.click()">Get Expert Advice</a><br>
+        <a href="tel:+918238592892" class="back-to-top" style="text-decoration:none;">📞 Get Expert Advice</a><br>
         <a href="index.html#products" class="back-to-top" style="background:var(--secondary-color);color:#fff;">← Back
             to All Products</a>
     </section>
@@ -916,14 +1129,61 @@
         </div>
     </footer>
 
+    <!-- Detail popup overlay -->
+    <div class="detail-overlay" id="detailOverlay">
+        <div class="detail-popup">
+            <button class="detail-close" id="detailClose">&times;</button>
+            <div class="detail-img-side"><img id="popupImg" src="" alt="Product"></div>
+            <div class="detail-content">
+                <div class="detail-brand"><span id="popupBrand"></span><span class="detail-category-tag"
+                        id="popupCategory"></span></div>
+                <div class="detail-technical" id="popupTechnical"></div>
+                <div class="detail-field" id="popupDosageWrap">
+                    <div class="detail-field-label">Dosage:</div>
+                    <div class="detail-field-value" id="popupDosage"></div>
+                </div>
+                <div class="detail-field" id="popupFeaturesWrap">
+                    <div class="detail-field-label">Features &amp; Benefits:</div>
+                    <ul class="detail-features" id="popupFeatures"></ul>
+                </div>
+                <div class="detail-packing"><span class="detail-packing-label">Packing:</span><span
+                        class="detail-packing-value" id="popupPacking"></span></div>
+                <div class="detail-actions"><a href="tel:+918238592892" class="btn-inquiry"
+                        style="text-decoration:none;">📞 Send Inquiry</a></div>
+            </div>
+        </div>
+    </div>
+
     <script src="Ai.js"></script>
     <script>
         const pb = document.createElement('div'); pb.className = 'scroll-progress'; document.body.prepend(pb); window.addEventListener('scroll', () => { pb.style.width = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%' });
         const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: 0 }); document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), tr = document.querySelectorAll('#productsTable tbody tr'), tp = tr.length; si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; tr.forEach(r => { const m = !q || r.textContent.toLowerCase().includes(q); r.style.display = m ? '' : 'none'; if (m) v++ }); rc.textContent = `Showing ${v} of ${tp}` });
         const hb = document.querySelector('.hamburger'), nv = document.querySelector('.nav-links'), nl = document.querySelectorAll('.nav-links li'), cm = document.querySelector('.close-menu'); hb.addEventListener('click', () => { nv.classList.toggle('nav-active'); nl.forEach((l, i) => { l.style.animation = l.style.animation ? '' : `navLinkFade .5s ease forwards ${i / 7 + .3}s` }); hb.classList.toggle('toggle') }); cm.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(l => l.style.animation = '') }); nl.forEach(l => { l.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(x => x.style.animation = '') }) });
-        const lb = document.createElement('div'); lb.className = 'lightbox-overlay'; lb.innerHTML = '<button class="lightbox-close">&times;</button><img>'; document.body.appendChild(lb); lb.addEventListener('click', () => { lb.classList.remove('active') }); document.querySelectorAll('.product-img').forEach(img => { img.addEventListener('click', () => { lb.querySelector('img').src = img.src; lb.classList.add('active') }) });
-        document.querySelectorAll('#productsTable tbody tr').forEach(r => { const n = r.cells[0]?.textContent.trim(); if (n) r.id = n }); const hash = decodeURIComponent(window.location.hash.slice(1)); if (hash) { const tgt = document.getElementById(hash); if (tgt) { window.addEventListener('load', () => { setTimeout(() => { window.scrollTo({ top: tgt.getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' }) }, 100) }); tgt.style.background = 'rgba(127,205,69,.3)'; tgt.style.boxShadow = 'inset 4px 0 0 var(--primary-color)'; tgt.style.transition = 'background 2s,box-shadow 2s'; setTimeout(() => { tgt.style.background = ''; tgt.style.boxShadow = '' }, 5000) } }
+
+        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), cards = document.querySelectorAll('.product-card'), tp = cards.length;
+        si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; cards.forEach(c => { const m = !q || c.textContent.toLowerCase().includes(q); c.style.display = m ? '' : 'none'; if (m) v++; }); rc.textContent = `Showing ${v} of ${tp}`; });
+
+        const overlay = document.getElementById('detailOverlay');
+        const closeBtn = document.getElementById('detailClose');
+        function openPopup(card) {
+            document.getElementById('popupImg').src = card.dataset.img;
+            document.getElementById('popupBrand').textContent = card.dataset.brand;
+            document.getElementById('popupCategory').textContent = card.dataset.category;
+            document.getElementById('popupTechnical').textContent = card.dataset.technical;
+            const dosage = card.dataset.dosage, dosageWrap = document.getElementById('popupDosageWrap');
+            if (dosage && dosage !== '-') { document.getElementById('popupDosage').textContent = dosage; dosageWrap.style.display = ''; } else { dosageWrap.style.display = 'none'; }
+            const featuresWrap = document.getElementById('popupFeaturesWrap');
+            try { const features = JSON.parse(card.dataset.features || '[]'); if (features.length) { document.getElementById('popupFeatures').innerHTML = features.map(f => `<li>${f}</li>`).join(''); featuresWrap.style.display = ''; } else { featuresWrap.style.display = 'none'; } } catch (e) { featuresWrap.style.display = 'none'; }
+            document.getElementById('popupPacking').textContent = card.dataset.packing || '-';
+            overlay.classList.add('active'); document.body.style.overflow = 'hidden';
+        }
+        function closePopup() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        closeBtn.addEventListener('click', closePopup);
+        overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) closePopup(); });
+        cards.forEach(card => { card.addEventListener('click', () => openPopup(card)); });
+        const hash = decodeURIComponent(window.location.hash.slice(1));
+        if (hash) { const targetCard = document.querySelector(`.product-card[data-id="${hash}"]`); if (targetCard) { setTimeout(() => openPopup(targetCard), 100); } }
     </script>
 </body>
 
