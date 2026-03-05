@@ -125,7 +125,8 @@
         }
 
         .hamburger,
-        .close-menu {
+        .close-menu,
+        .mobile-logo {
             display: none
         }
 
@@ -730,23 +731,43 @@
                 right: 0;
                 height: 100vh;
                 top: 0;
-                background: #032B40;
+                background: linear-gradient(to bottom, #ffffff 80px, #032B40 80px);
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 80%;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 100%;
+                padding-top: 110px;
+                padding-left: 2.5rem;
                 transform: translateX(100%);
                 transition: transform .4s;
-                box-shadow: -5px 0 30px rgba(0, 0, 0, .3);
+                box-shadow: none;
                 z-index: 9999;
-                border-left: 1px solid rgba(255, 255, 255, .2)
+                border-left: none
+            }
+
+            /* Override SVG color for the white background */
+            .nav-links .close-menu svg {
+                stroke: #000 !important;
             }
 
             .nav-links li {
                 opacity: 0;
                 margin: .8rem 0;
-                list-style: none
+                padding: 0;
+                list-style: none;
+                width: 100%;
+                text-align: left;
+                border-bottom: none
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+                padding: 0;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: .8rem 0;
             }
 
             .close-menu {
@@ -759,8 +780,20 @@
                 z-index: 10000
             }
 
+            .mobile-logo {
+                display: block;
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                height: 35px;
+                /* Adjust as needed */
+                width: auto;
+                z-index: 10000;
+            }
+
             .close-menu svg {
-                transition: transform .3s
+                transition: transform .3s;
+                stroke: #000;
             }
 
             .close-menu:hover svg {
@@ -768,7 +801,7 @@
             }
 
             .nav-links li a {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
                 color: #fff;
                 font-weight: 600;
                 letter-spacing: 1px;
@@ -777,6 +810,23 @@
 
             .nav-links li a:hover {
                 color: var(--accent-color)
+            }
+
+            /* Reset Contact button style to match other links in mobile menu */
+            .nav-links li a.btn-contact {
+                color: #fff;
+                background: none;
+                border: none;
+                padding: 0;
+                font-size: 1.1rem;
+                font-weight: 600;
+                width: auto;
+                display: inline;
+            }
+
+            .nav-links li a.btn-contact:hover {
+                background: none;
+                color: var(--accent-color);
             }
 
             .nav-active {
@@ -877,6 +927,7 @@
                 <div class="line3"></div>
             </div>
             <ul class="nav-links">
+                <img src="assets/images/cytronix-logo.svg" alt="Cytronix Logo" class="mobile-logo">
                 <div class="close-menu"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                         viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -914,7 +965,7 @@
     <footer>
         <div class="footer-main">
             <div class="footer-content">
-                <p>&copy; Copyright 2026 Cytronix - All Rights Reserved</p>
+                <p>&copy; 2026-<span id="short-year"></span> Cytronix - All Rights Reserved</p>
                 <div class="social-links"><a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg"
                             fill="#1877F2" viewBox="0 0 24 24">
                             <path
@@ -935,7 +986,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Made by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
+            <p>Made with ❤️ by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
         </div>
     </footer>
     <div class="detail-overlay" id="detailOverlay">
@@ -966,61 +1017,61 @@
         const PRODUCTS = [
             ["CYTROSILD", "Abamectin 1.9% EC"],
             ["TIGER 75", "Acephate 75% SP"],
-            ["LAUNCHER LD", "Acetamiprid 20% SP"],
-            ["SOLARO IBM", "Betacyfluthrin 8.49% + Imidacloprid 19.81% OD"],
+            ["LAUNCHER", "Acetamiprid 20% SP"],
+            ["SOLARO", "Betacyfluthrin 8.49% + Imidacloprid 19.81% OD"],
             ["FELIX", "Bifenthrin 10% EC"],
             ["ZORIXEM", "Buprofenzin 15% + Acephate 35% WP"],
-            ["BUPRO GOLD IBM", "Buprofezin 25% SC"],
+            ["BUPRO GOLD", "Buprofezin 25% SC"],
             ["CAPTURE 50", "Cartap Hydrochloride 50% SP"],
-            ["CONTRA IBM", "Chlorantraniliprole 9.3% + Lambdacyhalothrin 4.6% ZC"],
+            ["CONTRA", "Chlorantraniliprole 9.3% + Lambdacyhalothrin 4.6% ZC"],
             ["CYTRAZON", "Chlorantraniliprole 18.5% SC"],
             ["CLORIX 50", "Chlorpyrifos 50% EC"],
             ["CLORIX GR", "Chlorpyriphos 10% GR"],
             ["CLORIX 20", "Chlorpyriphos 20% EC"],
             ["ATOM 505", "Chlorpyriphos 50% + Cypermethrin 5% EC"],
-            ["BENEFIT IBM", "Cyantraniliprole 10.26% OD"],
-            ["CLOCKMET IBM", "Cyantraniliprole 19.8% + Thiamethoxam 19.8% FS"],
+            ["BENEFIT", "Cyantraniliprole 10.26% OD"],
+            ["CLOCKMET", "Cyantraniliprole 19.8% + Thiamethoxam 19.8% FS"],
             ["CYPERMET 25", "Cypermethrin 25% EC"],
             ["DIZON", "Deltamethrin 1.8% EC"],
             ["DIZON 11", "Deltamethrin 11% EC"],
-            ["POWER JET IBM", "Diafenthiuron 47% + Bifenthrin 9.4% SC"],
-            ["LINGGER IBM", "Diafenthiuron 47.8% SC"],
+            ["POWER JET", "Diafenthiuron 47% + Bifenthrin 9.4% SC"],
+            ["LINGGER", "Diafenthiuron 47.8% SC"],
             ["LINGGER 50", "Diafenthiuron 50% WP"],
             ["PROGAR", "Dimethoate 30% EC"],
             ["OPTIMUS", "Dinotefuran 15% + Pymetrozine 45% WG"],
             ["DINO 20", "Dinotefuran 20% SG"],
-            ["LARVEXON IBM", "Emamectin Benzoate 1.9% EC"],
+            ["LARVEXON", "Emamectin Benzoate 1.9% EC"],
             ["MECMET", "Emamectin Benzoate 3.0% + Thiamethoxam 12.0% WG"],
             ["PROLAM SG", "Emamectin Benzoate 5% SG"],
             ["REGALOT", "Ethion 40% + Cypermethrin 5% EC"],
             ["ESSAN", "Ethion 50% EC"],
             ["FENO STAR", "Fenobucarb (BPMC) 50% EC"],
             ["DYNAMO 20", "Fenvalerate 20% EC"],
-            ["ABSOLUTE IBM", "Fipronil 4% + Acetamiprid 4% SC"],
-            ["FESTER IBM", "Fipronil 18.87% SC"],
-            ["IPS 40 40", "Fipronil 40% + Imidacloprid 40% WG"],
+            ["ABSOLUTE", "Fipronil 4% + Acetamiprid 4% SC"],
+            ["FESTER", "Fipronil 18.87% SC"],
+            ["IPS 40.40", "Fipronil 40% + Imidacloprid 40% WG"],
             ["FEMIRO", "Flonicamid 50% WG"],
-            ["ZENTRY IBM", "Flubendiamide 8.33% + Deltamethrin 5.56% SC"],
-            ["RANGER IBM", "Flubendiamide 19.92% + Thiacloprid 19.92% SC"],
-            ["ARREST IBM", "Flufenzin 20% SC"],
-            ["IMANEX IBM", "Imidacloprid 17.8% SL"],
-            ["IMANEX PLUS IBM", "Imidacloprid 30.5% SC"],
-            ["IMANEX FS IBM", "Imidacloprid 48% FS"],
+            ["ZENTRY", "Flubendiamide 8.33% + Deltamethrin 5.56% SC"],
+            ["RANGER", "Flubendiamide 19.92% + Thiacloprid 19.92% SC"],
+            ["ARREST", "Flufenzin 20% SC"],
+            ["IMANEX", "Imidacloprid 17.8% SL"],
+            ["IMANEX PLUS", "Imidacloprid 30.5% SC"],
+            ["IMANEX FS", "Imidacloprid 48% FS"],
             ["IMANEX WG", "Imidacloprid 70% WG"],
-            ["IMOZOL IBM", "Imidacloprid 18.5% + Hexaconazole 1.5% FS"],
-            ["CENTURE 4.9 IBM", "Lambdacyhalothrin 4.9% CS"],
-            ["CENTURE PLUS IBM", "Lambdacyhalothrin 5% EC"],
+            ["IMOZOL", "Imidacloprid 18.5% + Hexaconazole 1.5% FS"],
+            ["CENTURE 4.9", "Lambdacyhalothrin 4.9% CS"],
+            ["CENTURE PLUS", "Lambdacyhalothrin 5% EC"],
             ["MALABAR 50", "Malathion 50% EC"],
             ["KREDOK", "Novaluron 5.25% + Indoxacarb 4.5% SC"],
             ["PROXY SUPER", "Profenofos 40% + Cypermethrin 4% EC"],
             ["MAJOR 50", "Pymetrozine 50% WG"],
-            ["ASTER 525 IBM", "Pyriproxyfen 5% + Diafenthiuron 25% SE"],
+            ["ASTER 525", "Pyriproxyfen 5% + Diafenthiuron 25% SE"],
             ["CLUSTER", "Pyriproxyfen 10% EC"],
             ["QUINTOK", "Quinalphos 25% EC"],
-            ["SPINOTRIX IBM", "Spinosad 45% SC"],
-            ["RADAR IBM", "Thiamethoxam 12.6% + Lambda-Cyhalothrin 9.5% ZC"],
+            ["SPINOTRIX", "Spinosad 45% SC"],
+            ["RADAR", "Thiamethoxam 12.6% + Lambda-Cyhalothrin 9.5% ZC"],
             ["LOCKER", "Thiamethoxam 25% WG"],
-            ["LOCKER FS IBM", "Thiamethoxam 30% FS"],
+            ["LOCKER FS", "Thiamethoxam 30% FS"],
             ["LOCKER 75", "Thiamethoxam 75% SG"]
         ];
         const grid = document.getElementById('productsGrid');
@@ -1060,6 +1111,12 @@
         cards.forEach(card => { card.addEventListener('click', () => openPopup(card)) });
         const hash = decodeURIComponent(window.location.hash.slice(1));
         if (hash) { const t = document.querySelector(`.product-card[data-id="${hash}"]`); if (t) { setTimeout(() => openPopup(t), 100) } }
+
+        // Footnote Year
+        const fullYear = new Date().getFullYear().toString();
+        const shortYear = fullYear.slice(-2);
+        const shortYearElement = document.getElementById("short-year");
+        if (shortYearElement) shortYearElement.textContent = shortYear;
     </script>
 </body>
 

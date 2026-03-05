@@ -126,7 +126,8 @@
         }
 
         .hamburger,
-        .close-menu {
+        .close-menu,
+        .mobile-logo {
             display: none
         }
 
@@ -731,23 +732,43 @@
                 right: 0;
                 height: 100vh;
                 top: 0;
-                background: #032B40;
+                background: linear-gradient(to bottom, #ffffff 80px, #032B40 80px);
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 80%;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 100%;
+                padding-top: 110px;
+                padding-left: 2.5rem;
                 transform: translateX(100%);
                 transition: transform .4s;
-                box-shadow: -5px 0 30px rgba(0, 0, 0, .3);
+                box-shadow: none;
                 z-index: 9999;
-                border-left: 1px solid rgba(255, 255, 255, .2)
+                border-left: none
+            }
+
+            /* Override SVG color for the white background */
+            .nav-links .close-menu svg {
+                stroke: #000 !important;
             }
 
             .nav-links li {
                 opacity: 0;
                 margin: .8rem 0;
-                list-style: none
+                padding: 0;
+                list-style: none;
+                width: 100%;
+                text-align: left;
+                border-bottom: none
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+                padding: 0;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: .8rem 0;
             }
 
             .close-menu {
@@ -760,8 +781,20 @@
                 z-index: 10000
             }
 
+            .mobile-logo {
+                display: block;
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                height: 35px;
+                /* Adjust as needed */
+                width: auto;
+                z-index: 10000;
+            }
+
             .close-menu svg {
-                transition: transform .3s
+                transition: transform .3s;
+                stroke: #000;
             }
 
             .close-menu:hover svg {
@@ -769,7 +802,7 @@
             }
 
             .nav-links li a {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
                 color: #fff;
                 font-weight: 600;
                 letter-spacing: 1px;
@@ -778,6 +811,23 @@
 
             .nav-links li a:hover {
                 color: var(--accent-color)
+            }
+
+            /* Reset Contact button style to match other links in mobile menu */
+            .nav-links li a.btn-contact {
+                color: #fff;
+                background: none;
+                border: none;
+                padding: 0;
+                font-size: 1.1rem;
+                font-weight: 600;
+                width: auto;
+                display: inline;
+            }
+
+            .nav-links li a.btn-contact:hover {
+                background: none;
+                color: var(--accent-color);
             }
 
             .nav-active {
@@ -878,6 +928,7 @@
                 <div class="line3"></div>
             </div>
             <ul class="nav-links">
+                <img src="assets/images/cytronix-logo.svg" alt="Cytronix Logo" class="mobile-logo">
                 <div class="close-menu"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                         viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -907,191 +958,7 @@
     </section>
 
     <section class="products-grid-section fade-in">
-        <div class="products-grid" id="productsGrid">
-
-            <div class="product-card" data-id="1" data-brand="D-WEED 38" data-technical="2, 4 – D Ethyl Ester 38% EC"
-                data-category="Herbicide" data-dosage="1.5 - 2.5 ml per litre of water"
-                data-features='["Selective post-emergence herbicide","Controls broadleaf weeds effectively","Suitable for wheat, rice, sugarcane, and maize","Systemic action for complete weed kill","Cost-effective weed management solution"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="D-WEED 38"></div>
-                <div class="card-body">
-                    <div class="card-brand">D-WEED 38</div>
-                    <div class="card-technical">2, 4 – D Ethyl Ester 38% EC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="2" data-brand="TREDZON" data-technical="Atrazine 50% WP"
-                data-category="Herbicide" data-dosage="500 gm per acre"
-                data-features='["Pre and post-emergence herbicide","Controls annual broadleaf and grassy weeds","Widely used in sugarcane and maize fields","Long-lasting weed control","Easy to apply as wettable powder"]'
-                data-packing="500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="TREDZON"></div>
-                <div class="card-body">
-                    <div class="card-brand">TREDZON</div>
-                    <div class="card-technical">Atrazine 50% WP</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">500 gm., 250 gm., 100 gm.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="3" data-brand="NOMINE IBM" data-technical="Bispyribac-Sodium 10% SC"
-                data-category="Herbicide" data-dosage="100 ml per acre"
-                data-features='["Post-emergence herbicide for rice","Controls grassy, sedge, and broadleaf weeds","Safe for transplanted and direct-seeded rice","Absorbed through leaves with systemic action","No residual effect on succeeding crops"]'
-                data-packing="500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="NOMINE IBM"></div>
-                <div class="card-body">
-                    <div class="card-brand">NOMINE IBM</div>
-                    <div class="card-technical">Bispyribac-Sodium 10% SC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="4" data-brand="HAZAR" data-technical="Clodinafop Propargyl 15% WP"
-                data-category="Herbicide" data-dosage="160 gm per acre"
-                data-features='["Post-emergence herbicide for wheat","Effective against wild oat and other grassy weeds","Quick absorption and translocation","Does not affect broadleaf crops","Rain-fast within 1-2 hours of application"]'
-                data-packing="500 gm. / 160 gm." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="HAZAR"></div>
-                <div class="card-body">
-                    <div class="card-brand">HAZAR</div>
-                    <div class="card-technical">Clodinafop Propargyl 15% WP</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">500 gm., 160 gm.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="5" data-brand="PUMA 6.7" data-technical="Fenoxaprop-P-Ethyl 6.7% EC"
-                data-category="Herbicide" data-dosage="400 ml per acre"
-                data-features='["Selective post-emergence herbicide","Controls grassy weeds in wheat and rice","Rapid absorption through foliage","Compatible with other herbicides","Safe for broadleaf crops"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="PUMA 6.7"></div>
-                <div class="card-body">
-                    <div class="card-brand">PUMA 6.7</div>
-                    <div class="card-technical">Fenoxaprop-P-Ethyl 6.7% EC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="6" data-brand="PUMA 6.9" data-technical="Fenoxaprop-P-Ethyl 6.9% EC"
-                data-category="Herbicide" data-dosage="400 ml per acre"
-                data-features='["Enhanced formulation for better weed control","Effective against Phalaris minor and other grasses","Systemic herbicide with quick action","Minimal crop phytotoxicity","Ideal for wheat and barley fields"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="PUMA 6.9"></div>
-                <div class="card-body">
-                    <div class="card-brand">PUMA 6.9</div>
-                    <div class="card-technical">Fenoxaprop-P-Ethyl 6.9% EC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="7" data-brand="THUNDER" data-technical="Imazethapyr 10% SL"
-                data-category="Herbicide" data-dosage="300 ml per acre"
-                data-features='["Broad-spectrum post-emergence herbicide","Controls grassy and broadleaf weeds","Suitable for soybean, groundnut, and pulses","Absorbed through roots and foliage","Long-lasting residual activity"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="THUNDER"></div>
-                <div class="card-body">
-                    <div class="card-brand">THUNDER</div>
-                    <div class="card-technical">Imazethapyr 10% SL</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="8" data-brand="MATADOR" data-technical="Metribuzin 70% WP"
-                data-category="Herbicide" data-dosage="100 - 150 gm per acre"
-                data-features='["Pre and post-emergence herbicide","Controls a wide range of broadleaf and grassy weeds","Highly effective in soybean, potato, and sugarcane","Absorbed through roots and foliage","Quick knockdown and residual action"]'
-                data-packing="500 gm. / 250 gm. / 100 gm." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="MATADOR"></div>
-                <div class="card-body">
-                    <div class="card-brand">MATADOR</div>
-                    <div class="card-technical">Metribuzin 70% WP</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">500 gm., 250 gm., 100 gm.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="9" data-brand="PROTECTOR" data-technical="Paraquat Dichloride 24% SL"
-                data-category="Herbicide" data-dosage="1 - 1.5 Ltr. per acre"
-                data-features='["Non-selective contact herbicide","Rapid desiccation of green plant tissue","Ideal for pre-planting and inter-row application","Deactivated on contact with soil","Quick acting with visible results in hours"]'
-                data-packing="5 Ltr. / 1 Ltr. / 500 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="PROTECTOR"></div>
-                <div class="card-body">
-                    <div class="card-brand">PROTECTOR</div>
-                    <div class="card-technical">Paraquat Dichloride 24% SL</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">5 Ltr., 1 Ltr., 500 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="10" data-brand="—" data-technical="Pretilachlor 37% EW"
-                data-category="Herbicide" data-dosage="600 ml per acre"
-                data-features='["Pre-emergence herbicide for rice","Controls annual grasses and some broadleaf weeds","Applied after transplanting in paddy fields","Long residual activity in soil","Safe for rice crop at recommended doses"]'
-                data-packing="1 Ltr. / 500 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="Pretilachlor 37% EW"></div>
-                <div class="card-body">
-                    <div class="card-brand">—</div>
-                    <div class="card-technical">Pretilachlor 37% EW</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="11" data-brand="SAMURAI" data-technical="Propaquizafop 10% EC"
-                data-category="Herbicide" data-dosage="300 - 400 ml per acre"
-                data-features='["Post-emergence herbicide for broadleaf crops","Effective against annual and perennial grasses","Systemic action with quick translocation","Safe for soybean, cotton, and groundnut","Flexible application timing"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SAMURAI"></div>
-                <div class="card-body">
-                    <div class="card-brand">SAMURAI</div>
-                    <div class="card-technical">Propaquizafop 10% EC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="12" data-brand="ARROW 5" data-technical="Quizalofop Ethyl 5% EC"
-                data-category="Herbicide" data-dosage="400 ml per acre"
-                data-features='["Selective post-emergence herbicide","Controls grassy weeds in broadleaf crops","Effective against volunteer cereals in oilseeds","Systemic action through foliage","Suitable for soybean, groundnut, and cotton"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="ARROW 5"></div>
-                <div class="card-body">
-                    <div class="card-brand">ARROW 5</div>
-                    <div class="card-technical">Quizalofop Ethyl 5% EC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="13" data-brand="SWEEPER 75" data-technical="Sulfosulfuron 75% WG"
-                data-category="Herbicide" data-dosage="13.3 gm per acre"
-                data-features='["Post-emergence herbicide for wheat","Controls broadleaf and grassy weeds including Phalaris","Long-lasting weed control activity","Applied as foliar spray at 25-35 days after sowing","Water-dispersible granule for easy mixing"]'
-                data-packing="100 gm. / 50 gm. / 13.3 gm." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">Herbicide</div>
-                <div class="card-img-wrap"><img src="assets/images/antibiotics.jpg" alt="SWEEPER 75"></div>
-                <div class="card-body">
-                    <div class="card-brand">SWEEPER 75</div>
-                    <div class="card-technical">Sulfosulfuron 75% WG</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">100 gm., 50 gm., 13.3 gm.</div>
-                </div>
-            </div>
-
-        </div>
+        <div class="products-grid" id="productsGrid"></div>
     </section>
 
     <section class="cta-section">
@@ -1104,7 +971,7 @@
     <footer>
         <div class="footer-main">
             <div class="footer-content">
-                <p>&copy; Copyright 2026 Cytronix - All Rights Reserved</p>
+                <p>&copy; 2026-<span id="short-year"></span> Cytronix - All Rights Reserved</p>
                 <div class="social-links"><a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg"
                             fill="#1877F2" viewBox="0 0 24 24">
                             <path
@@ -1125,11 +992,10 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Made by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
+            <p>Made with ❤️ by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
         </div>
     </footer>
 
-    <!-- Detail popup overlay -->
     <div class="detail-overlay" id="detailOverlay">
         <div class="detail-popup">
             <button class="detail-close" id="detailClose">&times;</button>
@@ -1156,6 +1022,31 @@
 
     <script src="Ai.js"></script>
     <script>
+        const PRODUCTS = [
+            ["WEEDRON", "2,4-D amine salt 58% SL"],
+            ["CYTRO 71", "Ammonium Salt of Glyphosate 71% SG"],
+            ["ZENTROL", "Atrazine 50% WP"],
+            ["CLOVA", "Clodinafop Propargyl 15% WP"],
+            ["CYTRO GLY", "Glyphosate 41% SL"],
+            ["CTROMAZE", "Imazethapyr 10% SL"],
+            ["CTROMAZE 70", "Imazethapyr 70% WG"],
+            ["OXYTO", "Oxyflourfen 23.5% EC"],
+            ["PARANIX", "Paraquat Dichloride 24% SL"],
+            ["PENDINIX 30", "Pendimethalin 30% EC"],
+            ["PENDINIX SUPER", "Pendimethalin 38.4% + Pyrazosulfuron Ethyl 0.85% ZC"],
+            ["TARBOT SUPER", "Quizalofop Ethyl 10% EC"],
+            ["TORREX", "Quizalofop Ethyl 7.5% + Imazethapyr 15% EC"]
+        ];
+        const grid = document.getElementById('productsGrid');
+        PRODUCTS.forEach((p, i) => {
+            const id = i + 1, brand = p[0], tech = p[1], img = "assets/images/antibiotics.jpg";
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.dataset.id = id; card.dataset.brand = brand; card.dataset.technical = tech; card.dataset.category = 'Herbicide'; card.dataset.dosage = '-'; card.dataset.features = '[]'; card.dataset.packing = '-'; card.dataset.img = img;
+            card.innerHTML = `<div class="card-badge">Herbicide</div><div class="card-img-wrap"><img src="${img}" alt="${brand}"></div><div class="card-body"><div class="card-brand">${brand}</div><div class="card-technical">${tech}</div></div>`;
+            grid.appendChild(card);
+        });
+
         const pb = document.createElement('div'); pb.className = 'scroll-progress'; document.body.prepend(pb); window.addEventListener('scroll', () => { pb.style.width = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%' });
         const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: 0 }); document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
         const hb = document.querySelector('.hamburger'), nv = document.querySelector('.nav-links'), nl = document.querySelectorAll('.nav-links li'), cm = document.querySelector('.close-menu'); hb.addEventListener('click', () => { nv.classList.toggle('nav-active'); nl.forEach((l, i) => { l.style.animation = l.style.animation ? '' : `navLinkFade .5s ease forwards ${i / 7 + .3}s` }); hb.classList.toggle('toggle') }); cm.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(l => l.style.animation = '') }); nl.forEach(l => { l.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(x => x.style.animation = '') }) });
@@ -1184,6 +1075,12 @@
         cards.forEach(card => { card.addEventListener('click', () => openPopup(card)); });
         const hash = decodeURIComponent(window.location.hash.slice(1));
         if (hash) { const targetCard = document.querySelector(`.product-card[data-id="${hash}"]`); if (targetCard) { setTimeout(() => openPopup(targetCard), 100); } }
+
+        // Footnote Year
+        const fullYear = new Date().getFullYear().toString();
+        const shortYear = fullYear.slice(-2);
+        const shortYearElement = document.getElementById("short-year");
+        if (shortYearElement) shortYearElement.textContent = shortYear;
     </script>
 </body>
 

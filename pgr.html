@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cytronix PGR - Plant Growth Regulators for Enhanced Crop Performance">
-    <title>Plant Growth Regulators - Cytronix</title>
+    <meta name="description" content="Cytronix PGR - Plant Growth Regulators for Enhanced Crop Growth and Development">
+    <title>PGR - Cytronix</title>
     <link rel="shortcut icon" href="assets/images/cytronix-logo.svg" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,7 +125,8 @@
         }
 
         .hamburger,
-        .close-menu {
+        .close-menu,
+        .mobile-logo {
             display: none
         }
 
@@ -196,7 +197,6 @@
             margin-top: 1rem
         }
 
-        /* Search */
         .search-section {
             padding: 2rem 2rem 0;
             background: var(--bg-white)
@@ -236,7 +236,6 @@
             white-space: nowrap
         }
 
-        /* ===== PRODUCT CARD GRID ===== */
         .products-grid-section {
             padding: 2rem 2rem 4rem;
             background: var(--bg-white)
@@ -340,7 +339,6 @@
             line-height: 1.4
         }
 
-        /* ===== PRODUCT DETAIL POPUP ===== */
         .detail-overlay {
             position: fixed;
             inset: 0;
@@ -532,7 +530,6 @@
             color: var(--accent-color)
         }
 
-        /* General */
         .back-to-top {
             display: inline-flex;
             align-items: center;
@@ -734,23 +731,43 @@
                 right: 0;
                 height: 100vh;
                 top: 0;
-                background: #032B40;
+                background: linear-gradient(to bottom, #ffffff 80px, #032B40 80px);
                 display: flex;
                 flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                width: 80%;
+                align-items: flex-start;
+                justify-content: flex-start;
+                width: 100%;
+                padding-top: 110px;
+                padding-left: 2.5rem;
                 transform: translateX(100%);
                 transition: transform .4s;
-                box-shadow: -5px 0 30px rgba(0, 0, 0, .3);
+                box-shadow: none;
                 z-index: 9999;
-                border-left: 1px solid rgba(255, 255, 255, .2)
+                border-left: none
+            }
+
+            /* Override SVG color for the white background */
+            .nav-links .close-menu svg {
+                stroke: #000 !important;
             }
 
             .nav-links li {
                 opacity: 0;
                 margin: .8rem 0;
-                list-style: none
+                padding: 0;
+                list-style: none;
+                width: 100%;
+                text-align: left;
+                border-bottom: none
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+                padding: 0;
+                display: block;
+                text-align: left;
+                width: 100%;
+                margin: .8rem 0;
             }
 
             .close-menu {
@@ -763,8 +780,20 @@
                 z-index: 10000
             }
 
+            .mobile-logo {
+                display: block;
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                height: 35px;
+                /* Adjust as needed */
+                width: auto;
+                z-index: 10000;
+            }
+
             .close-menu svg {
-                transition: transform .3s
+                transition: transform .3s;
+                stroke: #000;
             }
 
             .close-menu:hover svg {
@@ -772,7 +801,7 @@
             }
 
             .nav-links li a {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
                 color: #fff;
                 font-weight: 600;
                 letter-spacing: 1px;
@@ -781,6 +810,23 @@
 
             .nav-links li a:hover {
                 color: var(--accent-color)
+            }
+
+            /* Reset Contact button style to match other links in mobile menu */
+            .nav-links li a.btn-contact {
+                color: #fff;
+                background: none;
+                border: none;
+                padding: 0;
+                font-size: 1.1rem;
+                font-weight: 600;
+                width: auto;
+                display: inline;
+            }
+
+            .nav-links li a.btn-contact:hover {
+                background: none;
+                color: var(--accent-color);
             }
 
             .nav-active {
@@ -881,6 +927,7 @@
                 <div class="line3"></div>
             </div>
             <ul class="nav-links">
+                <img src="assets/images/cytronix-logo.svg" alt="Cytronix Logo" class="mobile-logo">
                 <div class="close-menu"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"
                         viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -896,8 +943,8 @@
     </header>
 
     <section class="page-hero">
-        <h1>Plant <span>Growth Regulators</span></h1>
-        <p>Advanced growth regulation solutions to enhance plant health, yield potential, and overall crop quality.</p>
+        <h1>Our <span>PGR</span></h1>
+        <p>Advanced plant growth regulators to optimize crop development, flowering, and fruit setting.</p>
         <div class="breadcrumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="index.html#products">Products</a>
             &nbsp;/&nbsp; PGR</div>
         <div class="product-count">7 Products</div>
@@ -910,126 +957,11 @@
     </section>
 
     <section class="products-grid-section fade-in">
-        <div class="products-grid" id="productsGrid">
-
-            <div class="product-card" data-id="1" data-brand="RAPID" data-technical="Ethephon 39% SL"
-                data-category="PGR" data-dosage="1.5 - 2 ml per litre of water"
-                data-features='["Rapid promotes uniform ripening of fruits","Enhances color development in crops","Effective in breaking dormancy of buds","Improves the quality and shelf life of produce","Widely used for cotton, mango, pineapple, and sugarcane"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">PGR</div>
-                <div class="card-img-wrap">
-                    <img src="assets/images/antibiotics.jpg" alt="RAPID">
-                </div>
-                <div class="card-body">
-                    <div class="card-brand">RAPID</div>
-                    <div class="card-technical">Ethephon 39% SL</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="2" data-brand="PROTON PLUS IBM"
-                data-technical="Gibberellic Acid 0.001% L" data-category="PGR" data-dosage="2 - 3 ml per litre of water"
-                data-features='["Promotes cell elongation and plant growth","Enhances flowering and fruit setting","Improves seed germination rate","Breaks seed and bud dormancy","Suitable for grapes, paddy, vegetables, and ornamental plants"]'
-                data-packing="5 Ltr. / 1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">PGR</div>
-                <div class="card-img-wrap">
-                    <img src="assets/images/antibiotics.jpg" alt="PROTON PLUS IBM">
-                </div>
-                <div class="card-body">
-                    <div class="card-brand">PROTON PLUS IBM</div>
-                    <div class="card-technical">Gibberellic Acid 0.001% L</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">5 Ltr., 1 Ltr., 500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="3" data-brand="PROTON" data-technical="Gibberellic Acid 40% WSG"
-                data-category="PGR" data-dosage="1 gm per 10 litres of water"
-                data-features='["Highly concentrated growth promoter","Stimulates shoot and internode elongation","Improves berry size in grapes","Enhances vegetative growth in crops","Used in grapes, rice, sugarcane, and tea"]'
-                data-packing="10 gm. / 5 gm. / 1 gm." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">PGR</div>
-                <div class="card-img-wrap">
-                    <img src="assets/images/antibiotics.jpg" alt="PROTON">
-                </div>
-                <div class="card-body">
-                    <div class="card-brand">PROTON</div>
-                    <div class="card-technical">Gibberellic Acid 40% WSG</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">10 gm., 5 gm., 1 gm.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="4" data-brand="CULTAR IBM" data-technical="Paclobutrazol 23% SC"
-                data-category="PGR" data-dosage="5 - 10 ml per litre of water (soil drench)"
-                data-features='["Controls excessive vegetative growth","Induces early and uniform flowering in mango","Improves fruit yield and quality","Effective as a soil drench application","Recommended for mango and other fruit crops"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">PGR</div>
-                <div class="card-img-wrap">
-                    <img src="assets/images/antibiotics.jpg" alt="CULTAR IBM">
-                </div>
-                <div class="card-body">
-                    <div class="card-brand">CULTAR IBM</div>
-                    <div class="card-technical">Paclobutrazol 23% SC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="5" data-brand="CULTAR 40 IBM" data-technical="Paclobutrazol 40% SC"
-                data-category="PGR" data-dosage="3 - 6 ml per litre of water (soil drench)"
-                data-features='["Higher concentration for enhanced growth regulation","Induces profuse flowering in mango trees","Controls canopy size for better management","Improves fruit size and quality","Ideal for soil application in fruit orchards"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">PGR</div>
-                <div class="card-img-wrap">
-                    <img src="assets/images/antibiotics.jpg" alt="CULTAR 40 IBM">
-                </div>
-                <div class="card-body">
-                    <div class="card-brand">CULTAR 40 IBM</div>
-                    <div class="card-technical">Paclobutrazol 40% SC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="6" data-brand="SUPERGROW"
-                data-technical="Seaweed Extract 15% + Humic Acid 5%" data-category="PGR"
-                data-dosage="2 - 3 ml per litre of water"
-                data-features='["Organic-based plant growth stimulant","Enhances root development and nutrient uptake","Improves soil health and microbial activity","Boosts crop immunity and stress tolerance","Suitable for all crops via foliar and soil application"]'
-                data-packing="5 Ltr. / 1 Ltr. / 500 ml. / 250 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">PGR</div>
-                <div class="card-img-wrap">
-                    <img src="assets/images/antibiotics.jpg" alt="SUPERGROW">
-                </div>
-                <div class="card-body">
-                    <div class="card-brand">SUPERGROW</div>
-                    <div class="card-technical">Seaweed Extract 15% + Humic Acid 5%</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">5 Ltr., 1 Ltr., 500 ml., 250 ml.</div>
-                </div>
-            </div>
-
-            <div class="product-card" data-id="7" data-brand="TRIAC PLUS" data-technical="Triacontanol 0.05% EC"
-                data-category="PGR" data-dosage="2 ml per litre of water"
-                data-features='["Natural growth promoter derived from plant waxes","Enhances photosynthesis and chlorophyll content","Improves crop yield by 15-20%","Promotes root growth and nutrient absorption","Can be used on all crops at any growth stage"]'
-                data-packing="1 Ltr. / 500 ml. / 250 ml. / 100 ml." data-img="assets/images/antibiotics.jpg">
-                <div class="card-badge">PGR</div>
-                <div class="card-img-wrap">
-                    <img src="assets/images/antibiotics.jpg" alt="TRIAC PLUS">
-                </div>
-                <div class="card-body">
-                    <div class="card-brand">TRIAC PLUS</div>
-                    <div class="card-technical">Triacontanol 0.05% EC</div>
-                    <div class="card-packing-label">Packing</div>
-                    <div class="card-packing">1 Ltr., 500 ml., 250 ml., 100 ml.</div>
-                </div>
-            </div>
-
-        </div>
+        <div class="products-grid" id="productsGrid"></div>
     </section>
 
     <section class="cta-section">
-        <p>Need guidance on the right growth regulator for your crops?</p>
+        <p>Need help choosing the right plant growth regulator for your crop?</p>
         <a href="tel:+918238592892" class="back-to-top" style="text-decoration:none;">📞 Get Expert Advice</a><br>
         <a href="index.html#products" class="back-to-top" style="background:var(--secondary-color);color:#fff;">← Back
             to All Products</a>
@@ -1038,7 +970,7 @@
     <footer>
         <div class="footer-main">
             <div class="footer-content">
-                <p>&copy; Copyright 2026 Cytronix - All Rights Reserved</p>
+                <p>&copy; 2026-<span id="short-year"></span> Cytronix - All Rights Reserved</p>
                 <div class="social-links"><a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg"
                             fill="#1877F2" viewBox="0 0 24 24">
                             <path
@@ -1059,22 +991,17 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>Made by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
+            <p>Made with ❤️ by <a href="https://aozoradesu.com" target="_blank">Aozora</a></p>
         </div>
     </footer>
 
-    <!-- Detail popup overlay -->
     <div class="detail-overlay" id="detailOverlay">
         <div class="detail-popup">
             <button class="detail-close" id="detailClose">&times;</button>
-            <div class="detail-img-side">
-                <img id="popupImg" src="" alt="Product">
-            </div>
+            <div class="detail-img-side"><img id="popupImg" src="" alt="Product"></div>
             <div class="detail-content">
-                <div class="detail-brand">
-                    <span id="popupBrand"></span>
-                    <span class="detail-category-tag" id="popupCategory"></span>
-                </div>
+                <div class="detail-brand"><span id="popupBrand"></span><span class="detail-category-tag"
+                        id="popupCategory"></span></div>
                 <div class="detail-technical" id="popupTechnical"></div>
                 <div class="detail-field" id="popupDosageWrap">
                     <div class="detail-field-label">Dosage:</div>
@@ -1084,101 +1011,69 @@
                     <div class="detail-field-label">Features &amp; Benefits:</div>
                     <ul class="detail-features" id="popupFeatures"></ul>
                 </div>
-                <div class="detail-packing">
-                    <span class="detail-packing-label">Packing:</span>
-                    <span class="detail-packing-value" id="popupPacking"></span>
-                </div>
-                <div class="detail-actions">
-                    <a href="tel:+918238592892" class="btn-inquiry" style="text-decoration:none;">
-                        📞 Send Inquiry
-                    </a>
-                </div>
+                <div class="detail-packing"><span class="detail-packing-label">Packing:</span><span
+                        class="detail-packing-value" id="popupPacking"></span></div>
+                <div class="detail-actions"><a href="tel:+918238592892" class="btn-inquiry"
+                        style="text-decoration:none;">📞 Send Inquiry</a></div>
             </div>
         </div>
     </div>
 
     <script src="Ai.js"></script>
     <script>
-        // Scroll progress
-        const pb = document.createElement('div'); pb.className = 'scroll-progress'; document.body.prepend(pb); window.addEventListener('scroll', () => { pb.style.width = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%' });
-
-        // Fade-in observer
-        const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: 0 }); document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-
-        // Hamburger nav
-        const hb = document.querySelector('.hamburger'), nv = document.querySelector('.nav-links'), nl = document.querySelectorAll('.nav-links li'), cm = document.querySelector('.close-menu'); hb.addEventListener('click', () => { nv.classList.toggle('nav-active'); nl.forEach((l, i) => { l.style.animation = l.style.animation ? '' : `navLinkFade .5s ease forwards ${i / 7 + .3}s` }); hb.classList.toggle('toggle') }); cm.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(l => l.style.animation = '') }); nl.forEach(l => { l.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(x => x.style.animation = '') }) });
-
-        // Search
-        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), cards = document.querySelectorAll('.product-card'), tp = cards.length;
-        si.addEventListener('input', function () {
-            const q = this.value.toLowerCase().trim();
-            let v = 0;
-            cards.forEach(c => {
-                const m = !q || c.textContent.toLowerCase().includes(q);
-                c.style.display = m ? '' : 'none';
-                if (m) v++;
-            });
-            rc.textContent = `Showing ${v} of ${tp}`;
+        const PRODUCTS = [
+            ["VIGORA", "Alpha Napthyl Acetic Acid 4.5% SL"],
+            ["GIB GROW", "Gibberellic Acid 0.001% L"],
+            ["GABRIEL", "Gibberellic acid 0.186% SP"],
+            ["HOLDIX", "Paclobutrazol 23% SC"],
+            ["HOLDIX 40", "Paclobutrazol 40% SC"],
+            ["FLORON", "Triacontanol EW 0.1% MIN."],
+            ["VISION", "Validamycin 3% L"]
+        ];
+        const grid = document.getElementById('productsGrid');
+        PRODUCTS.forEach((p, i) => {
+            const id = i + 1, brand = p[0], tech = p[1], img = "assets/images/antibiotics.jpg";
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.dataset.id = id; card.dataset.brand = brand; card.dataset.technical = tech; card.dataset.category = 'PGR'; card.dataset.dosage = '-'; card.dataset.features = '[]'; card.dataset.packing = '-'; card.dataset.img = img;
+            card.innerHTML = `<div class="card-badge">PGR</div><div class="card-img-wrap"><img src="${img}" alt="${brand}"></div><div class="card-body"><div class="card-brand">${brand}</div><div class="card-technical">${tech}</div></div>`;
+            grid.appendChild(card);
         });
 
-        // Product detail popup
+        const pb = document.createElement('div'); pb.className = 'scroll-progress'; document.body.prepend(pb); window.addEventListener('scroll', () => { pb.style.width = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%' });
+        const obs = new IntersectionObserver(e => { e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible') }) }, { threshold: 0 }); document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+        const hb = document.querySelector('.hamburger'), nv = document.querySelector('.nav-links'), nl = document.querySelectorAll('.nav-links li'), cm = document.querySelector('.close-menu'); hb.addEventListener('click', () => { nv.classList.toggle('nav-active'); nl.forEach((l, i) => { l.style.animation = l.style.animation ? '' : `navLinkFade .5s ease forwards ${i / 7 + .3}s` }); hb.classList.toggle('toggle') }); cm.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(l => l.style.animation = '') }); nl.forEach(l => { l.addEventListener('click', () => { nv.classList.remove('nav-active'); hb.classList.remove('toggle'); nl.forEach(x => x.style.animation = '') }) });
+
+        const si = document.getElementById('searchInput'), rc = document.getElementById('resultCount'), cards = document.querySelectorAll('.product-card'), tp = cards.length;
+        si.addEventListener('input', function () { const q = this.value.toLowerCase().trim(); let v = 0; cards.forEach(c => { const m = !q || c.textContent.toLowerCase().includes(q); c.style.display = m ? '' : 'none'; if (m) v++; }); rc.textContent = `Showing ${v} of ${tp}`; });
+
         const overlay = document.getElementById('detailOverlay');
         const closeBtn = document.getElementById('detailClose');
-
         function openPopup(card) {
             document.getElementById('popupImg').src = card.dataset.img;
             document.getElementById('popupBrand').textContent = card.dataset.brand;
             document.getElementById('popupCategory').textContent = card.dataset.category;
             document.getElementById('popupTechnical').textContent = card.dataset.technical;
-
-            const dosage = card.dataset.dosage;
-            const dosageWrap = document.getElementById('popupDosageWrap');
-            if (dosage && dosage !== '-') {
-                document.getElementById('popupDosage').textContent = dosage;
-                dosageWrap.style.display = '';
-            } else {
-                dosageWrap.style.display = 'none';
-            }
-
+            const dosage = card.dataset.dosage, dosageWrap = document.getElementById('popupDosageWrap');
+            if (dosage && dosage !== '-') { document.getElementById('popupDosage').textContent = dosage; dosageWrap.style.display = ''; } else { dosageWrap.style.display = 'none'; }
             const featuresWrap = document.getElementById('popupFeaturesWrap');
-            try {
-                const features = JSON.parse(card.dataset.features || '[]');
-                if (features.length) {
-                    document.getElementById('popupFeatures').innerHTML = features.map(f => `<li>${f}</li>`).join('');
-                    featuresWrap.style.display = '';
-                } else {
-                    featuresWrap.style.display = 'none';
-                }
-            } catch (e) { featuresWrap.style.display = 'none'; }
-
+            try { const features = JSON.parse(card.dataset.features || '[]'); if (features.length) { document.getElementById('popupFeatures').innerHTML = features.map(f => `<li>${f}</li>`).join(''); featuresWrap.style.display = ''; } else { featuresWrap.style.display = 'none'; } } catch (e) { featuresWrap.style.display = 'none'; }
             document.getElementById('popupPacking').textContent = card.dataset.packing || '-';
-
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+            overlay.classList.add('active'); document.body.style.overflow = 'hidden';
         }
-
-        function closePopup() {
-            overlay.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
+        function closePopup() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
         closeBtn.addEventListener('click', closePopup);
         overlay.addEventListener('click', e => { if (e.target === overlay) closePopup(); });
         document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('active')) closePopup(); });
-
-        // Bind card clicks
-        cards.forEach(card => {
-            card.addEventListener('click', () => openPopup(card));
-        });
-
-        // Hash navigation — open popup directly
+        cards.forEach(card => { card.addEventListener('click', () => openPopup(card)); });
         const hash = decodeURIComponent(window.location.hash.slice(1));
-        if (hash) {
-            const targetCard = document.querySelector(`.product-card[data-id="${hash}"]`);
-            if (targetCard) {
-                setTimeout(() => openPopup(targetCard), 100);
-            }
-        }
+        if (hash) { const targetCard = document.querySelector(`.product-card[data-id="${hash}"]`); if (targetCard) { setTimeout(() => openPopup(targetCard), 100); } }
+
+        // Footnote Year
+        const fullYear = new Date().getFullYear().toString();
+        const shortYear = fullYear.slice(-2);
+        const shortYearElement = document.getElementById("short-year");
+        if (shortYearElement) shortYearElement.textContent = shortYear;
     </script>
 </body>
 
